@@ -1,0 +1,166 @@
+#ifndef __TASK_MESSAGE
+#define __TASK_MESSAGE
+
+/* Includes ------------------------------------------------------------------*/
+#include "string.h"
+#include "FreeRTOS.h"
+#include "task.h"
+
+#define DHCP_TASKNAME "DHCP Task"
+#define UDPCLIENT_TASKNAME "UDP Task"
+#define HTTPSERVER_TASKNAME "HTTP Task"
+#define MQTTCLIENT_TASKNAME "MQTT Task"
+#define ETH_CONFIG_TASK "ETH Task"
+#define RS485_SLAVE_TASK "RS485 SLAVE"
+#define KEYSCAN_TASK "KEY SCAN Task"
+typedef enum
+{
+	TASK_ERROR =0,
+	TASK_EVENT,
+}MESSAGE_TYPE;
+
+typedef struct _TASK_MASSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+}TASK_MESSAGE;
+
+typedef struct _MQTTCLIENT_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}MQTTCLIENT_MESSAGE;
+
+typedef struct _HTTPSERVER_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}HTTPSERVER_MESSAGE;
+
+typedef struct _UDP_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}UDP_MESSAGE;
+
+
+typedef struct _DHCP_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}DHCP_MESSAGE;
+
+typedef struct _PORT_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}PORT_MESSAGE;
+
+
+typedef struct _RS485_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}RS485_MESSAGE;
+
+typedef struct _KEYSCAN_MESSAGE
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}KEYSCAN_MESSAGE;
+
+typedef union
+{
+	TASK_MESSAGE TaskMessage;
+	MQTTCLIENT_MESSAGE MqttMessage;
+	HTTPSERVER_MESSAGE HttpServerMessage;
+	UDP_MESSAGE UdpMessage;
+	DHCP_MESSAGE DhcpMessage;
+	RS485_MESSAGE RS485Message;
+  KEYSCAN_MESSAGE KeyscanMessage;
+  PORT_MESSAGE PortMessage;
+}xQueueMessage;
+
+typedef enum
+{
+	DHCP_LINKDOWN = 0,
+	DHCP_LINKUP,
+	DHCP_GETIP_REQ,
+	DHCP_GETIP_OK,
+	DHCP_GETIP_TIMEOUT,
+}DHCP_EVENT;
+
+typedef enum
+{
+	HTTPSERVER_START =0,
+	HTTPSERVER_INCUSION_OK,
+	HTTPSERVER_OK,
+}HTTPSERVER_EVENT;
+
+typedef enum
+{
+	HTTPSERVER_CREATESOCKET_ERROR =0,
+	HTTPSERVER_BIND_ERROR,
+	HTTPSERVER_INCLUSION_ERROR,
+}HTTPSERVER_ERROR;
+
+typedef enum
+{
+  EVENT_NONE =0,
+	MQTTCLIENT_CONNECT_OK,
+	MQTTCLIENT_PORT_ERROR,
+	MQTTCLIENT_BUTTON_OPEN,
+	MQTTCLIENT_BUTTON_CONNECT,
+	MQTTCLIENT_BUTTON_PRESS,
+  MQTTCLIENT_DOORLOCK_DISCONNECT,
+  MQTTCLIENT_DOORLOCK_OPEN,
+  MQTTCLIENT_DOORLOCK_CLOSE,
+	MQTTCLIENT_DOOR_OPEN,  
+}MQTTCLIENT_EVENT;
+
+typedef enum
+{
+	MQTTCLIENT_NONE =0,
+	MQTTNETWORK_CONNECT_ERROR,
+	MQTTCLIENT_CONNECT_ERROR,
+	MQTTSUBSCRIBE_ERROR,
+	MQTTPUSLISH_ERROR
+}MQTTCLIENT_ERROR;
+
+typedef enum
+{
+	UDPCLIENT_NONE =0,
+	UDPCLIENT_SELECT_INCLUSION,
+	UDPCLIENT_SELECT_FACTORYRESET,
+	UDPCLIENT_SEND_INCLUSION,
+	UDPCLIENT_SEND_FACTORYRESET,
+}UDPCLIENT_EVENT;
+
+typedef enum
+{
+	UDPCLIENT_CREATESOCKET_ERROR =0,
+	UDPCLIENT_SEND_ERROR,
+}UDPCLIENT_ERROR;
+
+typedef enum
+{
+	RS485_NONE =0,
+	RS485_START_OK,
+	RS485_ERROR,
+}RS485_EVENT;
+
+typedef enum
+{
+	KEYSCAN_NONE =0,
+	KEYSCAN_START_OK,
+  KEYSCAN_PRESS,
+	KEYSCAN_ERROR,
+}KEYSCAN_EVENT;
+#endif // __TASK_MESSAGE

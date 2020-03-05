@@ -1,0 +1,82 @@
+(ExpressProject "MC34063 PSpice"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\mc34063 pspice.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE")
+    (RootChangedForceReNetlist "x"))
+  (Folder "Outputs"
+    (File ".\mc34063 pspice-buck.net"
+      (Type "Report"))
+    (File ".\mc34063 pspice-boost.net"
+      (Type "Report"))
+    (File ".\mc34063 pspice-buck-boost.net"
+      (Type "Report"))
+    (File ".\mc34063 pspice-boost 34063a.net"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles"
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\mc34063 pspice-buck-buck.sim"
+        (DisplayName "BUCK-BUCK")
+        (Type "PSpice Profile"))
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\mc34063 pspice-boost-boost.sim"
+        (DisplayName "BOOST-BOOST")
+        (Type "PSpice Profile"))
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\mc34063 pspice-buck-boost-buck-boost.sim"
+        (DisplayName "Buck-Boost-Buck-Boost")
+        (Type "PSpice Profile"))
+      (ActiveProfile ".\mc34063 pspice-boost 34063a-34063a.sim")
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\mc34063 pspice-boost 34063a-34063a.sim"
+        (DisplayName "BOOST 34063A-34063A")
+        (Type "PSpice Profile")))
+    (Folder "Model Libraries"
+      (Sort User)
+      (File ".\mc34063.lib"
+        (Type "PSpiceLibrary")
+        (DisplayName ".\mc34063.lib")))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (MC34063A
+      (FullPartName "MC34063A.Normal")
+      (LibraryName "D:\USERDATA\PSPICE\MC34063\MC34063.OLB")
+      (DeviceIndex "0"))
+    (VDC
+      (FullPartName "VDC.Normal")
+      (LibraryName "D:\CADENCE\PSD_14.1\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (MC33063
+      (FullPartName "MC33063.Normal")
+      (LibraryName "D:\CHRISTOPHE\PSPICE\MC34063\MC34063.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory "D:\UserData\PSpice\MC34063")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "D:\UserData\PSpice\MC34063\mc34063 pspice.dsn")
+      (Path "Design Resources" "D:\UserData\PSpice\MC34063\mc34063 pspice.dsn"
+         "BOOST 34063A")
+      (Path "Outputs")
+      (Path "PSpice Resources")
+      (Path "PSpice Resources" "Simulation Profiles")
+      (Select "Design Resources"
+         "D:\UserData\PSpice\MC34063\mc34063 pspice.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 0 852 -4 -23 0 479 0 577"))
+      (Tab 0)))
+  (MPSSessionName "totof"))

@@ -1,0 +1,116 @@
+* PSpice Model Editor - Version 16.6.0
+*$
+* Model of MC34063A/MC33063A/NCV33063A
+* 1.5A,STEP-UP/DOWN/INVERTING SWITCHING REGULATOR
+* DATASHEET	ONSEMI	
+*****************************************************************************************
+**************************************************************************** 
+.SUBCKT MC33063A CT DriverCollector GND INV IpkSense SwitchCollector
++  SwitchEmiitter VCC  PARAMS: PERIOD=30u
+$CDNENCSTART
+eee8c5c7a2bc4b01f045f303678664e7916da0bae22e8cb0bba041dd67c69ce448ea70148a9ac1670c8926c1ac5057c8ccfcd77bf87ca9dc6856d23c30756766
+062e5f2e0baf1b671b335ff666912215e46aa7ba2c6b6fcf54e2711ce63e74f1a06f8e37eee5f2bb6b574213c15e8d89bc6e916e007971de647371eed1180b60
+0e62587207d732fc8261bb843a0022a7166a8a1ad12ece41b5bda36bf1ba6ad6ad20f953c9538a5c470e322bc79644435ad94a196ac632f5721ba07e91060307
+8dc758461ef0f78fe71f71e1875841714325bd498a40bd48d4046e5e90e18ba9794622befce1856446f5813e01567337c77f3fcc6cd132ac8438a25ae84ad1ce
+ce985ecc878657ae83224fef5f44a167727fe63ee0dd637d89d1a4526d4650a4269abe6cfdb999a5716b8d187353e55333a08e90ef8cf94364874033d63c14ba
+d70856da7422a5241b335ff666912215b7a355f369075cbb8492e52ca9907137faf054f22b190198905418a6ac0cda4b0333735cfcff2cef1aabfa10941d45cf
+0e93a9674d9c6bf6706b807646b803717b983f085b61698f1a0b91fe4e3a0a30b383949ebd282b375e9f410a4f317b14b0dfee13b314e9721226fd9e1c9bd710
+43048ff0d6d39d875df56aea8be45439f2a008effc20878636c43aac0477424b238b7924c9ad37c37af0ff4f74643d1ba9f845e09c0e7f59ed4254a5e56fa144
+33203a1ea0fb7df5706b807646b80371a58de803edfe7cd014dcbc063689578fc488aabeff9ebde22d7c12afb3757b0b761793f330f4bc10d0122d752285ae46
+0b1c0dbcc954f80e8057288b25546d82ccde9f6545ca4c500b23bed5d3b09c0c8da7e4abe543c02b5f0aa508e1e0231670d1a1820922d7b57c231e0ab74bb6d6
+bb91294a7c8a87364bc675b79d811be48521f6b0ba84885beea483a2f0e213755df56aea8be45439f2a008effc20878636c43aac0477424b564b260a32a7726c
+5a4c6ac90cfb26831b335ff6669122158cea17c7db358d318492e52ca990713792b35fbc4ba24d2de64cdf244ee4c27884cd1b15acb88c418d1711ff22cdc48f
+b5f1c17ee7956303518a77c8c803842e384c8a94620bd2c62b624ac9da133ae07d65bc9650f60e238b78b4b28879890a2a567f3b2d928ac5042e6fada0e3c48f
+1e103060cf08a33b1b335ff666912215ae3d1f4952079fc16302dd118ed33030ad5e9bc94449dcefccde9f6545ca4c500b23bed5d3b09c0c9952e15c5dade048
+e9dd452c4e6cfebe14fcfa6aa115c3eb51a240d849af3f68bf1ee911780421dd518a77c8c803842e384c8a94620bd2c62b624ac9da133ae060c6b4d5605d92a6
+0e84779c45a6169390e968aeb002ff992025670cac75a834a5fe80234183284803ae8c3f7d681acaccde9f6545ca4c500b23bed5d3b09c0c9952e15c5dade048
+2534a3bf160f15f8706b807646b803710e2b98a0f322d1acea18388921ba715b166a8a1ad12ece41b5bda36bf1ba6ad6ad20f953c9538a5c1399206649c3004e
+0e84779c45a6169325ed9ec78461330995e1b2723fb8575a3c96b74a2c7021c407fda4b0cd40b9e15a55b3503da4844d03ae8c3f7d681aca74fb7cf2e7c9f235
+3bdfb3bcf8540f5714fcfa6aa115c3eb65f5b8975406b18a25b4209faba42945ccde9f6545ca4c500b23bed5d3b09c0c8da7e4abe543c02b00f9e7b1b86aed11
+4d71bd9683b88359706b807646b80371e32889e275bb30a063c1a321097fbc34c488aabeff9ebde232fc748518166d5597fcb92446ff0906d0122d752285ae46
+0b1c0dbcc954f80e10527a4b9fe77d0fccde9f6545ca4c500b23bed5d3b09c0c8da7e4abe543c02b5f0aa508e1e0231670d1a1820922d7b57c231e0ab74bb6d6
+bb91294a7c8a87364bc675b79d811be48521f6b0ba84885beea483a2f0e213755df56aea8be45439f2a008effc20878636c43aac0477424b564b260a32a7726c
+94fab6a88c3a1cacf45310c19b6b8ee50e2b98a0f322d1aca8711b421be5df55644126c9831a96bd4325bd498a40bd48d4046e5e90e18ba959b6ffe02caf709b
+ab7a76cbfb0965a11b335ff666912215ba0d927a62e0f0b8cfe294202a1e9424c886c8e766cb984eccde9f6545ca4c500b23bed5d3b09c0c9952e15c5dade048
+f366dc9a84a93257706b807646b8037122ec4b022e13f9a914dcbc063689578fc488aabeff9ebde232fc748518166d555507f2a2e63278b5d0122d752285ae46
+0b1c0dbcc954f80e9233aba4bbc3315fccde9f6545ca4c500b23bed5d3b09c0c8da7e4abe543c02b5f0aa508e1e0231670d1a1820922d7b57c231e0ab74bb6d6
+bb91294a7c8a8736c452de53e7a56a77b3bd4d4a78b0fcdf691018eed3b49c36f3c43d9fa57ecbb32e3cb5f22337b117fc3c20e5f29bdfb9fc5df1d71c4fa86b
+a91379e1a85f51161b335ff666912215e46aa7ba2c6b6fcf8277927c6d2a735da4b72edbe2db92d7042f0c0c78bb0deb166a8a1ad12ece4131080506c2976bce
+102778d1f868b7a41b335ff6669122157d4ff2d1760beda88492e52ca990713717ab25c39b3409a8996cf96a90391c6263dd7bcd0bda12a04fdeaefa9605e565
+e294aaf17f00e593b5f1c17ee7956303518a77c8c803842e384c8a94620bd2c62b624ac9da133ae07d65bc9650f60e238b78b4b28879890aed5498361dce8652
+07f1c90d003f3539db58f3cd59acec8354c11eeddd8b1ebbc62ae045a03a42aab96b7ab2d61f32905df56aea8be45439f2a008effc2087861073fbd29e30f062
+4ddcb7149bdfde542531ce9df5eb060336e1e46c97a335a93fc7b4032e6e815b710f626c2faf14a6518a77c8c803842e384c8a94620bd2c6b2c165c69979eb00
+600062a8f6bfa7632988caa228caab50a3c33e4377e82d5d6bc068752fd13e0c5e8210427071e0bc825401bca6471512325b670ec2fd51007c2a0387a42b3c32
+$CDNENCFINISH
+.ENDS MC33063A
+*$
+*==========================================================
+* MC34063
+* ON SEMICONDUTOR
+* 1.5 A, Step-Up/Down/Inverting Switching Regulator
+*
+* This model was developed for On Semiconductor by:
+* AEI Systems, LLC
+* 5777 W. Century Blvd. Suite 876
+* Los Angeles, California 90045
+* Copyright 2002, all rights reserved.
+*
+* This model is subject to change without notice.
+* Users may not directly or indirectly re-sell or 
+* re-distribute this model. This model may not 
+* be used, modified, or altered 
+* without the consent of On Semiconductor. 
+*
+* For more information regarding modeling services,
+* model libraries and simulation products, please
+* call AEi Systems at (310) 863-8034, or contact 
+* AEi by email: info@aeng.com. http://www.AENG.com
+*
+* Revision: 2/18/02, version 1.1
+*==========================================================
+**********
+*SRC=MC33063;MC33063;Regulators;On Semiconductor;1.5A
+*SYM=MC34063
+.SUBCKT MC33063 swc    swe    ct    90    2    vdd    isns    drc
+*               SW-col SW-em  Ct    gnd    cinv vdd    isns    drive col
+*DC-DC controller
+B5 5 0 V=~(v(9)&v(8))
+Q1 ct isns vdd QN2907
+.MODEL QN2907 PNP BF=200 BR=6 CJC=19PF CJE=23PF IKF=100E-3
++ IS=1.1E-12 ISE=1.3E-11 MJC=.2 MJE=1.25 NE=1.9 NF=1.21 RC=.6
++ TF=5E-10 TR=34E-9 VAF=50 VJC=.5 VJE=.85 XTB=1.5
+B6 7 0 V=~(v(4)&v(10))
+R3 5 10 100
+R9 13 swe 100
+C2 10 0 100p IC=5
+R4 2 90 10MEG
+R5 7 8 100
+C3 8 0 100p IC=0
+S1 srst 90 ct 90 _S2_mod  
+.MODEL _S2_mod SW VT=1.75 VH=1.25
+R1 srst vdd 10k
+Q2 drc 14 13 _Q3_mod 
+.MODEL _Q3_mod NPN BF=50
+B4 6 0 V=v(2,90)  > (v(vref,90) + v(voff,90))  ? 0 : v(vdd)
+B2 vdd ct I=V(srst,90) > 3 ? 35U : -220U
+B3 9 0 V=(v(6,90) > 3) ? v(diff,90) > 1 ? 0 : v(vdd)
+B7 16 90 V=V(vdd,90)-1.5 > 1.25 ? 1.25 : V(vdd,90)-1.25 < 0 ? 0 :V(vdd,90)-1.25
+V7 16 vref
+R6 vref 90 400
+R7 vref vdd 90k
+Q1x swc 13 swe _Q4_mod 
+.MODEL _Q4_mod NPN BF=50 RC=.25 RE=.25 TF=0
+R8 diff 90 10k
+D1 14 15 DN4148
+.MODEL DN4148 D BV=100V CJO=4PF IS=7E-09 M=.45 N=2 RS=.8
++ TT=6E-09 VJ=.6V
+D2 swe 14 DN4148
+V3 drc 15 DC=700m
+B8 swe 14 I=v(5) > 2.5 ? 1m : -1m
+V4 voff 90 DC=2m
+C5 srst diff 10p
+B1 4 90 V=(v(6,90) > 3) ? (v(diff,90) > -1) ? v(vdd) : 0
+R10 vdd isns 10k
+.ENDS
+**********
+*$

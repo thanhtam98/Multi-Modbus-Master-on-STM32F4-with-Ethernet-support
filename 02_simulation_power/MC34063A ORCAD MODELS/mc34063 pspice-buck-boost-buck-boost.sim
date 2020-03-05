@@ -1,0 +1,128 @@
+@OrCAD Simulation Server Version: 1.0
+
+@Settings: 0 1
+@General:
+ProfileName= "Buck-Boost" 
+ProfileFile= "mc34063 pspice-Buck-Boost-Buck-Boost.sim" 
+DesignFile= "mc34063 pspice.dsn" 0 
+ProjectFile= "MC34063 PSpice.opj" 
+NetlistFile= "mc34063 pspice-Buck-Boost-Buck-Boost.sim.cir" 
+RootSchematics= "Buck-Boost" 
+DataFile= "mc34063 pspice-Buck-Boost-Buck-Boost.dat" 
+OutFile= "mc34063 pspice-Buck-Boost-Buck-Boost.out" 
+Notes=
+@#$BEGINNOTES
+@#$ENDNOTES
+@End General
+@Analysis: 0 1
++1 0 0 
++0 "10m" 
++1 "" 
++2 "0" 
++3 "100n" 
++4 "" 
++5 "" 
++6 "" 
+@End Analysis
+@Analysis: 1 0
++2 0 0
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
+@End Analysis
+@Analysis: 2 0
++0 0
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
++6 "" 
++7 "" 
+@End Analysis
+@Analysis: 3 0
++0 0 0
++0 "" 
++1 "" 
++2 "" 
+@End Analysis
+@Analysis: 4 0
++0 0 1 0 0 0 0 0 
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
++6 "" 
++7 "" 
+@End Analysis
+@Analysis: 5 0
++0 0
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
++6 "" 
++7 "" 
+@End Analysis
+@Analysis: 6 0
++1 
++0 "" 
+@End Analysis
+@Analysis: 7 0
++0 0
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
+@End Analysis
+@Analysis: 8 0
++0 
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
+@End Analysis
+@Analysis: 9 0
++0 "" 
+@End Analysis
+@Analysis: 10 0
++0 0
++0 "" 
++1 "" 
++2 "" 
++3 "" 
++4 "" 
++5 "" 
++6 "" 
++7 "" 
+@End Analysis
+@Analysis: 11 1
++ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
++ ABSTOL "1u"
++ GMIN "100p"
++ ITL4 "40"
++ VNTOL "1m"
+@End Analysis
+@Analysis: 12 0
++8946208 0
+@End Analysis
+@Analysis: 13 1
++0 1 1 0
+@End Analysis
+@Analysis: 14 1
++1 1 1 "*" 
+@End Analysis
+@Analysis: 15 0
+@End Analysis

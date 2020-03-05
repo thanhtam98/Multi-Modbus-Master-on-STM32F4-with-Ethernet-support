@@ -1,0 +1,64 @@
+C:\spice8\Circuits\ON\33063\apptest.cir Setup1
+*#save @V1[i] @V1[p] V(16) @L1[i] @D1[id] @D1[p] @R5[i] @R5[p]
+*#save @R6[i] @R6[p] @C5[i] V(17) @V6[i] @V6[p] @R11[i] @R11[p]
+*#save V(2) V(5) V(6) V(1) V(ct) @R1[i] @R1[p] @C6[i]
+*#alias vo  v(16)
+*#view  tran vo
+*#view  tran iy9
+*#alias iy9 @v6[i]
+.TRAN .5u 8m 0 .5u UIC
+.OPTIONS abstol=.001 itl4=1000
+.OPTIONS reltol=0.001
+.PRINT  TRAN vo
+.PRINT  TRAN IY9
+V1 2 0 DC=25
+L1 5 16 220u
+D1 0 5 DN5819
+.MODEL DN5819 D BV=5.33E+01 CJO=1.44E-10 EG=0.69
++ IBV=6.00E-04 IS=1.65E-05 M=.671 N=1.41 RS=4.47E-02
++ TT=7.20E-11 VJ=1.45 XTI=2
+R5 16 6 3.6k
+R6 6 0 1.2k
+C5 16 0 220u IC=5
+V6 17 0
+R11 16 17 10
+X1 1 5 ct 0 6 2 1 1 MC33063 {  }
+.SUBCKT MC33063 swc    swe    ct    90    2    vdd    isns    drc
+*               SW-col SW-em  Ct    gnd    cinv vdd    isns    drive col
+*DC-DC controller
+B2 5 90 V=~(v(9)&v(8))
+Q1 drc 15 13 QN2222A 
+.MODEL QN2222A NPN BF=205 BR=4 CJC=15.2P CJE=29.5P IKF=.5
++ IKR=.225 IS=81.1F ISE=10.6P NE=2 NF=1 NR=1 RB=1.37 RC=.137
++ RE=.343 TF=397P TR=85N VAF=113 VAR=24 XTB=1.5
+B3 7 90 V=~(v(4)&v(10))
+R1 5 10 100
+R9 13 swe 100
+C2 10 90 10p IC=5
+R7 2 90 1MEG
+R2 7 8 100
+C3 8 90 10p IC=0
+S2 srst 90 ct 90 _S2_mod  
+.MODEL _S2_mod SW VT=1.25 VH=.4
+R3 srst vdd 100k
+V3 vref 90 DC=1.25
+B4 6 90 V=v(2)  > (v(vref) + v(voff))  ? v(90) : v(vdd)
+B1 vdd ct I=V(srst) > 2.5 ? 35U : -220U
+B5 9 90 V=v(6) > 2.5 ? v(11) > 2.5 ? v(90) : v(vdd)
+R4 4 11 100
+C4 11 90 10p IC=5
+B6 15 90 V=v(5) > 2.5 ? v(vdd) : v(90)
+Q2 swc 13 swe QN5190 
+.MODEL QN5190 NPN BF=144 BR=4 CJC=3.1E-10 CJE=3.1E-10
++ IKF=300M IRB=416.67U IS=4.65E-12 ISC=5N ISE=7.62E-10
++ ITF=3.6 MJC=210M MJE=300M NE=2.0 NF=1.0 NR=1.0 PTF=120
++ RB=12.0 RBM=1.2 RC=6.8E-02 RE=1.7E-01 TF=4.5E-08 TR=1.27U
++ VAF=114 VAR=20 VJC=1.25 VJE=500M XTB=2.5 XTF=1
+V4 voff 90 DC=2m
+B7 4 90 V=(v(vdd) - v(isns)) < v(iref) ? (v(srst) > 2.5) ? v(vdd) : v(90)
+R10 vdd isns 1MEG
+V5 iref 90 DC=300m
+.ENDS 
+R1 1 2 .33
+C6 ct 0 470p IC=.85
+.END 

@@ -1,0 +1,26 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly ModbusTcp With Visual C++, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class MP2300SController: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.String, UInt16): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Connect(): PrivateScope, Public, HideBySig
+    Disconnect(): PrivateScope, Public, HideBySig
+    WriteML(UInt16, Int32[]): PrivateScope, Public, HideBySig
+    WriteMultipleRegistersMsg(UInt16, Byte, UInt16, Byte, Byte[]): PrivateScope, Public, HideBySig
+    ToByteArray(Int32[]): PrivateScope, Public, HideBySig
+    ToByteArray(Int32): PrivateScope, Public, HideBySig
+    Write(Byte[]): PrivateScope, Public, HideBySig
+    Read(): PrivateScope, Public, HideBySig
+    CheckValidate(Byte[]): PrivateScope, Public, HideBySig
+Class ModbusTcpMP2300SController.ModbusTcpConsole: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

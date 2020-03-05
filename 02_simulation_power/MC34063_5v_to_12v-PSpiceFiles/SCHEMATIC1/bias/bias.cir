@@ -1,0 +1,20 @@
+** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles\schematic1\bias.sim ] 
+
+** Creating circuit file "bias.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mc34063_5v_to_12v-pspicefiles/mc34063_5v_to_12v.lib" 
+* From [PSPICE NETLIST] section of E:\01_working_allegro\cdssetup\OrCAD_PSpice/16.6.0/PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 0.1s 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+.END

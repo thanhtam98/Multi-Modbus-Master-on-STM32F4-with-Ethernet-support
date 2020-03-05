@@ -1,0 +1,146 @@
+*==========================================================
+* MC34063
+* ON Semiconductor
+* DC-DC controller
+*
+* This model was developed for ON Semiconductor by:
+* AEI Systems, LLC
+* 5777 W. Century Blvd. Suite 876
+* Los Angeles, California 90045
+* Copyright 2002, all rights reserved.
+*
+* This model is subject to change without notice.
+* Users may not directly or indirectly re-sell or 
+* re-distribute this model. This model may not 
+* be used, modified, or altered 
+* without the consent of ON Semiconductor. 
+*
+* For more information regarding modeling services,
+* model libraries and simulation products, please
+* call AEi Systems at (310) 863-8034, or contact 
+* AEi by email: info@aeng.com. http://www.AENG.com
+*
+* Revision: 1.0
+*==========================================================
+**********
+.SUBCKT MC34063 swc    swe    ct    90    2    vdd    isns    drc
+*               SW-col SW-em  Ct    gnd    cinv vdd    isns    drive col
+*DC-DC controller
+
+* PSpice translation by Christophe Basso, christophe.basso@onsemi.com
+
+EB5 5 90 Value = { IF ( v(9,90)>2.5 & v(8,90)>2.5, 0, 5 ) }
+Q3 ct 22 vdd QN2907
+V10 isns 22 DC=.3215
+EB6 7 90 Value = { IF ( v(4,90)>2.5 & v(10,90)>2.5, 0, 5 ) }
+R3 5 10 100
+R9 13 swe 100
+C2 10 90 100p IC=5
+R4 2 90 10MEG
+C10 2 90 50p
+R5 7 8 100
+C3 8 90 100p IC=0
+XTOF1 srst 90 ct 90 SWhyste params: VT=1.25 VH=.8 
+R1 srst vdd 10k
+Q2 drc 14 13 _Q3_mod 
+EB4 6 90 Value = { IF ( v(2,90)  > (v(vref,90) + v(voff,90)), 0, v(vdd,90) ) }
+GB2 vdd ct Value = { IF ( V(srst,90) > 3, 35U, -220U ) }
+EB3 9 90 Value = { IF ( v(diff,90) < 1, v(vdd,90), IF ( (v(6,90) > 3), 0, v(vdd,90) ) ) }
+EB7 16 90 Value = { IF ( V(vdd,90)-1.5 > 1.25, 1.25, IF ( V(vdd,90)-1.25 < 0, 0, V(vdd,90)-1.25 ) ) }
+V7 16 vref
+R6 vref 90 400
+R7 vref vdd 90k
+Q1 swc 13 swe _Q4_mod 
+R8 diff 90 10k
+D1 14 15 DN4148
+D2 swe 14 DN4148
+V3 drc 15 DC=700m
+GB8 swe 14 Value = { IF ( v(5,90) > 2.5, 10m, -10m ) }
+V4 voff 90 DC=2m
+C5 srst diff 10p
+EB1 4 90 Value = { IF ( (v(diff,90) > -1), v(vdd,90), 0 ) }
+R10 vdd isns 10k
+** discrete models **
+.MODEL QN2907 PNP BF=200 BR=6 CJC=19PF CJE=23PF IKF=100E-3
++ IS=1.1E-12 ISE=1.3E-11 MJC=.2 MJE=1.25 NE=1.9 NF=1.21 RC=.6
++ TF=5E-10 TR=34E-9 VAF=50 VJC=.5 VJE=.30 XTB=1.5
+.MODEL DN4148 D BV=100V CJO=4PF IS=7E-09 M=.45 N=2 RS=.8
++ TT=6E-09 VJ=.6V
+.MODEL _Q4_mod NPN BF=50 RC=.125 RE=.125 TF=10n
+.MODEL _Q3_mod NPN BF=50
+.ENDS
+**********
+* PSpice hysteresis switch made by Chris Basso
+.subckt SWhyste NodeMinus NodePlus Plus Minus PARAMS: RON=1 ROFF=1MEG VT=5 VH=2
+S5 NodePlus NodeMinus 8 0 smoothSW
+EBcrtl 8 0 Value = { IF ( V(plus)-V(minus) > V(ref), 1, 0 ) }
+EBref ref1 0 Value = { IF ( V(8) > 0.5, {VT-VH}, {VT+VH} ) }
+Rdel ref1 ref 100
+Cdel ref 0 100p  IC={VT+VH}
+Rconv1 8 0 10Meg
+Rconv2 plus 0 10Meg
+Rconv3 minus 0 10Meg
+.model smoothSW VSWITCH (RON={RON} ROFF={ROFF} VON=1 VOFF=0)
+.ends SWhyste
+***** Example models *****
+.MODEL DN5819 D BV=5.33E+01 CJO=1.44E-10 EG=0.69
++ IBV=6.00E-04 IS=1.65E-05 M=.671 N=1.41 RS=4.47E-02
++ TT=7.20E-11 VJ=1.45 XTI=2
+*****
+.SUBCKT MC34063A 1 2 3 4 5 6 7 8
+*BY KEHINDE OMOLAYO 2-20-03
+*TERMINAL ID
+*SWITCH COLLECTOR=1 SWITCH EMITTER=2 TIMING CAPACITOR=3 GND=4
+*COMPARATOR INVERTING INPUT=5 VCC=6 IPK SENSE=7 DRIVER COLLECTOR=8
+
+* Translation by Chris Basso
+
+E1 10 0 5 4 1
+R1 4 5 10MEG
+V1 20 0 PULSE 0 2
+E2 11 0 3 4 1
+EB1 13 0 Value = { 1M/(ABS((27.475-195M*V(12))+(36.002+244M*V(12))*V(9)-
++(302.302+651M*V(12))*V(9)^2)+1F) }
+E3 12 0 6 4 1
+E4 9 0 6 7 1
+R2 6 7 10MEG
+EB2 14 0 Value = { 1M*((-10.765-151M*V(12))+(45.344+864M*V(12))*V(9)-
++(35.99+1.378*V(12))*V(9)^2+(8.341+839M*V(12))*V(9)^3) }
+EB4 15 0 Value = { IF ( V(9)>0.32, V(14), V(13) ) }
+C1 19 0 10P
+EB5 16 0 Value = { IF (  V(20)<1, 2, IF ( V(24)>1, 2, IF ( V(19)>1, 0, 2 ) ) ) }
+R3 16 17 150
+C2 17 0 10P
+EB6 18 0 Value = { IF ( V(20)<1, 0, IF ( V(24)>1, 0, IF ( V(11)<(1.083-1.239*V(29)), 2, 
++IF ( V(17)>1, 0, 2 ) ) ) ) }
+R4 18 19 150
+D1 4 3 DMC34063
+D2 3 6 DMC34063
+C3 11 31 1N
+GB7 4 36 Value = { IF ( V(17)>1, -(224.4U+2.359U*V(12))*0.77, V(15)*0.77 ) }
+C5 23 0 10P
+EB9 21 0 Value = { IF (  V(20)<1, 2, IF ( V(17)>1, 2, IF ( V(26)>1, 0, 2 ) ) ) }
+R5 27 26 150
+C6 26 0 10P
+EB10 27 0 Value = { IF ( V(20)<1, 0, IF ( V(17)>1, 0, IF ( V(10)<1.25, 2, IF ( V(23)>1, 0, 2 ) ) ) ) }
+R6 21 23 150
+EB12 33 0 Value = { IF ( V(11)>(1.148+184.6M*V(29)), 2, 0 ) }
+R13 33 24 10K
+C8 24 0 10P
+Q1 8 30 25 QSWITCH
+Q2 1 25 2 QSWITCH
+R15 25 2 100
+D5 2 30 DMC34063
+G1 2 30 26 23 5M
+R16 2 4 10MEG
+R23 31 28 1M
+V6 28 0 
+V7 36 3 
+EB13 29 0 Value = { I(V6)/(I(V7)+866.8M*I(V6)) }
+***
+.MODEL DMC34063 D (CJO=2P N=0.05)
+.MODEL QSWITCH NPN BF=75 CJC=2P IS=3E-9 RB=1 RC=0.45 RE=0
++ VJC=.75 VJE=.75 VJS=.75
+***
+.ENDS
+*********

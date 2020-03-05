@@ -1,0 +1,12 @@
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F\port.c
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h
+.\discover-more\port.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\port.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\port.o: ..\inc\FreeRTOSConfig.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\portable.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F\portmacro.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\mpu_wrappers.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\task.h
+.\discover-more\port.o: ..\..\Utilities\FreeRTOSv10.0.1\include\list.h

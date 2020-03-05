@@ -1,0 +1,280 @@
+
+**** 02/20/19 00:33:32 ***** PSpice 16.6.0 (October 2012) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "bias.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mc34063_5v_to_12v-pspicefiles/mc34063_5v_to_12v.lib" 
+* From [PSPICE NETLIST] section of E:\01_working_allegro\cdssetup\OrCAD_PSpice/16.6.0/PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 0.1s 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+$
+ERROR(ORPSIM-16058): Command ignored
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source MC34063_5V_TO_12V
+L_L1         N14496 N15069  400uH  
+R_R1         N14679 N14496  1k TC=0,0 
+R_R3         N14679 N14860  470 TC=0,0 
+R_R4         0 N14984  1k TC=0,0 
+R_R5         N15412 N15283  86k TC=0,0 
+R_R6         0 N15412  10k TC=0,0 
+C_C3         0 N16042  350pF  TC=0,0 
+C_C4         0 N15283  2200uF  TC=0,0 
+D_D1         N15069 N15283 SS24 
+V_V1         N14496 0 5Vdc
+Q_Q1         N14984 N14860 N14496 BD190
+M_M1         N15069 N14984 0 0 M2N6756
+R_R7         N14496 N14496  470 TC=0,0 
+X_U1         N16042 N14496 0 N15412 N14496 N14679 0 N14496 MC33063A PARAMS:
++  PERIOD=30u
+** Floating/unmodeled pin fixups **
+R__UC0001   N14496  0   {1/GMIN}
+
+**** RESUMING bias.cir ****
+.END
+
+WARNING(ORPSIM-15223): Library file E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles\mc34063_5v_to_12v.lib has changed since index file mc34063_5v_to_12v.ind was created.
+
+WARNING(ORPSIM-15227): The timestamp changed from Wed Feb 20 00:28:55 2019 to Wed Feb 20 00:33:01 2019.
+
+INFO(ORPSIM-15422): Making new index file mc34063_5v_to_12v.ind for library file mc34063_5v_to_12v.lib.
+
+Index has 2 entries from 1 file(s).
+
+**** 02/20/19 00:33:32 ***** PSpice 16.6.0 (October 2012) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               SS24            X_U1.X_M1.MD    X_U1.X_M1.MD1   X_U1.X_M1.MD2   
+          IS   26.740000E-06  102.194000E-12    0             100.000000E-12 
+           N    1.3565          1.21527        50                .4          
+         ISR  100.000000E-12                                                 
+          BV   40             100                                            
+         IBV  400.000000E-06  250.000000E-06                                 
+          RS     .031371        9.680220E-03                    3.000000E-06 
+          TT                  100.000000E-09                                 
+         CJO  356.680000E-12    1.818590E-09    2.496970E-09                 
+          VJ     .4             1.1279           .5                          
+           M     .46074          .449161         .9                          
+          FC                                   10.000000E-09                 
+          EG     .66025         1.2                                          
+         XTI     .5             3.03885                                      
+
+
+               X_U1.X_M1.MD3   
+          IS  100.000000E-12 
+           N     .4          
+
+
+**** 02/20/19 00:33:32 ***** PSpice 16.6.0 (October 2012) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               BD190           
+               PNP             
+       LEVEL    1            
+          IS   51.230000E-15 
+          BF  434.1          
+          NF    1            
+         VAF  100            
+         IKF     .3883       
+         ISE   51.230000E-15 
+          NE    1.22         
+          BR   55.47         
+          NR    1            
+         IKR   10.87         
+         ISC   51.230000E-15 
+          NC    1.205        
+          NK     .5544       
+         ISS    0            
+          RB     .1          
+          RE    0            
+          RC     .3443       
+         CJE  179.900000E-12 
+         VJE     .75         
+         MJE     .4294       
+         CJC  136.900000E-12 
+         VJC     .75         
+         MJC     .3155       
+        XCJC    1            
+         CJS    0            
+         VJS     .75         
+          TF   13.050000E-09 
+         XTF    1.573        
+         VTF   10            
+         ITF    6.85         
+          TR   20.250000E-09 
+         XTB    2.2          
+          KF    0            
+          AF    1            
+          CN    2.2          
+           D     .52         
+
+
+**** 02/20/19 00:33:32 ***** PSpice 16.6.0 (October 2012) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               M2N6756         X_U1.X_M1.MM    
+               NMOS            NMOS            
+       LEVEL    3               1            
+           L    2.000000E-06  100.000000E-06 
+           W    1.1           100.000000E-06 
+         VTO    3.143           3.56362      
+          KP   21.350000E-06   25.0081       
+       GAMMA    0               0            
+         PHI     .6              .6          
+      LAMBDA    0               2.910310E-03 
+          RD    4.680000E-03                 
+          RS     .1207                       
+          RG    9.781                        
+         RDS    1.000000E+06                 
+          IS    4.345000E-15    0            
+          JS    0               0            
+          PB     .8              .8          
+        PBSW     .8              .8          
+         CBD    1.273000E-09                 
+          CJ    0               0            
+        CJSW    0               0            
+          TT  348.000000E-09                 
+        CGSO  679.600000E-12   16.058400E-06 
+        CGDO  197.400000E-12  425.919000E-09 
+        CGBO    0               0            
+         TOX  100.000000E-09    0            
+          XJ    0               0            
+       UCRIT   10.000000E+03   10.000000E+03 
+       DELTA    0                            
+         ETA    0                            
+      DIOMOD    1               1            
+         VFB    0               0            
+        LETA    0               0            
+        WETA    0               0            
+          U0    0               0            
+        TEMP    0               0            
+         VDD    5               5            
+       XPART    0               0            
+
+
+**** 02/20/19 00:33:32 ***** PSpice 16.6.0 (October 2012) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N14496)    5.0000 (N14679)    4.9988 (N14860)    4.9988 (N14984) 5.449E-09     
+
+(N15069)    5.0000 (N15283)    4.9622 (N15412)     .5169 (N16042)    0.0000     
+
+(X_U1.X_M1.4)    0.0000               (X_U1.X_M1.5)    4.9988                   
+
+(X_U1.X_M1.6)    4.9988               (X_U1.X_M1.7) 571.6E-12                   
+
+(X_U1.X_M1.8) 158.5E-15               (X_U1.X_M1.9)    4.9988                   
+
+(X_U1.X_M1.10)    4.9988              (X_U1.X_M1.11)    4.9988                  
+
+(X_U1.N10555779)    0.0000            (X_U1.N10555785)    3.5000                
+
+(X_U1.N10555793)     .4000            (X_U1.N10555863)    0.0000                
+
+(X_U1.N10556003)    0.0000            (X_U1.N10556201)    0.0000                
+
+(X_U1.N10556207)    0.0000            (X_U1.N10556425)    0.0000                
+
+(X_U1.N10560837)    3.5000            (X_U1.N10564322)    1.2500                
+
+(X_U1.N10564390)  733.1000            (X_U1.N10564430)     .9500                
+
+(X_U1.N10565737)    0.0000            (X_U1.N10567979) 494.9E-12            
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -5.794E-05
+    X_U1.V_V8    0.000E+00
+    X_U1.V_vramp   0.000E+00
+    X_U1.V_V1    0.000E+00
+    X_U1.X_M1.VFI2   4.999E-12
+    X_U1.X_M1.VFI1   0.000E+00
+
+    TOTAL POWER DISSIPATION   2.90E-04  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 02/20/19 00:33:32 ***** PSpice 16.6.0 (October 2012) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ E:\04_Project\12_anhBao\02_RFID_NFC\16_Controller\02_simulation_power\mc34063_5v_to_12v-pspicefiles
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =       59.73
+

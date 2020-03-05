@@ -1,0 +1,9 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ModbusTcp MP2300S Controller.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Stdafx.cpp
+  AssemblyInfo.cpp
+  ModbusTcpConsole.cpp
+  ModbusTcpMaster.cpp
+  Generating Code...
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  ModbusTcp With Visual C++.vcxproj -> E:\LVTN\AccessControllerBoard\16_Controller\ModbusTcp With Visual C++\Debug\ModbusTcp With Visual C++.exe

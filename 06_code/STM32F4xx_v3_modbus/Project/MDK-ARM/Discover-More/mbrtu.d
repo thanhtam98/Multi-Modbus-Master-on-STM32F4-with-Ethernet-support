@@ -1,0 +1,13 @@
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c
+.\discover-more\mbrtu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\discover-more\mbrtu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\port\rtos\port.h
+.\discover-more\mbrtu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+.\discover-more\mbrtu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\discover-more\mbrtu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mbframe.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\rtu\mbcrc.h

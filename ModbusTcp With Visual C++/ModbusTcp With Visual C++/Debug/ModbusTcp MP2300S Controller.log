@@ -1,0 +1,9 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ModbusTcp MP2300S Controller.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Stdafx.cpp
+  AssemblyInfo.cpp
+  ModbusTcpConsole.cpp
+  ModbusTcpMaster.cpp
+  Generating Code...
+  AssemblyInfo.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  ModbusTcp MP2300S Controller.vcxproj -> E:\02. Projects\02. LuuHV\Anh Tuong\ModbusTcp MP2300S Controller\Debug\ModbusTcp With Visual C++.exe
+  ModbusTcp MP2300S Controller.vcxproj -> E:\02. Projects\02. LuuHV\Anh Tuong\ModbusTcp MP2300S Controller\Debug\ModbusTcp With Visual C++.pdb (Partial PDB)

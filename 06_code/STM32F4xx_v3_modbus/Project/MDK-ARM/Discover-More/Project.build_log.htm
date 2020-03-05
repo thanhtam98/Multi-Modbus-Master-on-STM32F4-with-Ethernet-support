@@ -1,0 +1,240 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Nguyen Tam, BKU, LIC=EXJHL-03VNN-3M89Q-NRDEC-X3RT3-PKMMD
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.28.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.28.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.6.0
+Dialog DLL:      TCM.DLL V1.36.2.0
+ 
+<h2>Project:</h2>
+E:\LVTN\AccessControllerBoard\16_Controller\06_code\STM32F4xx_v3_modbus\Project\MDK-ARM\Project.uvprojx
+Project File Date:  03/02/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Discover-More'
+compiling stm32f4x7_eth_bsp.c...
+compiling httpserver-socket.c...
+..\src\httpserver-socket.c(81): warning:  #177-D: variable "Pointer_Pass"  was declared but never referenced
+  	char *Pointer_User,*Pointer_Pass,*point,User_Pass[50];
+..\src\httpserver-socket.c(81): warning:  #177-D: variable "point"  was declared but never referenced
+  	char *Pointer_User,*Pointer_Pass,*point,User_Pass[50];
+..\src\httpserver-socket.c: 2 warnings, 0 errors
+compiling main.c...
+..\src\main.c(111): warning:  #177-D: variable "j"  was declared but never referenced
+  	unsigned int j;
+..\src\main.c(299): warning:  #188-D: enumerated type mixed with another type
+  					STM_EVAL_LEDOn(port - RS485_PORT_OFFSET);
+..\src\main.c(303): warning:  #188-D: enumerated type mixed with another type
+  					STM_EVAL_LEDOff(port - RS485_PORT_OFFSET);
+..\src\main.c(265): warning:  #177-D: variable "doorstatus"  was declared but never referenced
+  	uint8_t doorstatus = 0;
+..\src\main.c(270): warning:  #177-D: variable "SysEvent"  was declared but never referenced
+  	uint8_t SysEvent;
+..\src\main.c: 5 warnings, 0 errors
+compiling MQTTClientTask.c...
+..\src\MQTTClientTask.c(48): warning:  #181-D: argument is incompatible with corresponding format string conversion
+  		DBG("\r\nMessage arrived on topic %.*s: %.*s", data->topicName->lenstring.len, data->topicName->lenstring.data,
+..\src\MQTTClientTask.c(62): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+                  if(strstr(data->message->payload,itoa(numberpackage[port],10)))
+..\src\MQTTClientTask.c(47): warning:  #177-D: variable "xqueuemessage"  was declared but never referenced
+  		xQueueMessage xqueuemessage;
+..\src\MQTTClientTask.c(225): warning:  #188-D: enumerated type mixed with another type
+  								message.qos = 1;
+..\src\MQTTClientTask.c(230): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+                  strcat(payload,itoa(numberpackage[0],10));
+..\src\MQTTClientTask.c(284): warning:  #188-D: enumerated type mixed with another type
+              message.qos = 1;
+..\src\MQTTClientTask.c(353): warning:  #188-D: enumerated type mixed with another type
+  										message.qos = 1;
+..\src\MQTTClientTask.c(358): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+                      strcat(payload,itoa(numberpackage[port],10));
+..\src\MQTTClientTask.c(407): warning:  #188-D: enumerated type mixed with another type
+              message.qos = 1;
+..\src\MQTTClientTask.c(455): warning:  #188-D: enumerated type mixed with another type
+  				message.qos = 1;
+..\src\MQTTClientTask.c(492): warning:  #550-D: variable "rc"  was set but never used
+  	int rc = 0;
+..\src\MQTTClientTask.c: 11 warnings, 0 errors
+compiling portevent.c...
+..\..\Utilities\RS485_BUS\port\rtos\portevent.c(45): error:  #147-D: declaration is incompatible with "BOOL xMBPortEventPost(eMBEventType)"  (declared at line 90 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  BOOL xMBPortEventPost(UCHAR Port, eMBEventType event)
+..\..\Utilities\RS485_BUS\port\rtos\portevent.c(60): error:  #147-D: declaration is incompatible with "BOOL xMBPortEventGet(eMBEventType *)"  (declared at line 92 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  BOOL xMBPortEventGet(PortEventType *eEvent)
+..\..\Utilities\RS485_BUS\port\rtos\portevent.c(63): warning:  #68-D: integer conversion resulted in a change of sign
+  	xQueuePeek(xSlaveOsEvent, &recvedEvent, -1);
+..\..\Utilities\RS485_BUS\port\rtos\portevent.c(83): warning:  #111-D: statement is unreachable
+  			break;
+..\..\Utilities\RS485_BUS\port\rtos\portevent.c: 2 warnings, 2 errors
+compiling api_server.c...
+..\src\api_server.c(774): warning:  #177-D: variable "status"  was declared but never referenced
+  		ErrorStatus status;
+..\src\api_server.c: 1 warning, 0 errors
+compiling RS485bus_task.c...
+..\src\RS485bus_task.c(55): warning:  #550-D: variable "rc"  was set but never used
+  	int rc = 0;
+..\src\RS485bus_task.c: 1 warning, 0 errors
+compiling portother.c...
+..\..\Utilities\RS485_BUS\port\rtos\portother.c(101): error:  #147-D: declaration is incompatible with "void vMBPortClose(void)"  (declared at line 99 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  vMBPortClose( UCHAR port )
+..\..\Utilities\RS485_BUS\port\rtos\portother.c: 0 warnings, 1 error
+compiling user_rs485_app.c...
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(42): error:  #20: identifier "eRS485ErrorCode" is undefined
+  eRS485ErrorCode eResponseChecksCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(44): error:  #20: identifier "eRS485ErrorCode" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(44): error:  #20: identifier "RS485_ENOERR" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(47): error:  #20: identifier "CHECK_STATUS" is undefined
+  	if(pucBuffer[0] == CHECK_STATUS)
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(58): error:  #20: identifier "CHECK_UID_AUTHENTICATION" is undefined
+    else if((pucBuffer[0] == CHECK_UID_AUTHENTICATION)|(pucBuffer[0] == CHECK_KEY_AUTHENTICATION))
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(58): error:  #20: identifier "CHECK_KEY_AUTHENTICATION" is undefined
+    else if((pucBuffer[0] == CHECK_UID_AUTHENTICATION)|(pucBuffer[0] == CHECK_KEY_AUTHENTICATION))
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(90): error:  #20: identifier "eRS485ErrorCode" is undefined
+  eRS485ErrorCode ePeriodicPingCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(92): error:  #20: identifier "eRS485ErrorCode" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(92): error:  #20: identifier "RS485_ENOERR" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(97): error:  #20: identifier "RS485_EX_ACK" is undefined
+      pucBuffer[0] = RS485_EX_ACK;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(101): error:  #20: identifier "RS485_EX_NAK" is undefined
+      pucBuffer[0] = RS485_EX_NAK;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(117): error:  #20: identifier "eRS485ErrorCode" is undefined
+  eRS485ErrorCode eFuncNFCDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(119): error:  #20: identifier "eRS485ErrorCode" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(119): error:  #20: identifier "RS485_ENOERR" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(135): error:  #20: identifier "RS485_EX_ACK" is undefined
+          pucBuffer[0] = RS485_EX_ACK;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(139): error:  #20: identifier "RS485_ENORES" is undefined
+          eStatus = RS485_ENORES;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(144): error:  #20: identifier "RS485_ENORES" is undefined
+        eStatus = RS485_ENORES;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(149): error:  #20: identifier "RS485_EX_NAK" is undefined
+  		pucBuffer[0] = RS485_EX_NAK;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(164): error:  #20: identifier "eRS485ErrorCode" is undefined
+  eRS485ErrorCode eFuncKeyEnterCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(166): error:  #20: identifier "eRS485ErrorCode" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(166): error:  #20: identifier "RS485_ENOERR" is undefined
+    eRS485ErrorCode    eStatus = RS485_ENOERR;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(182): error:  #20: identifier "RS485_EX_ACK" is undefined
+          pucBuffer[0] = RS485_EX_ACK;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(186): error:  #20: identifier "RS485_ENORES" is undefined
+          eStatus = RS485_ENORES;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(191): error:  #20: identifier "RS485_ENORES" is undefined
+        eStatus = RS485_ENORES;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c(196): error:  #20: identifier "RS485_EX_NAK" is undefined
+  		pucBuffer[0] = RS485_EX_NAK;
+..\..\Utilities\RS485_BUS\port\user_rs485_app.c: 0 warnings, 25 errors
+compiling mb.c...
+..\..\Utilities\RS485_BUS\Interface\mb.c(233): warning:  #223-D: function "vTaskSuspendAll" declared implicitly
+          ENTER_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\mb.c(262): warning:  #223-D: function "xTaskResumeAll" declared implicitly
+          EXIT_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\mb.c(63): warning:  #550-D: variable "eMBCurrentMode"  was set but never used
+  static eMBMode  eMBCurrentMode;
+..\..\Utilities\RS485_BUS\Interface\mb.c: 3 warnings, 0 errors
+compiling porttimer.c...
+..\..\Utilities\RS485_BUS\port\rtos\porttimer.c(55): error:  #147-D: declaration is incompatible with "BOOL xMBPortTimersInit(USHORT)"  (declared at line 110 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  xMBPortTimersInit( UCHAR port, USHORT usTim1Timerout50us )
+..\..\Utilities\RS485_BUS\port\rtos\porttimer.c(92): warning:  #68-D: integer conversion resulted in a change of sign
+      xQueueSend(TimerExpired[port],&eEvent,-1);
+..\..\Utilities\RS485_BUS\port\rtos\porttimer.c(98): error:  #147-D: declaration is incompatible with "void vMBPortTimersEnable(void)"  (declared at line 114 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  void vMBPortTimersEnable(UCHAR Port)
+..\..\Utilities\RS485_BUS\port\rtos\porttimer.c(111): error:  #147-D: declaration is incompatible with "void vMBPortTimersDisable(void)"  (declared at line 116 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  void vMBPortTimersDisable(UCHAR port)
+..\..\Utilities\RS485_BUS\port\rtos\porttimer.c(133): warning:  #223-D: function "pxPortCBTimerExpired" declared implicitly
+  				(void) pxPortCBTimerExpired(port);
+..\..\Utilities\RS485_BUS\port\rtos\porttimer.c: 2 warnings, 3 errors
+compiling portserial.c...
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(66): error:  #147-D: declaration is incompatible with "void vMBPortSerialEnable(BOOL, BOOL)"  (declared at line 103 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  vMBPortSerialEnable( UCHAR port,BOOL xRxEnable, BOOL xTxEnable )
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(98): error:  #20: identifier "eParity" is undefined
+  xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eParity eParity )
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(122): error:  #20: identifier "PORT_PAR_NONE" is undefined
+  	case PORT_PAR_NONE:
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(125): error:  #20: identifier "PORT_PAR_ODD" is undefined
+  	case PORT_PAR_ODD:
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(128): error:  #20: identifier "PORT_PAR_EVEN" is undefined
+  	case PORT_PAR_EVEN:
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(134): warning:  #111-D: statement is unreachable
+  	switch ( ucDataBits )
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(137): error:  #20: identifier "PORT_PAR_NONE" is undefined
+  			if (eParity == PORT_PAR_NONE)
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(174): error:  #147-D: declaration is incompatible with "BOOL xMBPortSerialPutByte(CHAR)"  (declared at line 107 of "..\..\Utilities\RS485_BUS\Interface\include\mbport.h")
+  xMBPortSerialPutByte( UCHAR ucPORT,CHAR ucByte )
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(222): warning:  #223-D: function "pxFrameCBTransmitterEmpty" declared implicitly
+      pxFrameCBTransmitterEmpty(ucPORT);
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(234): warning:  #223-D: function "pxFrameCBByteReceived" declared implicitly
+      pxFrameCBByteReceived(Port);
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(247): warning:  #68-D: integer conversion resulted in a change of sign
+  			xQueueReceive(event_serial,&eEvent,-1);
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(312): warning:  #940-D: missing return statement at end of non-void function "UartPortGet" 
+  }
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c(329): warning:  #940-D: missing return statement at end of non-void function "IRQPortGet" 
+  }
+..\..\Utilities\RS485_BUS\port\rtos\portserial.c: 6 warnings, 7 errors
+compiling mbtcp.c...
+compiling mbrtu.c...
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(87): warning:  #223-D: function "vTaskSuspendAll" declared implicitly
+      ENTER_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(120): warning:  #223-D: function "xTaskResumeAll" declared implicitly
+      EXIT_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(128): warning:  #223-D: function "vTaskSuspendAll" declared implicitly
+      ENTER_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(138): warning:  #223-D: function "xTaskResumeAll" declared implicitly
+      EXIT_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(144): warning:  #223-D: function "vTaskSuspendAll" declared implicitly
+      ENTER_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(147): warning:  #223-D: function "xTaskResumeAll" declared implicitly
+      EXIT_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(156): warning:  #223-D: function "vTaskSuspendAll" declared implicitly
+      ENTER_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(182): warning:  #223-D: function "xTaskResumeAll" declared implicitly
+      EXIT_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(153): warning:  #550-D: variable "xFrameReceived"  was set but never used
+      BOOL            xFrameReceived = FALSE;
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(192): warning:  #223-D: function "vTaskSuspendAll" declared implicitly
+      ENTER_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c(221): warning:  #223-D: function "xTaskResumeAll" declared implicitly
+      EXIT_CRITICAL_SECTION(  );
+..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.c: 11 warnings, 0 errors
+compiling mbascii.c...
+compiling mbutils.c...
+".\Discover-More\Project.axf" - 38 Error(s), 44 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
+                Keil.STM32F4xx_DFP.2.14.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Discover-More
+  C:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:06
+</pre>
+</body>
+</html>
