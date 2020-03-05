@@ -53,7 +53,7 @@ BOOL            	xRS485RTUTimerT35Expired( UCHAR ucPORT );
 eRS485ErrorCode   eRS485MasterRTUInit( UCHAR ucPort, ULONG ulBaudRate,eParity eParity );
 void            	eRS485MasterRTUStart( UCHAR ucPort );
 void            	eRS485MasterRTUStop( UCHAR ucPort );
-eRS485ErrorCode   eRS485MasterRTUReceive( UCHAR ucPort, UCHAR ** pucFrame, USHORT * pusLength );
+eRS485ErrorCode   eRS485MasterRTUReceive( UCHAR ucPort, UCHAR *pucRcvAddress,UCHAR ** pucFrame, USHORT * pusLength );
 eRS485ErrorCode   eRS485MasterRTUSend( UCHAR ucPort, const UCHAR * pucFrame, USHORT usLength );
 BOOL            	xRS485MasterRTUReceiveFSM( UCHAR ucPort );
 BOOL            	xRS485MasterRTUTransmitFSM( UCHAR ucPort );

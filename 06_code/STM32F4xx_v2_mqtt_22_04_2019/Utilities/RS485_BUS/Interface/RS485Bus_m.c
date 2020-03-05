@@ -284,7 +284,7 @@ eRS485MasterPoll( void )
             break;
 
         case EV_MASTER_FRAME_RECEIVED:
-            eStatus = peRS485MasterFrameReceiveCur( eEvent.Port, &ucRS485Frame, &usLength );
+            eStatus = peRS485MasterFrameReceiveCur( eEvent.Port, &ucRcvAddress ,&ucRS485Frame, &usLength );
             /* Check if the frame is for us. If not ,send an error process event. */
             if ( eStatus == RS485_ENOERR )
             {

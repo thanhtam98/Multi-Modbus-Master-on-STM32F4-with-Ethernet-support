@@ -49,9 +49,9 @@
 #define RS485_SER_PDU_SIZE_MIN     	8       /*!< Minimum size of a RS485bus RTU frame. */
 #define RS485_SER_PDU_SIZE_MAX     	256     /*!< Maximum size of a RS485bus RTU frame. */
 #define RS485_SER_PDU_SIZE_CRC     	2       /*!< Size of CRC field in PDU. */
-#define RS485_SER_PDU_START_OFF		  0		/*!< Offset of start in Ser-PDU. */
-#define RS485_SER_PDU_LENGTH_OFF   	1       /*!< Offset of Length in Ser-PDU. */
-#define RS485_SER_PDU_PDU_OFF      	2       /*!< Offset of RS485bus-PDU in Ser-PDU. */
+// #define RS485_SER_PDU_START_OFF		  0		/*!< Offset of start in Ser-PDU. */
+#define RS485_SER_PDU_ADDR_OFF 0       /*!< Offset of Length in Ser-PDU. */
+#define RS485_SER_PDU_PDU_OFF 1       /*!< Offset of RS485bus-PDU in Ser-PDU. */
 
 /* ----------------------- Type definitions ---------------------------------*/
 typedef enum
@@ -156,7 +156,7 @@ eRS485MasterRTUStop( UCHAR ucPort )
 }
 
 eRS485ErrorCode
-eRS485MasterRTUReceive( UCHAR ucPort, UCHAR ** pucFrame, USHORT * pusLength )
+eRS485MasterRTUReceive( UCHAR ucPort,UCHAR *pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength )
 {
     eRS485ErrorCode    eStatus = RS485_ENOERR;
 
@@ -164,33 +164,48 @@ eRS485MasterRTUReceive( UCHAR ucPort, UCHAR ** pucFrame, USHORT * pusLength )
     assert_param( usMasterRcvBufferPos[ucPort] < RS485_SER_PDU_SIZE_MAX );
 
     /* Length and CRC check */
-    if ( usMasterRcvBufferPos[ucPort] == ((((USHORT)(ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF]<<8))|ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF])- 3))
+    // if ( usMasterRcvBufferPos[ucPort] == ((((USHORT)(ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF]<<8))|ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF])- 3))
+    // {
+    //   if ( usRS485CRC16( ( UCHAR * ) ucMasterRTURcvBuf[ucPort], usMasterRcvBufferPos[ucPort] ) == 0 )
+    //   {
+    //     /* Total length of RS485bus-PDU is RS485bus-Serial-Line-PDU minus
+    //      * size of address field and CRC checksum.
+    //      */
+    //     *pusLength = (((USHORT)(ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF]<<8))|ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF])-2;
+    //     /* Return the start of the RS485bus PDU to the caller. */
+    //   }
+    //   else
+	// 		{
+	// 			eStatus = RS485_EIO;
+	// 		}
+    // }
+     if (usMasterRcvBufferPos[ucPort] >= RS485_SER_PDU_SIZE_MIN)
     {
-      if ( usRS485CRC16( ( UCHAR * ) ucMasterRTURcvBuf[ucPort], usMasterRcvBufferPos[ucPort] ) == 0 )
-      {
-        /* Total length of RS485bus-PDU is RS485bus-Serial-Line-PDU minus
-         * size of address field and CRC checksum.
+        if (usRS485CRC16((UCHAR *)ucMasterRTURcvBuf[ucPort], usMasterRcvBufferPos[ucPort]) == 0)
+        {
+            /* Save the address field. All frames are passed to the upper layed
+         * and the decision if a frame is used is done there.
          */
-        *pusLength = (((USHORT)(ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF]<<8))|ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_LENGTH_OFF])-2;
-        /* Return the start of the RS485bus PDU to the caller. */
-      }
-      else
-			{
-				eStatus = RS485_EIO;
-			}
-    }
+            *pucRcvAddress = ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_ADDR_OFF];
+
+            /* Total length of RS485-PDU is RS485-Serial-Line-PDU minus
+					 * size of Frame begin field, Lenght and CRC checksum.
+					 */
+            *pusLength = (USHORT)(usMasterRcvBufferPos[ucPort] - RS485_SER_PDU_PDU_OFF - RS485_SER_PDU_SIZE_CRC);
+            *pucFrame = (UCHAR *)&ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_PDU_OFF];
+        }
     else
     {
         eStatus = RS485_EIO;
     }
     /* Return the start of the RS485Bus PDU to the caller. */
-		*pucFrame = ( UCHAR * ) & ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_PDU_OFF];
+		// *pucFrame = ( UCHAR * ) & ucMasterRTURcvBuf[ucPort][RS485_SER_PDU_PDU_OFF];
     EXIT_CRITICAL_SECTION(  );
     return eStatus;
 }
 
 eRS485ErrorCode
-eRS485MasterRTUSend( UCHAR ucPort, const UCHAR * pucFrame, USHORT usLength )
+eRS485MasterRTUSend( UCHAR ucPort,  UCHAR ucSlaveAddress,const UCHAR * pucFrame, USHORT usLength )
 {
     eRS485ErrorCode    eStatus = RS485_ENOERR;
     USHORT          usCRC16;
@@ -203,22 +218,38 @@ eRS485MasterRTUSend( UCHAR ucPort, const UCHAR * pucFrame, USHORT usLength )
      */
     if( eRcvState[ucPort] == STATE_M_RX_IDLE )
     {
-        /* Add two byte of CRC16*/
-        usLength += 2;
-         /* First byte before the RS485-PDU is the Start. */
-        pucMasterSndBufferCur[ucPort] = ( UCHAR * ) pucFrame - 3;
-        usMasterSndBufferCount[ucPort] = 3;
+        // /* Add two byte of CRC16*/
+        // usLength += 2;
+        //  /* First byte before the RS485-PDU is the Start. */
+        // pucMasterSndBufferCur[ucPort] = ( UCHAR * ) pucFrame - 3;
+        // usMasterSndBufferCount[ucPort] = 3;
 
-        /* Now copy the RS485bus-PDU into the RS485bus-Serial-Line-PDU. */
-        pucMasterSndBufferCur[ucPort][RS485_SER_PDU_START_OFF] = 0xAA;
-        pucMasterSndBufferCur[ucPort][RS485_SER_PDU_LENGTH_OFF] = ( UCHAR ) (usLength & 0xFF);
-				pucMasterSndBufferCur[ucPort][RS485_SER_PDU_LENGTH_OFF+1] = ( UCHAR ) (usLength >> 8) & 0xFF;
+        // /* Now copy the RS485bus-PDU into the RS485bus-Serial-Line-PDU. */
+        // pucMasterSndBufferCur[ucPort][RS485_SER_PDU_START_OFF] = 0xAA;
+        // pucMasterSndBufferCur[ucPort][RS485_SER_PDU_LENGTH_OFF] = ( UCHAR ) (usLength & 0xFF);
+		// 		pucMasterSndBufferCur[ucPort][RS485_SER_PDU_LENGTH_OFF+1] = ( UCHAR ) (usLength >> 8) & 0xFF;
+        // usMasterSndBufferCount[ucPort] += usLength;
+
+        // /* Calculate CRC16 checksum for RS485bus-Serial-Line-PDU. */
+        // usCRC16 = usRS485CRC16( ( UCHAR * ) pucMasterSndBufferCur[ucPort], usMasterSndBufferCount[ucPort] );
+        // ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = ( UCHAR )( usCRC16 & 0xFF );
+        // ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = ( UCHAR )( usCRC16 >> 8 );
+  /* Mapping pointer of source data tp Buffer and offset lenght for STX and Slave ADR */
+        pucMasterSndBufferCur[ucPort] = (UCHAR *)pucFrame - 1;
+        pucMasterSndBufferCur[ucPort] = 1;
+        /* First byte before the RS485-PDU is the Start. */
+
+        /* Now copy the RS485Bus-PDU into the RS485Bus-Serial-Line-PDU. */
+        // pucSndBufferCur[ucPort][RS485_SER_PDU_START_OFF] = RS485_SER_PDU_START_BYTE;
+        pucMasterSndBufferCur[ucPort][RS485_SER_PDU_ADDR_OFF] = ucSlaveAddress;
+        // pucSndBufferCur[ucPort][RS485_SER_PDU_LENGTH_OFF] = ( UCHAR ) (usLength & 0xFF);
+        // 		pucSndBufferCur[ucPort][RS485_SER_PDU_LENGTH_OFF+1] = ( UCHAR ) (usLength >> 8) & 0xFF;
         usMasterSndBufferCount[ucPort] += usLength;
 
-        /* Calculate CRC16 checksum for RS485bus-Serial-Line-PDU. */
-        usCRC16 = usRS485CRC16( ( UCHAR * ) pucMasterSndBufferCur[ucPort], usMasterSndBufferCount[ucPort] );
-        ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = ( UCHAR )( usCRC16 & 0xFF );
-        ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = ( UCHAR )( usCRC16 >> 8 );
+        /* Calculate CRC16 checksum for Modbus-Serial-Line-PDU. */
+        usCRC16 = usRS485CRC16((UCHAR *)pucMasterSndBufferCur[ucPort], usMasterSndBufferCount[ucPort]);
+        ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = (UCHAR)(usCRC16 & 0xFF);
+        ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = (UCHAR)(usCRC16 >> 8);
 
         /* Activate the transmitter. */
         eSndState[ucPort] = STATE_M_TX_XMIT;
@@ -268,8 +299,8 @@ xRS485MasterRTUReceiveFSM( UCHAR ucPort )
     	/* In time of respond timeout,the receiver receive a frame.
     	 * Disable timer of respond timeout and change the transmiter state to idle.
     	 */
-    	vMasterPortTimersDisable( ucPort );
-    	eSndState[ucPort] = STATE_M_TX_IDLE;
+    	// vMasterPortTimersDisable( ucPort ); // check this line 
+    	// eSndState[ucPort] = STATE_M_TX_IDLE;
 
         usMasterRcvBufferPos[ucPort] = 0;
         ucMasterRTURcvBuf[ucPort][usMasterRcvBufferPos[ucPort]++] = ucByte;
