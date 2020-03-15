@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "stm32f4_discovery.h"
 
+#ifdef SLAVE
 extern xQueueHandle xQueueState;
 extern xQueueHandle xQueuemessage;
 
@@ -33,7 +34,7 @@ static void prvRS485SlavePublishTask(void *pvParameters)
 		vTaskDelay(30);
 		xQueuePeek( xQueueState, &SysState, 0 );
 	}while(SysState != SYS_RS485BUS_START);
-    
+  
 	eRS485Init(RS485_RTU, 9600,  PORT_PAR_NONE);
 	eRS485Enable();
     
@@ -57,3 +58,4 @@ void vStartRS485busSlaveTasks(uint16_t usTaskStackSize, UBaseType_t uxTaskPriori
 										uxTaskPriority,							/* The priority assigned to the task is defined in FreeRTOSConfig.h. */
 										NULL);											/* The task handle is not used. */
 }
+#endif

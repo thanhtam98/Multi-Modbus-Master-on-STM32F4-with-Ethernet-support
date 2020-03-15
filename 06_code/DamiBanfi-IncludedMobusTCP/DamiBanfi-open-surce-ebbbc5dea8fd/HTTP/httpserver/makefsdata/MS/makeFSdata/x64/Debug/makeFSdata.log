@@ -1,0 +1,3 @@
+﻿  stdafx.cpp
+  makeFSdata.c
+E:\LVTN\AccessControllerBoard\16_Controller\06_code\DamiBanfi-IncludedMobusTCP\DamiBanfi-open-surce-ebbbc5dea8fd\HTTP\httpserver\makefsdata\makefsdata.c(87,10): fatal error C1083: Cannot open include file: 'lwip/init.h': No such file or directory

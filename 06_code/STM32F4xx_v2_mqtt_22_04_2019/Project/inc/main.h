@@ -114,6 +114,7 @@
 #define KEYSCAN_TASK_PRIO           (tskIDLE_PRIORITY + 6)
 #define CONTROL_TASK_PRIO   				(tskIDLE_PRIORITY + 5)
 #define RS485_SLAVE_TASK_PRIO				(tskIDLE_PRIORITY + 5)
+#define RS485_MASTER_TASK_PRIO			(tskIDLE_PRIORITY + 5)
 #define ETH_TASK_PRIO								(tskIDLE_PRIORITY + 4)
 #define HTTP_SERVER_TASK_PRIO    		(tskIDLE_PRIORITY + 3)
 #define MQTT_TASK_PRIO   						(tskIDLE_PRIORITY + 2)

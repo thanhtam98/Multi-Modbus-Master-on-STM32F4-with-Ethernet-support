@@ -49,14 +49,44 @@ PR_BEGIN_EXTERN_C
  *  +-------------+--------+-----------+----------------+------------+-------------+-------------+
  *
  * </code>
+ 
+/*!
+ * Constants which defines the format of a modbus frame. The example is
+ * shown for a Modbus RTU/ASCII frame. Note that the Modbus PDU is not
+ * dependent on the underlying transport.
+ *
+ * <code>
+ * <------------------------ MODBUS SERIAL LINE PDU (1) ------------------->
+ *              <----------- MODBUS PDU (1') ---------------->
+ *  +-----------+---------------+----------------------------+-------------+
+ *  | Address   | Function Code | Data                       | CRC/LRC     |
+ *  +-----------+---------------+----------------------------+-------------+
+ *  |           |               |                                   |
+ * (2)        (3/2')           (3')                                (4)
+ *
+ * (1)  ... MB_SER_PDU_SIZE_MAX = 256
+ * (2)  ... MB_SER_PDU_ADDR_OFF = 0
+ * (3)  ... MB_SER_PDU_PDU_OFF  = 1
+ * (4)  ... MB_SER_PDU_SIZE_CRC = 2
+ *
+ * (1') ... MB_PDU_SIZE_MAX     = 253
+ * (2') ... MB_PDU_FUNC_OFF     = 0
+ * (3') ... MB_PDU_DATA_OFF     = 1
+ * </code>
  */
 
 /* ----------------------- Defines ------------------------------------------*/
 #define RS485_PDU_SIZE_MAX     			253 /*!< Maximum size of a RS485. */
 #define RS485_PDU_SIZE_MIN     			1  /*!< Function Code */
-#define RS485_PDU_FUNC_OFF     			1  /*!< Offset of function code in RS485. */
-#define RS485_PDU_FRAME_TYPE_OFF    2  /*!< Offset of Frame Type in RS485. */
-#define RS485_PDU_DATA_OFF     			3  /*!< Offset for response data in RS485. */
+#define RS485_PDU_FUNC_OFF     			0  /*!< Offset of function code in RS485. */
+// #define MB_PDU_DATA_OFF          1  /*!< Offset of Frame Type in RS485. */
+#define RS485_PDU_DATA_OFF     			1/*!< Offset for response data in RS485. */
+#define MB_PDU_SIZE_MAX     			253 /*!< Maximum size of a RS485. */
+#define MB_PDU_SIZE_MIN     			1  /*!< Function Code */
+#define MB_PDU_FUNC_OFF     			0  /*!< Offset of function code in RS485. */
+// #define MB_PDU_DATA_OFF          1  /*!< Offset of Frame Type in RS485. */
+#define MB_PDU_DATA_OFF     			1/*!< Offset for response data in RS485. */
+
 
 /* ----------------------- Prototypes  0-------------------------------------*/
 typedef void    ( *pvRS485FrameStart ) ( UCHAR Port );

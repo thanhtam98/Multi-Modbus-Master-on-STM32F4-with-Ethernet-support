@@ -34,14 +34,14 @@
 
 /* ----------------------- Platform includes --------------------------------*/
 #include "port.h"
-
+#include "user_debug.h"
 /* -----------------------RS485bus includes ----------------------------------*/
 #include "rs485.h"
 #include "rs485_m.h"
 #include "rs485frame.h"
 #include "rs485proto.h"
 #include "rs485config.h"
-
+#if RS485_MASTER_RTU_ENABLED > 0 || RS485_MASTER_ASCII_ENABLED > 0
 /* ----------------------- Defines ------------------------------------------*/
 #define HANDSHAKEBYTE	0x55
 /* ----------------------- Static functions ---------------------------------*/
@@ -50,6 +50,7 @@ eRS485Exception    prveRS485Error2Exception( eRS485ErrorCode eErrorCode );
 /* ----------------------- Start implementation -----------------------------*/
 
 #if RS485_FUNC_PERIODIC_PING > 0
+
 eRS485MasterReqErrCode
 eRS485MasterReqPeriodicPing( UCHAR ucPort, LONG lTimeOut )
 {
@@ -60,50 +61,52 @@ eRS485MasterReqPeriodicPing( UCHAR ucPort, LONG lTimeOut )
   else if(xMasterRunResTake( ucPort,lTimeOut ) == FALSE ) eErrStatus = RS485_MRE_MASTER_BUSY;
   else
   {
-    vRS485MasterGetPDUSndBuf(ucPort,&ucRS485Frame);
-    ucRS485Frame[RS485_PDU_FUNC_OFF] = FUNC_PERIODIC_PING;
-    ucRS485Frame[RS485_PDU_FRAME_TYPE_OFF] = FRAME_PERIODIC_PING;
-    vRS485MasterSetPDUSndLength(ucPort,RS485_PDU_FRAME_TYPE_OFF);
-    ( void ) xMasterPortEventPost(ucPort, EV_MASTER_FRAME_SENT );
-		eErrStatus = eMasterWaitRequestFinish( ucPort);
-  }
+		vRS485MasterGetPDUSndBuf(ucPort,&ucRS485Frame);
+		ucRS485Frame[RS485_PDU_FUNC_OFF] = FUNC_PERIODIC_PING;
+		ucRS485Frame[RS485_PDU_DATA_OFF] = FRAME_PERIODIC_PING;
+		 vRS485MasterSetPDUSndLength(ucPort,2);
+		( void ) xMasterPortEventPost(ucPort, EV_MASTER_FRAME_SENT );
+			eErrStatus = eMasterWaitRequestFinish( ucPort);
+	}
   return eErrStatus;
 }
 
 eRS485Exception
-eRS485MasterFuncPeriodicPing(UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen )
+eRS485MasterFuncPeriodicPing(UCHAR ucPort, UCHAR ucRcvAddress, UCHAR * pucFrame, USHORT * usLen )
 {
     UCHAR           ucNBytes;
     UCHAR          *pucFrameCur;
 
     eRS485Exception    eStatus = RS485_EX_NONE;
     eRS485ErrorCode    eCheckStatus;
-		if(pucFrame[RS485_PDU_FRAME_TYPE_OFF] == FRAME_RESPONSE)
+		if(pucFrame[RS485_PDU_FUNC_OFF] == FRAME_PERIODIC_PING)
 		{
-				/* Set the current PDU data pointer to the beginning. */
-				pucFrameCur = &pucFrame[RS485_PDU_FUNC_OFF];
-				*usLen = RS485_PDU_FUNC_OFF;
-				
-				*pucFrameCur++ = FUNC_CHECK;
-				*usLen +=1;
-				*pucFrameCur++ = FRAME_RESPONSE;
-				*usLen +=1;
-				
-				
-				eCheckStatus = eMasterFuncPeriodicPingCB( ucPort,pucFrameCur,&ucNBytes);
+			DBG("Recived the repond");
+			
+//				/* Set the current PDU data pointer to the beginning. */
+//				pucFrameCur = &pucFrame[RS485_PDU_FUNC_OFF];
+//				*usLen = RS485_PDU_FUNC_OFF;
+//				
+//				*pucFrameCur++ = FUNC_CHECK;
+//				*usLen +=1;
+//				*pucFrameCur++ = FRAME_RESPONSE;
+//				*usLen +=1;
+//				
+//				
+//				eCheckStatus = eMasterFuncPeriodicPingCB( ucPort,pucFrameCur,&ucNBytes);
 
-				/* If an error occured convert it into a RS485 exception. */
-				if( eCheckStatus != RS485_ENOERR )
-				{
-						eStatus = prveRS485Error2Exception( eCheckStatus );
-				}
-				else
-				{
-						/* The response contains the function code, the starting address
-						 * and the quantity of registers. We reuse the old values in the 
-						 * buffer because they are still valid. */
-						*usLen += ucNBytes;;
-				}
+//				/* If an error occured convert it into a RS485 exception. */
+//				if( eCheckStatus != RS485_ENOERR )
+//				{
+//						eStatus = prveRS485Error2Exception( eCheckStatus );
+//				}
+//				else
+//				{
+//						/* The response contains the function code, the starting address
+//						 * and the quantity of registers. We reuse the old values in the 
+//						 * buffer because they are still valid. */
+//						*usLen += ucNBytes;;
+//				}
 		}
     else
     {
@@ -112,4 +115,5 @@ eRS485MasterFuncPeriodicPing(UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen )
     }
     return eStatus;
 }
+#endif
 #endif

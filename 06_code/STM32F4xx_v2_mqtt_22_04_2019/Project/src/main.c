@@ -61,9 +61,15 @@
 #include "hw_config.h"
 #include "stm32f4x7_eth_bsp.h"
 #include "MQTTClientTask.h"
-#include "RS485bus_task.h"
+
 #include "keyscan_task.h"
 #include "TaskMessage.h"
+#ifdef MASTER 
+	#include "RS485bus_task_m.h"
+	#include "rs485_m.h"
+#else 
+	#include "RS485bus_task.h"
+#endif
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
@@ -100,7 +106,7 @@ xQueueHandle xQueueState;
   * @retval None
   */
 int main(void)
-{
+	{
 	/*!< At this stage the microcontroller clock setting is already configured to 
        144 MHz, this is done through SystemInit() function which is called from
        startup file (startup_stm32f4xx.s) before to branch to application main.
@@ -156,23 +162,27 @@ int main(void)
 	if ((xQueuemessage != NULL) && (xQueueState != NULL))
 	{
 		/* Initilaize the LwIP stack */
-		//LwIP_Init(ip_lan.IP.cdata, ip_lan.Subnetmask.cdata, ip_lan.gateway.cdata, ip_lan.dhcp);
+		LwIP_Init(ip_lan.IP.cdata, ip_lan.Subnetmask.cdata, ip_lan.gateway.cdata, ip_lan.dhcp);
 
 		/* Configure the Ethernet */
-		//xTaskCreate(ETH_ConfigTask, ETH_CONFIG_TASK, configMINIMAL_STACK_SIZE, NULL, ETH_TASK_PRIO, NULL);
+		xTaskCreate(ETH_ConfigTask, ETH_CONFIG_TASK, configMINIMAL_STACK_SIZE, NULL, ETH_TASK_PRIO, NULL);
 
 		/* start task key scan */
-		//vStartKeyScanTasks(configMINIMAL_STACK_SIZE, KEYSCAN_TASK_PRIO);
+	vStartKeyScanTasks(configMINIMAL_STACK_SIZE, KEYSCAN_TASK_PRIO);
 
 		/* Initialize HTTP socket-server */
-		//http_server_socket_init(HTTP_SERVER_TASK_PRIO);
+		http_server_socket_init(HTTP_SERVER_TASK_PRIO);
 
 		/* Create RS485 Task*/
+		#ifdef MASTER 
+		vStartRS485busMasterTasks(configMINIMAL_STACK_SIZE * 2, RS485_MASTER_TASK_PRIO);
+		#else 
 		vStartRS485busSlaveTasks(configMINIMAL_STACK_SIZE * 2, RS485_SLAVE_TASK_PRIO);
 		/* Create RGB LED Task */
-		xTaskCreate(ControlTask, "Control Task", configMINIMAL_STACK_SIZE * 2, NULL, CONTROL_TASK_PRIO, NULL);
-		
-		xTaskCreate(modbus_test, "Test modbus Task", configMINIMAL_STACK_SIZE * 2 , NULL, CONTROL_TASK_PRIO+2,NULL);
+	
+		#endif 
+			xTaskCreate(ControlTask, "Control Task", configMINIMAL_STACK_SIZE * 2, NULL, CONTROL_TASK_PRIO, NULL);
+			xTaskCreate(modbus_test, "Test modbus Task", configMINIMAL_STACK_SIZE * 2 , NULL, CONTROL_TASK_PRIO,NULL);
 		/* Start scheduler */
 		vTaskStartScheduler();
 	}
@@ -192,11 +202,13 @@ void modbus_test(void *pvParameters)
 	 UCHAR ucFunctionCode;
 	 USHORT usLength;
 	 eRS485Exception eException;
-	vTaskDelay(500);
+	vTaskDelay(5000);
 	while (1)
 	{
-		CTport.Port[2].active = PORT_ENABLE;
-		 CTport.Port[2].event |= PORT_TRANSMIT_DATA;
+		eMBMasterReqWriteHoldingRegister(0x00,0x02,0x01,0xAF,1);
+		//eRS485MasterReqPeriodicPing(0,1);
+//		CTport.Port[2].active = PORT_ENABLE;
+//		 CTport.Port[2].event |= PORT_TRANSMIT_DATA;
 	
 		DBG("Send data to Dest");
 				vTaskDelay(500);
@@ -372,6 +384,8 @@ void ControlTask(void *pvParameters)
 			break;
 		case SYS_SERVER_START:
 			DBG(".");
+			// SysState = SYS_POWER_ON;
+			// SysState_update = TRUE;
 			if (xQueueReceive(xQueuemessage, &SysMessage, 0) == pdPASS)
 			{
 				if (SysMessage.HttpServerMessage.TaskHandle == xTaskGetHandle(HTTPSERVER_TASKNAME))

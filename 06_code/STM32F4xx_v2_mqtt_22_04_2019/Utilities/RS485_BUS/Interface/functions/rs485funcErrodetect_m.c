@@ -70,7 +70,7 @@ eRS485MasterFuncErrorDetect(UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen )
 				*pucFrameCur++ = FRAME_RESPONSE;
 				*usLen +=1;
 				
-				eCheckStatus = eMasterFuncErrorDetectCB( ucPort,pucFrameCur,&ucNBytes);
+				//eCheckStatus = eMasterFuncErrorDetectCB( ucPort,pucFrameCur,&ucNBytes);
 
 				/* If an error occured convert it into a RS485 exception. */
 				if( eCheckStatus != RS485_ENOERR )

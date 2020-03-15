@@ -34,6 +34,7 @@
 
 /* ----------------------- Platform includes --------------------------------*/
 #include "port.h"
+#include "user_debug.h"
 
 /* ----------------------- RS485bus includes ----------------------------------*/
 
@@ -59,10 +60,10 @@
 #endif
 
 /* ----------------------- Static variables ---------------------------------*/
-
+static UCHAR    ucRS485MasterDestAddress;
 static BOOL     xRS485RunInMasterMode[RS485_PORT_NUMBER] ;
 static eMasterErrorEventType eMasterCurErrorType[RS485_PORT_NUMBER];
-
+static UCHAR ucMBMasterDestAddress[RS485_PORT_NUMBER];
 static enum
 {
     STATE_ENABLED,
@@ -96,23 +97,27 @@ BOOL( *pxRS485MasterFrameCBTransmitFSMCur ) ( UCHAR ucPort );
 /* An array of RS485bus functions handlers which associates RS485bus function
  * codes with implementing functions.
  */
-static xRS485FunctionHandler xMasterFuncHandlers[RS485_FUNC_HANDLERS_MAX] = {
+static xRS485MasterFunctionHandler xMasterFuncHandlers[RS485_FUNC_HANDLERS_MAX]
+	= {
 #if RS485_FUNC_CHECK> 0
-    {FUNC_CHECK,FRAME_RESPONSE, eRS485MasterFuncCheck},
+{FUNC_CHECK,FRAME_RESPONSE, eRS485MasterFuncCheck},
 #endif
 #if RS485_FUNC_PERIODIC_PING> 0
-    {FUNC_PERIODIC_PING,FRAME_RESPONSE, eRS485MasterFuncPeriodicPing},
+    {FUNC_PERIODIC_PING, eRS485MasterFuncPeriodicPing},
 #endif
 #if RS485_FUNC_TAMPER_DETECT> 0
-    {FUNC_TAMPER_DETECT,FRAME_RESPONSE, eRS485MasterFuncTemperDetec},
+    {FUNC_TAMPER_DETECT, eRS485MasterFuncTemperDetec},
 #endif
 #if RS485_FUNC_NFC_DETECT > 0
-    {FUNC_NFC_DETECT,FRAME_REQUEST, eRS485MasterFuncNFCDetect},
+    {FUNC_NFC_DETECT, eRS485MasterFuncNFCDetect},
 #endif
 #if RS485_FUNC_UNKNOWN_ERROR  > 0
-    {FUNC_UNKNOWN_ERROR,FRAME_RESPONSE, eRS485MasterFuncErrorDetect},
+    {FUNC_UNKNOWN_ERROR, eRS485MasterFuncErrorDetect},
 #endif
+#if MB_FUNC_WRITE_HOLDING_ENABLED > 0
+ {MB_FUNC_WRITE_REGISTER ,eRS485MasterFuncWriteHoldingRegister}
 };
+#endif
 
 /* ----------------------- Start implementation -----------------------------*/
 eRS485ErrorCode
@@ -136,11 +141,14 @@ eRS485MasterInit( eRS485Mode eMode, ULONG ulBaudRate, eParity eParity )
 		for(port=0;port<RS485_PORT_NUMBER;port++)
 		{
 			eStatus = eRS485MasterRTUInit(port, ulBaudRate, eParity);
+		//	
       /* initialize the OS resource for rs485bus master. */
       if (eStatus == RS485_ENOERR)
       {
         vMasterOsResInit(port);
+			
       }
+			
 		}
 		break;
 #endif
@@ -203,11 +211,11 @@ eRS485ErrorCode
 eRS485MasterEnable( UCHAR ucPort )
 {
     eRS485ErrorCode    eStatus = RS485_ENOERR;
-
+		pvRS485MasterFrameStartCur(ucPort);	
     if( eRS485State == STATE_DISABLED )
     {
         /* Activate the protocol stack. */
-        pvRS485MasterFrameStartCur(ucPort);
+        
         eRS485State = STATE_ENABLED;
     }
     else
@@ -316,7 +324,8 @@ eRS485MasterPoll( void )
                   vRS485MasterSetCBRunInMasterMode(eEvent.Port,TRUE);
                   /* The master need execute function for all slave.
                    */
-                  eException = xMasterFuncHandlers[i].pxHandler(eEvent.Port,ucRS485Frame, &usLength);
+
+                  eException = xMasterFuncHandlers[i].pxHandler(eEvent.Port,ucRcvAddress,ucRS485Frame, &usLength);
                   vRS485MasterSetCBRunInMasterMode(eEvent.Port,FALSE);
                   break;
                 }
@@ -336,13 +345,14 @@ eRS485MasterPoll( void )
         case EV_MASTER_FRAME_SENT:
             /* Master is busy now. */
             vRS485MasterGetPDUSndBuf( eEvent.Port,&ucRS485Frame );
-            eStatus = peRS485MasterFrameSendCur( eEvent.Port, ucRS485Frame, usRS485MasterGetPDUSndLength( eEvent.Port) );
+            eStatus = eRS485MasterRTUSend( eEvent.Port,ucRS485MasterGetDestAddress(eEvent.Port) ,ucRS485Frame, usRS485MasterGetPDUSndLength( eEvent.Port) );
             break;
 
         case EV_MASTER_ERROR_PROCESS:
             /* Execute specified error process callback function. */
             errorType = eMasterGetErrorType(eEvent.Port);
             vRS485MasterGetPDUSndBuf(eEvent.Port, &ucRS485Frame );
+						//DBG("\n\r RS485Bus_m.c Tao bug roi ne ");
             switch (errorType) {
               case EV_ERROR_RESPOND_TIMEOUT:
                 vMasterErrorCBRespondTimeout(eEvent.Port,
@@ -376,7 +386,16 @@ void vRS485MasterSetCBRunInMasterMode(UCHAR ucPort, BOOL IsMasterMode )
 {
 	xRS485RunInMasterMode[ucPort] = IsMasterMode;
 }
-
+/* Get Modbus Master send destination address. */
+UCHAR ucRS485MasterGetDestAddress( UCHAR ucPort )
+{
+	return ucMBMasterDestAddress[ucPort];
+}
+/* Set Modbus Master send destination address. */
+void vRS485MasterSetDestAddress(UCHAR ucPort, UCHAR Address )
+{
+	ucMBMasterDestAddress[ucPort] = Address;
+}
 /* Get RS485bus Master current error event type. */
 eMasterErrorEventType eMasterGetErrorType( UCHAR ucPort )
 {

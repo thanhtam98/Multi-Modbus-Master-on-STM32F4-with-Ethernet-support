@@ -123,6 +123,7 @@ eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )
             }
             else
             {
+                
                 /* The response contains the function code, the starting address
                  * and the quantity of registers. We reuse the old values in the 
                  * buffer because they are still valid. */

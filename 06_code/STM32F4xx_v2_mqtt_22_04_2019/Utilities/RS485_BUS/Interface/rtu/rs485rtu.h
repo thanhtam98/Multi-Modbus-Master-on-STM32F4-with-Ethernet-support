@@ -47,6 +47,7 @@ BOOL            	xRS485RTUReceiveFSM( UCHAR ucPORT );
 BOOL            	xRS485RTUTransmitFSM( UCHAR ucPORT );
 BOOL            	xRS485RTUTimerT15Expired( UCHAR ucPORT );
 BOOL            	xRS485RTUTimerT35Expired( UCHAR ucPORT );
+
 #endif
 
 #if RS485_MASTER_RTU_ENABLED > 0
@@ -54,7 +55,7 @@ eRS485ErrorCode   eRS485MasterRTUInit( UCHAR ucPort, ULONG ulBaudRate,eParity eP
 void            	eRS485MasterRTUStart( UCHAR ucPort );
 void            	eRS485MasterRTUStop( UCHAR ucPort );
 eRS485ErrorCode   eRS485MasterRTUReceive( UCHAR ucPort, UCHAR *pucRcvAddress,UCHAR ** pucFrame, USHORT * pusLength );
-eRS485ErrorCode   eRS485MasterRTUSend( UCHAR ucPort, const UCHAR * pucFrame, USHORT usLength );
+eRS485ErrorCode   eRS485MasterRTUSend( UCHAR ucPort,  UCHAR ucSlaveAddress,const UCHAR * pucFrame, USHORT usLength );
 BOOL            	xRS485MasterRTUReceiveFSM( UCHAR ucPort );
 BOOL            	xRS485MasterRTUTransmitFSM( UCHAR ucPort );
 BOOL            	xRS485MasterRTUTimerExpired( UCHAR ucPort );

@@ -68,7 +68,10 @@ BOOL
 xMasterPortEventGet( PortMasterEventType * eEvent )
 {
 	PortMasterEventType recvedEvent;
-	xQueuePeek(xMasterOsEvent,&recvedEvent,-1);
+	BaseType_t xMasterQueuePeek = pdFALSE;
+	if(xQueuePeek(xMasterOsEvent,&recvedEvent,-1) == pdPASS)
+	{
+		
 	eEvent->Port = recvedEvent.Port;
 	/* the enum type couldn't convert to int type */
 	switch (recvedEvent.Event)
@@ -92,8 +95,9 @@ xMasterPortEventGet( PortMasterEventType * eEvent )
 			vTaskDelay(30);
 			return FALSE;
 			break;
+		}
+		xQueueReceive(xMasterOsEvent,&recvedEvent,0);
 	}
-	xQueueReceive(xMasterOsEvent,&recvedEvent,0);
 	return TRUE;
 }
 /**
@@ -232,7 +236,7 @@ eRS485MasterReqErrCode eMasterWaitRequestFinish( UCHAR ucPort ) {
     /* waiting for OS event */
 loop:
 		
-	xQueuePeek(xMasterOsEvent,&recvedEvent,-1);
+	xQueuePeek(xMasterOsEvent,&recvedEvent,1);
   if(recvedEvent.Port == ucPort)
   {
     switch (recvedEvent.Event)

@@ -10,3 +10,4 @@
 .\discover-more\user_rs485_app_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485config.h
 .\discover-more\user_rs485_app_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h
 .\discover-more\user_rs485_app_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485utils.h
+.\discover-more\user_rs485_app_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485_m.h

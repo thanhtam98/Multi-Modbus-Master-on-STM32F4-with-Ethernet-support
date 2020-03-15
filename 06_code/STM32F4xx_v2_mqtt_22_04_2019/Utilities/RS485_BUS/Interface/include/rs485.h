@@ -238,7 +238,9 @@ eRS485ErrorCode eFuncNFCDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
  *       RS485Bus response is sent.
  */
 eRS485ErrorCode eFuncKeyEnterCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen);
-
+void vRS485GetPDUSndBuf( UCHAR ucPort, UCHAR ** pucFrame );
+void vRS485SetPDUSndLength(UCHAR ucPort, USHORT SendPDULength );
+USHORT usRS485GetPDUSndLength( UCHAR ucPort );
 void xRS485Send(UCHAR Port, UCHAR ucSlaveAddress ,const UCHAR * pucFrame,  USHORT usLength);
 #ifdef __cplusplus
 PR_END_EXTERN_C

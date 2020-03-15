@@ -46,6 +46,19 @@ PR_BEGIN_EXTERN_C
 /*! \addtogroup rs485bus_cfg
  *  @{
  */
+ #ifdef MASTER 
+ 
+ /*! \brief If RS485 Master ASCII support is enabled. */
+#define RS485_MASTER_ASCII_ENABLED              (  0 )
+/*! \brief If RS485 Master RTU support is enabled. */
+#define RS485_MASTER_RTU_ENABLED                (  1 ) 
+/*! \brief If RS485 Slave ASCII support is enabled. */
+#define RS485_SLAVE_ASCII_ENABLED               (  0 )
+/*! \brief If RS485 Slave RTU support is enabled. */
+#define RS485_SLAVE_RTU_ENABLED                 (   0)
+#else 
+
+#define SLAVE_ADR 																0x08
  /*! \brief If RS485 Master ASCII support is enabled. */
 #define RS485_MASTER_ASCII_ENABLED              (  0 )
 /*! \brief If RS485 Master RTU support is enabled. */
@@ -54,6 +67,7 @@ PR_BEGIN_EXTERN_C
 #define RS485_SLAVE_ASCII_ENABLED               (  0 )
 /*! \brief If RS485 Slave RTU support is enabled. */
 #define RS485_SLAVE_RTU_ENABLED                 (  1 )
+#endif 
 /*! \brief Maximum number of RS485 Bus functions codes the protocol stack
  *    should support.
  *
@@ -62,15 +76,18 @@ PR_BEGIN_EXTERN_C
  * handlers. If set to small adding more functions will fail.
  */
  /*! \brief If the <em>Request check</em> function should be enabled. */
-#define RS485_FUNC_CHECK              ( 1 )
+#define RS485_FUNC_CHECK              (0  )
 /*! \brief If the <em>Request Ping</em> function should be enabled. */
-#define RS485_FUNC_PERIODIC_PING      ( 0 )
+#define RS485_FUNC_PERIODIC_PING      ( 1 )
 /*! \brief If the <em>Tamper Detect Request</em> function should be enabled. */
 #define RS485_FUNC_TAMPER_DETECT      ( 0 )
 /*! \brief If the <em>NFC Detect Request</em> function should be enabled. */
-#define RS485_FUNC_NFC_DETECT      		( 1 )
+#define RS485_FUNC_NFC_DETECT      		( 0 )
 /*! \brief If the <em>Key Enter</em> function should be enabled. */
-#define RS485_FUNC_KEY_ENTER          ( 1 )
+#define RS485_FUNC_KEY_ENTER          ( 0 )
+
+/*! \brief If the <em>Modbus write holding </em> function should be enabled. */
+#define MB_FUNC_WRITE_HOLDING_ENABLED          ( 1)
 
 /*! @} */
 #ifdef __cplusplus
@@ -85,7 +102,7 @@ PR_BEGIN_EXTERN_C
  * Then master can send other frame */
 #define RS485_MASTER_TIMEOUT_MS_RESPOND            (100 )
 
-
+#define MB_MASTER_TOTAL_SLAVE_NUM               ( 4 )
 #endif
 
 #define RS485_ASCII_TIMEOUT_SEC                     (1)

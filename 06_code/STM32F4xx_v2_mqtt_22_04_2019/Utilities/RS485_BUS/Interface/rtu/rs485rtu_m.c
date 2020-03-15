@@ -46,7 +46,7 @@
 
 #if RS485_MASTER_RTU_ENABLED > 0
 /* ----------------------- Defines ------------------------------------------*/
-#define RS485_SER_PDU_SIZE_MIN     	8       /*!< Minimum size of a RS485bus RTU frame. */
+#define RS485_SER_PDU_SIZE_MIN     	6       /*!< Minimum size of a RS485bus RTU frame. */
 #define RS485_SER_PDU_SIZE_MAX     	256     /*!< Maximum size of a RS485bus RTU frame. */
 #define RS485_SER_PDU_SIZE_CRC     	2       /*!< Size of CRC field in PDU. */
 // #define RS485_SER_PDU_START_OFF		  0		/*!< Offset of start in Ser-PDU. */
@@ -92,7 +92,7 @@ eRS485MasterRTUInit(UCHAR ucPort, ULONG ulBaudRate, eParity eParity )
     eRS485ErrorCode    eStatus = RS485_ENOERR;
     ULONG           usTimerT35_50us;
 
-    ENTER_CRITICAL_SECTION(  );
+   ENTER_CRITICAL_SECTION(  );
 	xFrameIsBroadcast[ucPort] = FALSE;
     /* RS485bus RTU uses 8 Databits. */
     if( xMasterPortSerialInit( ucPort, ulBaudRate, 8, eParity ) != TRUE )
@@ -203,9 +203,9 @@ eRS485MasterRTUReceive( UCHAR ucPort,UCHAR *pucRcvAddress, UCHAR ** pucFrame, US
     EXIT_CRITICAL_SECTION(  );
     return eStatus;
 }
-
+}
 eRS485ErrorCode
-eRS485MasterRTUSend( UCHAR ucPort,  UCHAR ucSlaveAddress,const UCHAR * pucFrame, USHORT usLength )
+eRS485MasterRTUSend( UCHAR ucPort,  UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )
 {
     eRS485ErrorCode    eStatus = RS485_ENOERR;
     USHORT          usCRC16;
@@ -236,7 +236,7 @@ eRS485MasterRTUSend( UCHAR ucPort,  UCHAR ucSlaveAddress,const UCHAR * pucFrame,
         // ucMasterRTUSndBuf[ucPort][usMasterSndBufferCount[ucPort]++] = ( UCHAR )( usCRC16 >> 8 );
   /* Mapping pointer of source data tp Buffer and offset lenght for STX and Slave ADR */
         pucMasterSndBufferCur[ucPort] = (UCHAR *)pucFrame - 1;
-        pucMasterSndBufferCur[ucPort] = 1;
+        usMasterSndBufferCount[ucPort] = 1;
         /* First byte before the RS485-PDU is the Start. */
 
         /* Now copy the RS485Bus-PDU into the RS485Bus-Serial-Line-PDU. */
@@ -299,8 +299,8 @@ xRS485MasterRTUReceiveFSM( UCHAR ucPort )
     	/* In time of respond timeout,the receiver receive a frame.
     	 * Disable timer of respond timeout and change the transmiter state to idle.
     	 */
-    	// vMasterPortTimersDisable( ucPort ); // check this line 
-    	// eSndState[ucPort] = STATE_M_TX_IDLE;
+    	 vMasterPortTimersDisable( ucPort ); // check this line 
+    	 eSndState[ucPort] = STATE_M_TX_IDLE;
 
         usMasterRcvBufferPos[ucPort] = 0;
         ucMasterRTURcvBuf[ucPort][usMasterRcvBufferPos[ucPort]++] = ucByte;
@@ -355,15 +355,19 @@ xRS485MasterRTUTransmitFSM( UCHAR ucPort )
             xMasterPortSerialPutByte( ucPort,( CHAR )*pucMasterSndBufferCur[ucPort] );
             pucMasterSndBufferCur[ucPort]++;  /* next byte in sendbuffer. */
             usMasterSndBufferCount[ucPort]--;
+					vTaskDelay(1);
         }
         else
         {
+					
             /* Disable transmitter. This prevents another transmit buffer
              * empty interrupt. */
             vMasterPortSerialEnable( ucPort, TRUE, FALSE );
             eSndState[ucPort] = STATE_M_TX_XFWR;
             /* Master is enable timer of respond timeout. */
-            vMasterPortTimersRespondTimeoutEnable( ucPort);
+            //vMasterPortTimersRespondTimeoutEnable( ucPort);
+            
+					
         }
         break;
 		default:
@@ -404,6 +408,7 @@ xRS485MasterRTUTimerExpired(UCHAR ucPort)
 				( eRcvState[ucPort] == STATE_M_RX_ERROR ) || ( eRcvState[ucPort] == STATE_M_RX_IDLE ));
 		break;
 	}
+
 	eRcvState[ucPort] = STATE_M_RX_IDLE;
 
 	switch (eSndState[ucPort])
@@ -430,7 +435,7 @@ xRS485MasterRTUTimerExpired(UCHAR ucPort)
 	if (eMasterCurTimerMode[ucPort] == RS485_TMODE_CONVERT_DELAY) {
 		xNeedPoll = xMasterPortEventPost( ucPort, EV_MASTER_EXECUTE );
 	}
-
+        eRcvState[ucPort] = STATE_M_RX_IDLE;
 	return xNeedPoll;
 }
 
@@ -445,6 +450,7 @@ void vRS485MasterGetPDUSndBuf( UCHAR ucPort, UCHAR ** pucFrame )
 {
 	*pucFrame = ( UCHAR * ) &ucMasterRTUSndBuf[ucPort][RS485_SER_PDU_PDU_OFF];
 }
+
 
 /* Set RS485bus Master send PDU's buffer length.*/
 void vRS485MasterSetPDUSndLength(UCHAR ucPort, USHORT SendPDULength )

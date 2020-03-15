@@ -33,6 +33,7 @@
 #include "rs485.h"
 #include "rs485port.h"
 
+#if RS485_MASTER_RTU_ENABLED > 0 || RS485_MASTER_ASCII_ENABLED > 0
 /* define compiler specific symbols */
 #if defined   ( __CC_ARM   )
   #define __ASM            __asm           /*!< asm keyword for armcc           */
@@ -105,3 +106,5 @@ vPortClose( UCHAR ucPort )
     vMasterPortClose( ucPort );
     vMasterPortTimersDisable( ucPort );
 }
+
+#endif

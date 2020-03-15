@@ -1008,7 +1008,7 @@ file__reboot_html,
 data__maintain_html,
 data__maintain_html + 15,
 sizeof(data__maintain_html) - 15,
-0,
+0, 
 }};
 const struct fsdata_file file__hostconfig_html[] = { {
 file__maintain_html,

@@ -51,6 +51,8 @@ typedef struct
 	UCHAR Port;
 	UCHAR EventSerial;
 }EventSerialType;
+
+#ifdef SLAVE 
 /* ----------------------- static functions ---------------------------------*/
 void RS485_RDE_GPIO_Configuration(UCHAR ucPort);
 void RS485_RDE_DIR(UCHAR ucPort, ACTION action);
@@ -418,4 +420,4 @@ void RS485_RDE_DIR(UCHAR ucPort, ACTION action)
     }
   }
 }
-
+#endif

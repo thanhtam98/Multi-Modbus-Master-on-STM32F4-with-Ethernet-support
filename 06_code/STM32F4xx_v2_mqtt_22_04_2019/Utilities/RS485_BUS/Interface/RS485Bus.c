@@ -44,6 +44,8 @@
 #include "rs485func.h"
 
 #include "rs485port.h"
+
+#ifdef SLAVE 
 #if RS485_SLAVE_RTU_ENABLED == 1
 #include "rs485rtu.h"
 #endif
@@ -267,7 +269,14 @@ eRS485ErrorCode eRS485Poll( void )
 
             if( eStatus == RS485_ENOERR )
             {
+							if (ucRcvAddress == SLAVE_ADR)
+							{
+								
                 ( void )xPortEventPost( eEvent.Port,EV_EXECUTE );
+							}
+							else {
+								
+							}
             }
             break;
 
@@ -301,13 +310,15 @@ eRS485ErrorCode eRS485Poll( void )
 								usLength = 0;
 								ucRS485Frame[usLength++] = ( UCHAR )( 0x00 );
 								ucRS485Frame[usLength++] = ( UCHAR )( ucFunctionCode |FUNC_ERROR);
-                                ucRS485Frame[usLength++] = ( UCHAR )( FRAME_RESPONSE );
+                ucRS485Frame[usLength++] = ( UCHAR )( FRAME_RESPONSE );
 								ucRS485Frame[usLength++] = eException;
 						}
 						eStatus = peRS485FrameSendCur( eEvent.Port,0x00,ucRS485Frame, usLength );
             break;
 
         case EV_FRAME_SENT:
+					  vRS485GetPDUSndBuf( eEvent.Port,&ucRS485Frame );
+            eStatus = peRS485FrameSendCur( eEvent.Port,SLAVE_ADR ,  ucRS485Frame, usRS485GetPDUSndLength( eEvent.Port));
             break;
         }
     }
@@ -319,3 +330,4 @@ void xRS485Send(UCHAR Port, UCHAR ucSlaveAddress ,const UCHAR * pucFrame,  USHOR
 		   eRS485ErrorCode    eStatus = RS485_ENOERR;
 				eStatus = peRS485FrameSendCur( Port,ucSlaveAddress,pucFrame, usLength );
 	}
+	#endif

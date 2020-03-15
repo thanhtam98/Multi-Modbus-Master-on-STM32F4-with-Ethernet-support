@@ -9,6 +9,9 @@
         "rs485config.h": "c",
         "main.h": "c",
         "rs485bus_task.h": "c",
-        "port.h": "c"
+        "port.h": "c",
+        "rs485_m.h": "c",
+        "fsdata.h": "c",
+        "debug.h": "c"
     }
 }

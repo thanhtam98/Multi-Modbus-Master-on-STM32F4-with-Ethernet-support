@@ -33,6 +33,8 @@
 #include "rs485.h"
 #include "rs485port.h"
 
+#ifdef SLAVE
+
 /* define compiler specific symbols */
 #if defined   ( __CC_ARM   )
   #define __ASM            __asm           /*!< asm keyword for armcc           */
@@ -105,3 +107,6 @@ vPortClose( UCHAR port )
     vPortSerialClose( port );
     vPortTimersDisable( port );
 }
+
+
+#endif

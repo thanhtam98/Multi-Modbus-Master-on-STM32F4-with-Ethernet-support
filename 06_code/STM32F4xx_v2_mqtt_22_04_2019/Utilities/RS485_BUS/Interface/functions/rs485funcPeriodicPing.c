@@ -48,7 +48,7 @@ eRS485Exception    prveRS485Error2Exception( eRS485ErrorCode eErrorCode );
 
 /* ----------------------- Start implementation -----------------------------*/
 
-#if RS485_FUNC_PERIODIC_PING > 0
+#if RS485_FUNC_PERIODIC_PING > 0 &&SLAVE 
 
 eRS485Exception
 eRS485FuncPeriodicPing(UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen )
@@ -58,37 +58,43 @@ eRS485FuncPeriodicPing(UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen )
 
     eRS485Exception    eStatus = RS485_EX_NONE;
     eRS485ErrorCode    eCheckStatus;
-		if(pucFrame[RS485_PDU_FRAME_TYPE_OFF] == FRAME_REQUEST)
-		{
-				/* Set the current PDU data pointer to the beginning. */
-				pucFrameCur = &pucFrame[RS485_PDU_FUNC_OFF];
-				*usLen = RS485_PDU_FUNC_OFF;
-				
-				*pucFrameCur++ = FUNC_PERIODIC_PING;
-				*usLen +=1;
-				*pucFrameCur++ = FRAME_RESPONSE;
-				*usLen +=1;
-				
-				eCheckStatus = ePeriodicPingCB( ucPort,pucFrameCur,&ucNBytes);
+		
+		vRS485GetPDUSndBuf(ucPort,&pucFrameCur);
+		pucFrameCur[RS485_PDU_FUNC_OFF] = FUNC_PERIODIC_PING;
+		pucFrameCur[RS485_PDU_DATA_OFF] = FRAME_PERIODIC_PING;
+			( void ) xPortEventPost(ucPort, EV_FRAME_SENT );
+		
+		//	if(pucFrame[RS485_PDU_DATA_OFF] == FRAME_REQUEST)
+//	{
+//			/* Set the current PDU data pointer to the beginning. */
+//			pucFrameCur = &pucFrame[RS485_PDU_FUNC_OFF];
+//			*usLen = RS485_PDU_FUNC_OFF;
+//			
+//			*pucFrameCur++ = FUNC_PERIODIC_PING;
+//			*usLen +=1;
+//			*pucFrameCur++ = FRAME_RESPONSE;
+//			*usLen +=1;
+//			
+//			eCheckStatus = ePeriodicPingCB( ucPort,pucFrameCur,&ucNBytes);
 
-				/* If an error occured convert it into a RS485 exception. */
-				if( eCheckStatus != RS485_ENOERR )
-				{
-						eStatus = prveRS485Error2Exception( eCheckStatus );
-				}
-				else
-				{
-						/* The response contains the function code, the starting address
-						 * and the quantity of registers. We reuse the old values in the 
-						 * buffer because they are still valid. */
-						*usLen += ucNBytes;;
-				}
-		}
-    else
-    {
-        /* Unrecognized Frame Type  */
-        eStatus = RS485_EX_UNRECOGNIZED_FRAME_TYPE;
-    }
+//			/* If an error occured convert it into a RS485 exception. */
+//			if( eCheckStatus != RS485_ENOERR )
+//			{
+//					eStatus = prveRS485Error2Exception( eCheckStatus );
+//			}
+//			else
+//			{
+//					/* The response contains the function code, the starting address
+//					 * and the quantity of registers. We reuse the old values in the 
+//					 * buffer because they are still valid. */
+//					*usLen += ucNBytes;;
+//			}
+//	}
+//    else
+//    {
+//        /* Unrecognized Frame Type  */
+//        eStatus = RS485_EX_UNRECOGNIZED_FRAME_TYPE;
+//    }
     return eStatus;
 }
 #endif

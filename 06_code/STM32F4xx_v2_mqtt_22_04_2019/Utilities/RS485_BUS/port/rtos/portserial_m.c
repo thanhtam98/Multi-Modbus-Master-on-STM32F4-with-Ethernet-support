@@ -45,10 +45,17 @@ typedef struct
 	UCHAR Port;
 	UCHAR EventSerial;
 }EventSerialType;
+typedef enum
+{
+  RS485_IN =0,
+  RS485_OUT,
+}ACTION;
+
 static xQueueHandle event_serial;
 /* RS485bus master serial device */
 void seria_irq(void);
 void serial_rx_ind(void);
+void RS485_RDE_DIR(UCHAR ucPort, ACTION action);
 /* ----------------------- Defines ------------------------------------------*/
 /* serial transmit event */
 #define EVENT_SERIAL_TRANS_START    (1<<0)
@@ -59,19 +66,20 @@ IRQn_Type IRQPortGet(UCHAR ucPORT);
 static void prvvPORTTxReadyISR(UCHAR ucPort);
 static void prvvPORTRxISR(UCHAR ucPort);
 static void serial_soft_trans_irq(void* parameter);
+void RS485_RDE_GPIO_Configuration(UCHAR ucPort);
 
 
 /* ----------------------- Start implementation -----------------------------*/
 BOOL xMasterPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,eParity eParity)
 {
-	NVIC_InitTypeDef   NVIC_InitStructure;
-	GPIO_InitTypeDef GPIO_InitStructure;
-	USART_InitTypeDef USART_InitStructure;
-	/* UARTx clock enable */
-	RCC_AHB1PeriphClockCmd(RCC_APB1Periph_UART5, ENABLE);
-	/* GPIOC GPIOD clock enable */
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+//	NVIC_InitTypeDef   NVIC_InitStructure;
+//	GPIO_InitTypeDef GPIO_InitStructure;
+//	USART_InitTypeDef USART_InitStructure;
+//	/* UARTx clock enable */
+//	RCC_AHB1PeriphClockCmd(RCC_APB1Periph_UART5, ENABLE);
+//	/* GPIOC GPIOD clock enable */
+//	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+//	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
 //	/* Configure PC11 as alternate function push-pull */
 //	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
@@ -88,7 +96,18 @@ BOOL xMasterPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,ePar
 //	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 //	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2; 
 //	GPIO_Init(GPIOD, &GPIO_InitStructure);
+		NVIC_InitTypeDef   NVIC_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
 	
+	/* UARTx clock enable */
+  UART_RCC_Configuration(UartPortGet(ucPORT));
+	
+	/* Configure GPIO as alternate function push-pull */
+  UART_GPIO_Configuration(UartPortGet(ucPORT));
+	
+  /* Configure Pin RDE*/
+  RS485_RDE_GPIO_Configuration(ucPORT);
+  
 	/* Enable the USART1 interrupt. */
 	NVIC_InitStructure.NVIC_IRQChannel = IRQPortGet(ucPORT);;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 6;
@@ -164,16 +183,65 @@ void vMasterPortSerialEnable(UCHAR ucPort, BOOL xRxEnable, BOOL xTxEnable)
 		eEvent.EventSerial = EVENT_SERIAL_TRANS_START;
     if( xRxEnable )
     {
+			RS485_RDE_DIR(ucPort,RS485_IN);
 			USART_ITConfig(UartPortGet(ucPort),USART_IT_RXNE,ENABLE);
 			xQueueReceive(event_serial,&eEvent,0);
+			
     }
     else
     {
-			USART_ITConfig(UartPortGet(ucPort),USART_IT_RXNE,DISABLE);
+			RS485_RDE_DIR(ucPort,RS485_OUT);
+			//USART_ITConfig(UartPortGet(ucPort),USART_IT_RXNE,DISABLE);
 			xQueueSend( event_serial, &eEvent, 0 );
     }
 }
 
+void RS485_RDE_GPIO_Configuration(UCHAR ucPort)
+{
+  GPIO_InitTypeDef  GPIO_InitStructure;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT; 
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  
+  switch(ucPort)
+  {
+    case PORT1:
+      GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+      /* Enable the GPIO_LED Clock */
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+      /* Configure the GPIO_LED pin */
+      GPIO_Init(GPIOD, &GPIO_InitStructure);
+      GPIO_ResetBits(GPIOD,GPIO_Pin_10);
+      break;
+    case PORT2:
+      GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
+      /* Enable the GPIO_LED Clock */
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+      /* Configure the GPIO_LED pin */
+      GPIO_Init(GPIOC, &GPIO_InitStructure);
+      GPIO_ResetBits(GPIOC,GPIO_Pin_8);
+      break;
+    case PORT3:
+      GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+      /* Enable the GPIO_LED Clock */
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+      /* Configure the GPIO_LED pin */
+      GPIO_Init(GPIOC, &GPIO_InitStructure);
+      GPIO_ResetBits(GPIOC,GPIO_Pin_12);
+      break;
+    case PORT4:
+      GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+      /* Enable the GPIO_LED Clock */
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+      /* Configure the GPIO_LED pin */
+      GPIO_Init(GPIOD, &GPIO_InitStructure);
+      GPIO_ResetBits(GPIOD,GPIO_Pin_4);
+      break;
+    default:
+      break;
+  }
+}
 void vMasterPortClose(UCHAR ucPort)
 {
 	NVIC_InitTypeDef   NVIC_InitStructure;
@@ -251,9 +319,9 @@ USART_TypeDef * UartPortGet(UCHAR ucPORT)
 	switch(ucPORT)
 	{
 		case PORT1:
-			return USART2;
-		case PORT2:
 			return USART3;
+		case PORT2:
+			return USART2;
 		case PORT3:
 			return UART4;
 		case PORT4:
@@ -268,9 +336,9 @@ IRQn_Type IRQPortGet(UCHAR ucPORT)
 	switch(ucPORT)
 	{
 		case PORT1:
-			return USART2_IRQn;
-		case PORT2:
 			return USART3_IRQn;
+		case PORT2:
+			return USART2_IRQn;
 		case PORT3:
 			return UART4_IRQn;
 		case PORT4:
@@ -278,6 +346,50 @@ IRQn_Type IRQPortGet(UCHAR ucPORT)
 		default:
 			break;		
 	}
+}
+
+void RS485_RDE_DIR(UCHAR ucPort, ACTION action)
+{
+  if(action == RS485_IN)
+  {
+    switch(ucPort)
+    {
+      case PORT1:
+        GPIO_ResetBits(GPIOD,GPIO_Pin_10);
+        break;
+      case PORT2:
+        GPIO_ResetBits(GPIOC,GPIO_Pin_8);
+        break;
+      case PORT3:
+        GPIO_ResetBits(GPIOC,GPIO_Pin_12);
+        break;
+      case PORT4:
+        GPIO_ResetBits(GPIOD,GPIO_Pin_4);
+        break;
+      default:
+        break;
+    }
+  }
+  else
+  {
+    switch(ucPort)
+    {
+      case PORT1:
+        GPIO_SetBits(GPIOD,GPIO_Pin_10);
+        break;
+      case PORT2:
+        GPIO_SetBits(GPIOC,GPIO_Pin_8);
+        break;
+      case PORT3:
+        GPIO_SetBits(GPIOC,GPIO_Pin_12);
+        break;
+      case PORT4:
+        GPIO_SetBits(GPIOD,GPIO_Pin_4);
+        break;
+      default:
+        break;
+    }
+  }
 }
 
 /**
@@ -288,6 +400,45 @@ IRQn_Type IRQPortGet(UCHAR ucPORT)
  *
  * @return return RT_EOK
  */
+
+void USART2_IRQHandler(void)
+{
+	/* Check if we were called because of RXNE. */
+	if (USART_GetITStatus(USART2,USART_IT_RXNE))
+	{
+	    prvvPORTRxISR(PORT2);
+			USART_ClearFlag(USART2,USART_IT_RXNE);
+	}
+}
+
+void USART3_IRQHandler(void)
+{
+	/* Check if we were called because of RXNE. */
+	if (USART_GetITStatus(USART3,USART_IT_RXNE))
+	{
+	    prvvPORTRxISR(PORT1);
+		//USART_ClearFlag(USART3,USART_IT_RXNE);
+	}
+}
+
+void UART4_IRQHandler(void)
+{
+	/* Check if we were called because of RXNE. */
+	if (USART_GetITStatus(UART4,USART_IT_RXNE))
+	{
+	    prvvPORTRxISR(PORT3);
+	}
+}
+
+void USART6_IRQHandler(void)
+{
+	/* Check if we were called because of RXNE. */
+	if (USART_GetITStatus(USART6,USART_IT_RXNE))
+	{
+	    prvvPORTRxISR(PORT4);
+			
+	}
+}
 //void UART5_IRQHandler(void) 
 //{
 //    prvvPORTRxISR();

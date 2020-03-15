@@ -43,6 +43,7 @@
 
 #include "rs485crc.h"
 #include "rs485port.h"
+#ifdef SLAVE
 
 /* ----------------------- Defines ------------------------------------------*/
 #define RS485_SER_PDU_SIZE_MIN 8   /*!< Minimum size of a RS485bus RTU frame. */
@@ -74,6 +75,7 @@ static volatile eRS485SndState eSndState[RS485_PORT_NUMBER];
 static volatile eRS485RcvState eRcvState[RS485_PORT_NUMBER];
 
 volatile UCHAR ucRTUBuf[RS485_PORT_NUMBER][RS485_SER_PDU_SIZE_MAX];
+volatile UCHAR usSendPDULength[RS485_PORT_NUMBER];
 
 static volatile UCHAR *pucSndBufferCur[RS485_PORT_NUMBER];
 static volatile USHORT usSndBufferCount[RS485_PORT_NUMBER];
@@ -178,7 +180,7 @@ eRS485RTUReceive(UCHAR ucPort, UCHAR *pucRcvAddress, UCHAR **pucFrame, USHORT *p
             /* Save the address field. All frames are passed to the upper layed
          * and the decision if a frame is used is done there.
          */
-            *pucRcvAddress = ucRTUBuf[ucPort][RS485_SER_PDU_ADDR_OFF];
+            *pucRcvAddress = ucRTUBuf[RS485_PORT_NUMBER][RS485_SER_PDU_ADDR_OFF];
 
             /* Total length of RS485-PDU is RS485-Serial-Line-PDU minus
 					 * size of Frame begin field, Lenght and CRC checksum.
@@ -364,7 +366,7 @@ BOOL xRS485RTUTimerT35Expired(UCHAR ucPort)
          * a new frame was received. */
     case STATE_RX_RCV:
         xNeedPoll = xPortEventPost(ucPort, EV_FRAME_RECEIVED);
-        break;
+        break;	
 
         /* An error occured while receiving the frame. */
     case STATE_RX_ERROR:
@@ -382,3 +384,25 @@ BOOL xRS485RTUTimerT35Expired(UCHAR ucPort)
 
     return xNeedPoll;
 }
+
+
+/* Get RS485bus Master send PDU's buffer address pointer.*/
+void vRS485GetPDUSndBuf( UCHAR ucPort, UCHAR ** pucFrame )
+{
+	*pucFrame = ( UCHAR * ) &ucRTUBuf[ucPort][RS485_SER_PDU_PDU_OFF];
+}
+/* Set RS485bus Master send PDU's buffer length.*/
+/* Set RS485bus Master send PDU's buffer length.*/
+void vRS485SetPDUSndLength(UCHAR ucPort, USHORT SendPDULength )
+{
+	usSendPDULength[ucPort] = SendPDULength;
+}
+/* Get RS485bus Master send PDU's buffer length.*/
+USHORT usRS485GetPDUSndLength( UCHAR ucPort )
+{
+	return usSendPDULength[ucPort];
+}
+
+
+#endif
+

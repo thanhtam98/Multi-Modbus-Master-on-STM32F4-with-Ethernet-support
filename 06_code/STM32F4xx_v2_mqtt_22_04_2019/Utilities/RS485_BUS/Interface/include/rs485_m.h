@@ -30,7 +30,9 @@
 
 #ifndef _RS485_M_H
 #define _RS485_M_H
-
+#include "rs485port.h"
+#include "rs485proto.h"
+#include "rs485.h"
 #ifdef __cplusplus
 PR_BEGIN_EXTERN_C
 #endif
@@ -64,6 +66,11 @@ PR_BEGIN_EXTERN_C
 /* ----------------------- Defines ------------------------------------------*/
 
 
+/*! \ingroup RS485Bus
+ * \brief Errorcodes used by all function in the protocol stack.
+ */
+
+
 /* ----------------------- Type definitions ---------------------------------*/
 /*! \ingroup rs485bus
  * \brief Errorcodes used by all function in the Master request.
@@ -78,6 +85,7 @@ typedef enum
     RS485_MRE_MASTER_BUSY,             /*!< master is busy now. */
     RS485_MRE_EXE_FUN                  /*!< execute function error. */
 } eRS485MasterReqErrCode;
+
 /*! \ingroup rs485bus
  *  \brief TimerMode is Master 3 kind of Timer modes.
  */
@@ -87,6 +95,12 @@ typedef enum
 	RS485_TMODE_RESPOND_TIMEOUT,       /*!< Master wait respond for slave. */
 	RS485_TMODE_CONVERT_DELAY          /*!< Master sent broadcast ,then delay sometime.*/
 }eRS485MasterTimerMode;
+
+typedef enum
+{
+    RS485_REG_READ,                /*!< Read register values and pass to protocol stack. */
+    RS485_REG_WRITE                /*!< Update register values. */
+} eRS485RegisterMode;
 
 /* ----------------------- Function prototypes ------------------------------*/
 /*! \ingroup rs485bus
@@ -231,6 +245,8 @@ eRS485ErrorCode eMasterFuncNFCDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * 
 eRS485ErrorCode eMasterFuncErrorDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen);
 
 
+eRS485ErrorCode eRS485MasterRegHoldingCB(UCHAR ucPort, USHORT usAddress, UCHAR * pucRegBuffer,
+        USHORT usNRegs, eRS485RegisterMode eMode);
 /*! \ingroup rs485bus
  *\brief These RS485bus functions are called for user when RS485bus run in Master Mode.
  */
@@ -242,18 +258,27 @@ eRS485MasterReqErrCode
 eRS485MasterReqTemperDetec( UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen, LONG lTimeOut );
 eRS485MasterReqErrCode
 eRS485MasterReqNFCDetect( UCHAR ucPort, UCHAR * pucFrame, USHORT usLen, LONG lTimeOut );
+eRS485MasterReqErrCode
+eMBMasterReqWriteHoldingRegister( UCHAR ucPort, UCHAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut );
+
+
 
 eRS485Exception
 eRS485MasterFuncCheck( UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen );
 eRS485Exception 
-eRS485MasterFuncPeriodicPing( UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen );
+eRS485MasterFuncPeriodicPing( UCHAR ucPort, UCHAR ucRcvAddress, UCHAR * pucFrame, USHORT * usLen );
 eRS485Exception 
 eRS485MasterFuncTemperDetec( UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen );
 eRS485Exception 
 eRS485MasterFuncNFCDetect( UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen );
 eRS485Exception 
 eRS485MasterFuncErrorDetect( UCHAR ucPort, UCHAR * pucFrame, USHORT * usLen );
-/*£¡ \ingroup RS485bus
+
+eRS485Exception
+eRS485MasterFuncWriteHoldingRegister( UCHAR ucPort, UCHAR ucRcvAddress, UCHAR * pucFrame, USHORT * usLen );
+
+
+/*ï¿½ï¿½ \ingroup RS485bus
  *\brief These functions are interface for RS485bus Master
  */
 void vRS485MasterGetPDUSndBuf( UCHAR ucPort,UCHAR ** pucFrame );
@@ -265,6 +290,8 @@ void vRS485MasterSetCurTimerMode( UCHAR ucPort,eRS485MasterTimerMode eRS485Timer
 eMasterErrorEventType eMasterGetErrorType( UCHAR ucPort );
 void vMasterSetErrorType( UCHAR ucPort,eMasterErrorEventType errorType );
 eRS485MasterReqErrCode eMasterWaitRequestFinish( UCHAR ucPort );
+UCHAR ucRS485MasterGetDestAddress( UCHAR ucPort );
+void vRS485MasterSetDestAddress(UCHAR ucPort, UCHAR Address );
 
 /* ----------------------- Callback -----------------------------------------*/
 

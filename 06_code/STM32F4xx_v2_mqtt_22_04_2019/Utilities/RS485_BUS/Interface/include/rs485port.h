@@ -174,7 +174,7 @@ void vMasterPortTimersDisable( UCHAR ucPort );
 /* ----------------- Callback for the master error process ------------------*/
 void vMasterErrorCBRespondTimeout( UCHAR ucDestAddress, const UCHAR* pucPDUData,
                                                 USHORT ucPDULength );
-
+    
 void vMasterErrorCBReceiveData( UCHAR ucDestAddress, const UCHAR* pucPDUData,
                                              USHORT ucPDULength );
 

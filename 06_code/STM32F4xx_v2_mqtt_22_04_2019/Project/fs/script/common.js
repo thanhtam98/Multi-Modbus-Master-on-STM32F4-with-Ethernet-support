@@ -1,262 +1,262 @@
-"\nfunction $(id){return document.getElementById(id);}"
-"\nfunction $G(id){return $(id).value;}"
-"\nfunction $S(id, value){$(id).value = value;}"
-"\nfunction $W(obj){document.write(obj);}"
-"\nfunction isNameUnsafe(compareChar){"
-"\nvar unsafeString = \"\\\"<>%\\\\^[]`\\+\\$\\,='#&@.: \\t\";"
-"\nif ( unsafeString.indexOf(compareChar) == -1&& compareChar.charCodeAt(0) > 32"
-"\n&& compareChar.charCodeAt(0) < 123 ){return false;}"
-"\nelse{return true;}}"
-"\nfunction isWifiNameUnsafe(compareChar){"
-"\nvar unsafeString = \"\\\"<>%\\\\^[]`\\+\\$\\,='#&@.:\\t\";"
-"\nif ( unsafeString.indexOf(compareChar) == -1&& compareChar.charCodeAt(0) >= 32"
-"\n&& compareChar.charCodeAt(0) < 123 ){return false;}"
-"\nelse{return true;}}"
-"\nfunction isPppoeNameUnsafe(compareChar){"
-"\nvar unsafeString = \"\\\"\\\\\\': \\t\\n\";"
-"\nif ( unsafeString.indexOf(compareChar) == -1&& compareChar.charCodeAt(0) > 32"
-"\n&& compareChar.charCodeAt(0) < 123 ){return false;}"
-"\nelse{return true;}}"
-"\nfunction isValidIpChar(ipchar){"
-"\nvar str=\"0123456789abcdefABCDEF\";var i = 0;"
-"\nif (ipchar.length == 0 || ipchar.length > 4){return false;}"
-"\nfor(i = 0; i < ipchar.length; i++){"
-"\nif (str.indexOf(ipchar.charAt(i)) < 0){return false;}}"
-"\nreturn true;}"
-"\nfunction isValidSuffix(address){var j = 0;"
-"\nif (address == \"0:0:0:0\" || address == \"FFFF:FFFF:FFFF:FFFF\""
-"\n|| address == \"ffff:ffff:ffff:ffff\")return false;"
-"\nvar ipParts = address.split(':');"
-"\nif (ipParts.length != 4){return false;}"
-"\nelse{for(j = 0; j < 4; j++){"
-"\nif(false == isValidIpChar(ipParts[j])){return false;}}}"
-"\nreturn true;}"
-"\nfunction isValidIpv6Prefix(prefix){"
-"\nvar parts1=prefix.split('/');"
-"\nif(parts1.length > 2)return false;"
-"\nvar part2=prefix.split('::');"
-"\nif(part2.length !=2)return false;"
-"\nvar ipParts = part2[0].split(':');"
-"\nif(ipParts.length > 4|| part2[0]=='')return false;"
-"\nreturn true;}"
-"\nfunction compareIpv6Addr(ipv6addrmin, ipv6addrmax){"
-"\nvar ip6addr1 = ipv6addrmin.split(':');"
-"\nvar ip6addr2 = ipv6addrmax.split(':');"
-"\nfor(i = 0; i < 4; i++){"
-"\nif (parseInt(ip6addr1[i], 16) < parseInt(ip6addr2[i], 16)) {return 1;}"
-"\nif (parseInt(ip6addr1[i], 16) > parseInt(ip6addr2[i], 16)) {return -1;}}"
-"\nreturn 0;}"
-"\nfunction isValidIpAddress(address){"
-"\nipParts = address.split('/');"
-"\nif (ipParts.length > 2) return false;"
-"\nif (ipParts.length == 2) {num = parseInt(ipParts[1]);if (num <= 0 || num > 32)return false;}"
-"\nif (ipParts[0] == '0.0.0.0' || ipParts[0] == '255.255.255.255')return false;"
-"\naddrParts = ipParts[0].split('.');"
-"\nif ( addrParts.length != 4 ) return false;"
-"\nfor (i = 0; i < 4; i++) {"
-"\nif (isNaN(addrParts[i]) || addrParts[i] ==\"\")return false;"
-"\nnum = parseInt(addrParts[i]);"
-"\nif ( num < 0 || num >= 255 )return false;}"
-"\nreturn true;}"
-"\nfunction isValidIpAddress6(address){ipParts = address.split('/');"
-"\nif (ipParts.length > 2) return false;"
-"\nif (ipParts.length == 2) {num = parseInt(ipParts[1]);if (num <= 0 || num > 128)return false;}"
-"\naddrParts = ipParts[0].split(':');"
-"\nif (addrParts.length < 3 || addrParts.length > 8)return false;"
-"\nfor (i = 0; i < addrParts.length; i++) {"
-"\nif ( addrParts[i] != \"\" )num = parseInt(addrParts[i], 16);"
-"\nif ( i == 0 ) {}"
-"\nelse if ( (i + 1) == addrParts.length) {"
-"\nif ( num == 0 || num == 1)return false;}"
-"\nif ( num != 0 )break;}"
-"\nreturn true;}"
-"\nfunction isValidName(name){var i = 0;"
-"\nfor ( i = 0; i < name.length; i++ ) {"
-"\nif ( isNameUnsafe(name.charAt(i)) == true )return false;}"
-"\nreturn true;}"
-"\nfunction isWifiValidName(name){var i = 0;"
-"\nfor ( i = 0; i < name.length; i++ ) {"
-"\nif ( isWifiNameUnsafe(name.charAt(i)) == true )return false;}"
-"\nreturn true;}"
-"\nfunction isValidPppoeName(name){var i = 0;"
-"\nfor ( i = 0; i < name.length; i++ ) {"
-"\nif ( isPppoeNameUnsafe(name.charAt(i)) == true )return false;}"
-"\nreturn true;}"
-"\nfunction isValidIpAddress(address){"
-"\nif ( address== '0.0.0.0' || address == '255.255.255.255' )return false;"
-"\nvar addParts=new Array();"
-"\naddrParts = address.split('.');"
-"\nif ( addrParts.length != 4 ) return false;"
-"\nfor (i = 0; i < 4; i++) {"
-"\nif (isNaN(addrParts[i]) || addrParts[i] ==\"\")return false;"
-"\nnum = parseInt(addrParts[i]);"
-"\nif ( num < 0 || num >= 255 )return false;}"
-"\nreturn true;}"
-"\nfunction isSameSubNet(lan1Ip, lan1Mask, lan2Ip, lan2Mask){"
-"\nvar count = 0;lan1a = lan1Ip.split('.');lan1m = lan1Mask.split('.');"
-"\nlan2a = lan2Ip.split('.');lan2m = lan2Mask.split('.');"
-"\nfor (i = 0; i < 4; i++) {"
-"\nl1a_n = parseInt(lan1a[i]);l1m_n = parseInt(lan1m[i]);"
-"\nl2a_n = parseInt(lan2a[i]);l2m_n = parseInt(lan2m[i]);"
-"\nif ((l1a_n & l1m_n) == (l2a_n & l2m_n))count++;}"
-"\nif (count == 4)return true;"
-"\nelse return false;}"
-"\nfunction getLeftMostZeroBitPos(num){var i = 0;"
-"\nvar numArr = [128, 64, 32, 16, 8, 4, 2, 1];"
-"\nfor ( i = 0; i < numArr.length; i++ )"
-"\nif ( (num & numArr[i]) == 0 )return i;"
-"\nreturn numArr.length;}"
-"\nfunction getRightMostOneBitPos(num){"
-"\nvar i = 0;var numArr = [1, 2, 4, 8, 16, 32, 64, 128];"
-"\nfor ( i = 0; i < numArr.length; i++ )"
-"\nif ( ((num & numArr[i]) >> i) == 1 )return (numArr.length - i - 1);"
-"\nreturn -1;}"
-"\nfunction isValidSubnetMask(mask){"
-"\nvar i = 0, num = 0;var zeroBitPos = 0, oneBitPos = 0;"
-"\nvar zeroBitExisted = false;"
-"\nif ( mask == '0.0.0.0' )return false;"
-"\nmaskParts = mask.split('.');"
-"\nif ( maskParts.length != 4 ) return false;"
-"\nfor (i = 0; i < 4; i++) {"
-"\nif ( isNaN(maskParts[i]) == true )return false;"
-"\nnum = parseInt(maskParts[i]);"
-"\nif ( num < 0 || num > 255 )return false;"
-"\nif ( zeroBitExisted == true && num != 0 )return false;"
-"\nzeroBitPos = getLeftMostZeroBitPos(num);"
-"\noneBitPos = getRightMostOneBitPos(num);"
-"\nif ( zeroBitPos < oneBitPos )return false;"
-"\nif ( zeroBitPos < 8 )zeroBitExisted = true;}"
-"\nreturn true;}"
-"\nfunction IsIpaddr(ip){"
-"\nvar c;var subip = ip.split(\".\");"
-"\nif (4 != subip.length){return false;}"
-"\nif (ip == \"0.0.0.0\"){return true;}"
-"\nif (ip.length < 7 || ip.length > 15){return false;}"
-"\nfor (var i = 0; i < ip.length; i++){c = ip.charCodeAt(i);"
-"\nif (c == '.'.charCodeAt(0)){continue;}"
-"\nelse{if (c < 0x30 || c > 0x39){return false;}}}"
-"\nfor (var i = 0; i < 4; i++){"
-"\nif (subip[i].length == 0){return false;}"
-"\nvar n = parseInt(subip[i]);"
-"\nif (n < 0 || n > 255){return false;}}"
-"\nreturn true;}"
-"\nfunction CheckIpAddr(id){"
-"\nvar ipaddr = $(id).value;"
-"\nif (false == IsIpaddr(ipaddr)){$(id).focus();return false;}"
-"\nreturn true;}"
-"\nfunction IP2Int(ip){"
-"\nvar sip = ip.split(\".\");"
-"\nif (sip.length != 4){return 0;}"
-"\nvar n = parseInt(sip[0])*256*256*256;"
-"\nn += parseInt(sip[1])*256*256;"
-"\nn += parseInt(sip[2])*256;"
-"\nn += parseInt(sip[3]);"
-"\nreturn n;}"
-"function CheckNetmask(id){"
-"\nif (false == CheckIpAddr(id)){return false;}"
-"\nvar nip = IP2Int($(id).value);var zero = true;"
-"\nfor (var i = 0; i < 32; i++){"
-"\nif (zero == false){if ((nip&(1<<i)) == 0){$(id).focus();return false;}}"
-"\nelse{if ((nip&(1<<i)) != 0){zero = false;}}}"
-"\nreturn true;}"
-"\nfunction IsPort(port){var c;"
-"\nif (port.length < 1 || port.length > 5){return false;}"
-"\nfor (var i = 0; i < port.length; i++){"
-"\nc = port.charCodeAt(i);"
-"\nif (c < 0x30 || c > 0x39){return false;}}"
-"\nvar n = parseInt(port);"
-"\nif (n < 0 || n > 65535){return false;}"
-"\nreturn true;}"
-"\nfunction CheckPort(id){var port = $(id).value;"
-"\nif (false == IsPort(port)){$(id).focus();return false;}"
-"\nreturn true;}"
-"\nfunction isHexaDigit(digit){"
-"\nvar hexVals = new Array(\"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"a\", \"b\", \"c\", \"d\", \"e\", \"f\");"
-"\nvar len = hexVals.length;var i = 0;var ret = false;"
-"\nfor (i = 0; i < len; i++){"
-"\nif ( digit == hexVals[i] ){ret = true;break;}}"
-"\nreturn ret;}"
-"\nfunction isValidHexKey(val, size){"
-"\nvar ret = false;"
-"\nif (val.length == size) {"
-"\nfor ( i = 0; i < val.length; i++ ) {"
-"\nif ( isHexaDigit(val.charAt(i)) == false ) {break;}}"
-"\nif ( i == val.length ) {ret = true;}}"
-"\nreturn ret;}"
-"\nfunction KeyPressIP(c){var ValidString = \".0123456789\""
-"\nreturn (-1 != ValidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressNUM(c){"
-"\nvar ValidString = \"0123456789\";"
-"\nreturn (-1 != ValidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressHEX(c){"
-"\nvar ValidString = \"0123456789abcdefABCDEF\";"
-"\nreturn (-1 != ValidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressID(c){"
-"\nvar InvalidString = \"\\\"\\\\\\': \\t\\n\";"
-"\nreturn (-1 == InvalidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressMAC(c){"
-"\nvar ValidString = \":0123456789abcdefABCDEF\";"
-"\nreturn (-1 != ValidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressPasswd(c){"
-"\nvar InvalidString = \"\\\"\\\\\\':\\t\\n\";"
-"\nreturn (-1 == InvalidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressURL(c){"
-"\nvar InvalidString = \"\\\"\\'\\t\\n\";"
-"\nreturn (-1 == InvalidString.indexOf(c))?true:false;}"
-"\nfunction KeyPressIPV6(c){"
-"\nvar InvalidString = \"/:0123456789abcdefABCDEF\";"
-"\nreturn (-1 != InvalidString.indexOf(c))?true:false;}"
-"\nvar X_INPUT_IP = 1;"
-"\nvar X_INPUT_NUM = 2;"
-"\nvar X_INPUT_HEX = 3;"
-"\nvar X_INPUT_ID = 4;"
-"\nvar X_INPUT_MAC = 5;"
-"\nvar X_INPUT_PASSWD = 6;"
-"\nvar X_INPUT_URL = 7;"
-"\nvar X_INPUT_IPV6 = 8;"
-"\nfunction OnKeyPress(e, type){"
-"\nvar	k = 0;var	c;"
-"\nif (window.event){k = e.keyCode;}"
-"\nelse if (e.which){k = e.which;}"
-"\nif (k == 8 || k == 0){return true;}"
-"\nc = String.fromCharCode(k);"
-"\nswitch (type){"
-"\ncase X_INPUT_IP:return KeyPressIP(c);"
-"\ncase X_INPUT_NUM:return KeyPressNUM(c);"
-"\ncase X_INPUT_HEX:return KeyPressHEX(c);"
-"\ncase X_INPUT_ID:return KeyPressID(c);"
-"\ncase X_INPUT_MAC:return KeyPressMAC(c);"
-"\ncase X_INPUT_PASSWD:return KeyPressPasswd(c);"
-"\ncase X_INPUT_URL:return KeyPressURL(c);"
-"\ncase X_INPUT_IPV6:return KeyPressIPV6(c);}"
-"\nreturn false;}"
-"\nfunction ChangeEnable(var_name){"
-"\nvar element = document.getElementById(var_name);"
-"\nvar element_enable = document.getElementById(var_name+\"enable\");"
-"\nif (element.checked==true){element_enable.value=\"1\";return true;}"
-"\nelse{element_enable.value=\"0\";return false;}}"
-"\nfunction isValidMacAddress(address) {"
-"\nvar c = '';var num = 0;var i = 0, j = 0;var zeros = 0;"
-"\naddrParts = address.split(':');"
-"\nif ( addrParts.length != 6 ) return false;"
-"\nfor (i = 0; i < 6; i++) {"
-"\nif ( addrParts[i] == '' )return false;"
-"\nfor ( j = 0; j < addrParts[i].length; j++ ) {"
-"\nc = addrParts[i].toLowerCase().charAt(j);"
-"\nif ( (c >= '0' && c <= '9') ||(c >= 'a' && c <= 'f'))continue;"
-"\nelse return false;}"
-"\nnum = parseInt(addrParts[i], 16);"
-"\nif ( num == NaN || num < 0 || num > 255 )return false;"
-"\nif ( num == 0 )zeros++;}"
-"\nif (zeros == 6)return false;"
-"\nif ( parseInt(addrParts[0], 16) & 1 )return false;"
-"\nreturn true;}"
-"\nfunction samesubnet(ip, mask){"
-"\nvar sip = ip.split(\".\");"
-"\nvar smask = mask.split(\".\");"
-"\nif ((sip.length != 4) || (smask.length != 4)){return false;}"
-"\nif ((parseInt(sip[0]) != (parseInt(sip[0]) & parseInt(smask[0]))) || "
-"\n(parseInt(sip[1]) != (parseInt(sip[1]) & parseInt(smask[1]))) || "
-"\n(parseInt(sip[2]) != (parseInt(sip[2]) & parseInt(smask[2]))) || "
-"\n(parseInt(sip[3]) != (parseInt(sip[3]) & parseInt(smask[3])))){return false;}"
-"\nelse{return true;}}"
+function $(id){return document.getElementById(id);}
+function $G(id){return $(id).value;}
+function $S(id, value){$(id).value = value;}
+function $W(obj){document.write(obj);}
+function isNameUnsafe(compareChar){
+var unsafeString = "\\\"<>%\\\\^[]`\\+\\$\\,='#&@.: \\t";
+if ( unsafeString.indexOf(compareChar) == -1&& compareChar.charCodeAt(0) > 32
+&& compareChar.charCodeAt(0) < 123 ){return false;}
+else{return true;}}
+function isWifiNameUnsafe(compareChar){
+var unsafeString = "\\\"<>%\\\\^[]`\\+\\$\\,='#&@.:\\t";
+if ( unsafeString.indexOf(compareChar) == -1&& compareChar.charCodeAt(0) >= 32
+&& compareChar.charCodeAt(0) < 123 ){return false;}
+else{return true;}}
+function isPppoeNameUnsafe(compareChar){
+var unsafeString = "\\\"\\\\\\': \\t\\n";
+if ( unsafeString.indexOf(compareChar) == -1&& compareChar.charCodeAt(0) > 32
+&& compareChar.charCodeAt(0) < 123 ){return false;}
+else{return true;}}
+function isValidIpChar(ipchar){
+var str="0123456789abcdefABCDEF ";var i = 0;
+if (ipchar.length == 0 || ipchar.length > 4){return false;}
+for(i = 0; i < ipchar.length; i++){
+if (str.indexOf(ipchar.charAt(i)) < 0){return false;}}
+return true;}
+function isValidSuffix(address){var j = 0;
+if (address == "0:0:0:0" || address == "FFFF:FFFF:FFFF:FFFF"
+|| address == "ffff:ffff:ffff:ffff")return false;
+var ipParts = address.split(':');
+if (ipParts.length != 4){return false;}
+else{for(j = 0; j < 4; j++){
+if(false == isValidIpChar(ipParts[j])){return false;}}}
+return true;}
+function isValidIpv6Prefix(prefix){
+var parts1=prefix.split('/');
+if(parts1.length > 2)return false;
+var part2=prefix.split('::');
+if(part2.length !=2)return false;
+var ipParts = part2[0].split(':');
+if(ipParts.length > 4|| part2[0]=='')return false;
+return true;}
+function compareIpv6Addr(ipv6addrmin, ipv6addrmax){
+var ip6addr1 = ipv6addrmin.split(':');
+var ip6addr2 = ipv6addrmax.split(':');
+for(i = 0; i < 4; i++){
+if (parseInt(ip6addr1[i], 16) < parseInt(ip6addr2[i], 16)) {return 1;}
+if (parseInt(ip6addr1[i], 16) > parseInt(ip6addr2[i], 16)) {return -1;}}
+return 0;}
+function isValidIpAddress(address){
+ipParts = address.split('/');
+if (ipParts.length > 2) return false;
+if (ipParts.length == 2) {num = parseInt(ipParts[1]);if (num <= 0 || num > 32)return false;}
+if (ipParts[0] == '0.0.0.0' || ipParts[0] == '255.255.255.255')return false;
+addrParts = ipParts[0].split('.');
+if ( addrParts.length != 4 ) return false;
+for (i = 0; i < 4; i++) {
+if (isNaN(addrParts[i]) || addrParts[i] ==" ")return false;
+num = parseInt(addrParts[i]);
+if ( num < 0 || num >= 255 )return false;}
+return true;}
+function isValidIpAddress6(address){ipParts = address.split('/');
+if (ipParts.length > 2) return false;
+if (ipParts.length == 2) {num = parseInt(ipParts[1]);if (num <= 0 || num > 128)return false;}
+addrParts = ipParts[0].split(':');
+if (addrParts.length < 3 || addrParts.length > 8)return false;
+for (i = 0; i < addrParts.length; i++) {
+if ( addrParts[i] != " " )num = parseInt(addrParts[i], 16);
+if ( i == 0 ) {}
+else if ( (i + 1) == addrParts.length) {
+if ( num == 0 || num == 1)return false;}
+if ( num != 0 )break;}
+return true;}
+function isValidName(name){var i = 0;
+for ( i = 0; i < name.length; i++ ) {
+if ( isNameUnsafe(name.charAt(i)) == true )return false;}
+return true;}
+function isWifiValidName(name){var i = 0;
+for ( i = 0; i < name.length; i++ ) {
+if ( isWifiNameUnsafe(name.charAt(i)) == true )return false;}
+return true;}
+function isValidPppoeName(name){var i = 0;
+for ( i = 0; i < name.length; i++ ) {
+if ( isPppoeNameUnsafe(name.charAt(i)) == true )return false;}
+return true;}
+function isValidIpAddress(address){
+if ( address== '0.0.0.0' || address == '255.255.255.255' )return false;
+var addParts=new Array();
+addrParts = address.split('.');
+if ( addrParts.length != 4 ) return false;
+for (i = 0; i < 4; i++) {
+if (isNaN(addrParts[i]) || addrParts[i] ==" ")return false;
+num = parseInt(addrParts[i]);
+if ( num < 0 || num >= 255 )return false;}
+return true;}
+function isSameSubNet(lan1Ip, lan1Mask, lan2Ip, lan2Mask){
+var count = 0;lan1a = lan1Ip.split('.');lan1m = lan1Mask.split('.');
+lan2a = lan2Ip.split('.');lan2m = lan2Mask.split('.');
+for (i = 0; i < 4; i++) {
+l1a_n = parseInt(lan1a[i]);l1m_n = parseInt(lan1m[i]);
+l2a_n = parseInt(lan2a[i]);l2m_n = parseInt(lan2m[i]);
+if ((l1a_n & l1m_n) == (l2a_n & l2m_n))count++;}
+if (count == 4)return true;
+else return false;}
+function getLeftMostZeroBitPos(num){var i = 0;
+var numArr = [128, 64, 32, 16, 8, 4, 2, 1];
+for ( i = 0; i < numArr.length; i++ )
+if ( (num & numArr[i]) == 0 )return i;
+return numArr.length;}
+function getRightMostOneBitPos(num){
+var i = 0;var numArr = [1, 2, 4, 8, 16, 32, 64, 128];
+for ( i = 0; i < numArr.length; i++ )
+if ( ((num & numArr[i]) >> i) == 1 )return (numArr.length - i - 1);
+return -1;}
+function isValidSubnetMask(mask){
+var i = 0, num = 0;var zeroBitPos = 0, oneBitPos = 0;
+var zeroBitExisted = false;
+if ( mask == '0.0.0.0' )return false;
+maskParts = mask.split('.');
+if ( maskParts.length != 4 ) return false;
+for (i = 0; i < 4; i++) {
+if ( isNaN(maskParts[i]) == true )return false;
+num = parseInt(maskParts[i]);
+if ( num < 0 || num > 255 )return false;
+if ( zeroBitExisted == true && num != 0 )return false;
+zeroBitPos = getLeftMostZeroBitPos(num);
+oneBitPos = getRightMostOneBitPos(num);
+if ( zeroBitPos < oneBitPos )return false;
+if ( zeroBitPos < 8 )zeroBitExisted = true;}
+return true;}
+function IsIpaddr(ip){
+var c;var subip = ip.split(".");
+if (4 != subip.length){return false;}
+if (ip == "0.0.0.0"){return true;}
+if (ip.length < 7 || ip.length > 15){return false;}
+for (var i = 0; i < ip.length; i++){c = ip.charCodeAt(i);
+if (c == '.'.charCodeAt(0)){continue;}
+else{if (c < 0x30 || c > 0x39){return false;}}}
+for (var i = 0; i < 4; i++){
+if (subip[i].length == 0){return false;}
+var n = parseInt(subip[i]);
+if (n < 0 || n > 255){return false;}}
+return true;}
+function CheckIpAddr(id){
+var ipaddr = $(id).value;
+if (false == IsIpaddr(ipaddr)){$(id).focus();return false;}
+return true;}
+function IP2Int(ip){
+var sip = ip.split(".");
+if (sip.length != 4){return 0;}
+var n = parseInt(sip[0])*256*256*256;
+n += parseInt(sip[1])*256*256;
+n += parseInt(sip[2])*256;
+n += parseInt(sip[3]);
+return n;}
+function CheckNetmask(id){
+if (false == CheckIpAddr(id)){return false;}
+var nip = IP2Int($(id).value);var zero = true;
+for (var i = 0; i < 32; i++){
+if (zero == false){if ((nip&(1<<i)) == 0){$(id).focus();return false;}}
+else{if ((nip&(1<<i)) != 0){zero = false;}}}
+return true;}
+function IsPort(port){var c;
+if (port.length < 1 || port.length > 5){return false;}
+for (var i = 0; i < port.length; i++){
+c = port.charCodeAt(i);
+if (c < 0x30 || c > 0x39){return false;}}
+var n = parseInt(port);
+if (n < 0 || n > 65535){return false;}
+return true;}
+function CheckPort(id){var port = $(id).value;
+if (false == IsPort(port)){$(id).focus();return false;}
+return true;}
+function isHexaDigit(digit){
+    var hexVals = new Array("0  ",   "1  ",   "2  ",   "3  ",   "4  ",   "5  ",   "6  ",   "7  ",   "8  ",   "9  ",   "A  ",   "B  ",   "C  ",   "D  ",   "E  ",   "F  ",   "a  ",   "b  ",   "c  ",   "d  ",   "e  ",   "f  ");
+    var len = hexVals.length;var i = 0;var ret = false;
+for (i = 0; i < len; i++){
+if ( digit == hexVals[i] ){ret = true;break;}}
+return ret;}
+function isValidHexKey(val, size){
+var ret = false;
+if (val.length == size) {
+for ( i = 0; i < val.length; i++ ) {
+if ( isHexaDigit(val.charAt(i)) == false ) {break;}}
+if ( i == val.length ) {ret = true;}}
+return ret;}
+function KeyPressIP(c){var ValidString = ".0123456789"
+return (-1 != ValidString.indexOf(c))?true:false;}
+function KeyPressNUM(c){
+var ValidString = "0123456789";
+return (-1 != ValidString.indexOf(c))?true:false;}
+function KeyPressHEX(c){
+var ValidString = "0123456789abcdefABCDEF";
+return (-1 != ValidString.indexOf(c))?true:false;}
+function KeyPressID(c){
+var InvalidString = "\\\"\\\\\\': \\t\\n";
+return (-1 == InvalidString.indexOf(c))?true:false;}
+function KeyPressMAC(c){
+var ValidString = ":0123456789abcdefABCDEF";
+return (-1 != ValidString.indexOf(c))?true:false;}
+function KeyPressPasswd(c){
+var InvalidString = "\\\"\\\\\\':\\t\\n";
+return (-1 == InvalidString.indexOf(c))?true:false;}
+function KeyPressURL(c){
+var InvalidString = "\\\"\\'\\t\\n";
+return (-1 == InvalidString.indexOf(c))?true:false;}
+function KeyPressIPV6(c){
+var InvalidString = "/:0123456789abcdefABCDEF";
+return (-1 != InvalidString.indexOf(c))?true:false;}
+var X_INPUT_IP = 1;
+var X_INPUT_NUM = 2;
+var X_INPUT_HEX = 3;
+var X_INPUT_ID = 4;
+var X_INPUT_MAC = 5;
+var X_INPUT_PASSWD = 6;
+var X_INPUT_URL = 7;
+var X_INPUT_IPV6 = 8;
+function OnKeyPress(e, type){
+var	k = 0;var	c;
+if (window.event){k = e.keyCode;}
+else if (e.which){k = e.which;}
+if (k == 8 || k == 0){return true;}
+c = String.fromCharCode(k);
+switch (type){
+case X_INPUT_IP:return KeyPressIP(c);
+case X_INPUT_NUM:return KeyPressNUM(c);
+case X_INPUT_HEX:return KeyPressHEX(c);
+case X_INPUT_ID:return KeyPressID(c);
+case X_INPUT_MAC:return KeyPressMAC(c);
+case X_INPUT_PASSWD:return KeyPressPasswd(c);
+case X_INPUT_URL:return KeyPressURL(c);
+case X_INPUT_IPV6:return KeyPressIPV6(c);}
+return false;}
+function ChangeEnable(var_name){
+var element = document.getElementById(var_name);
+var element_enable = document.getElementById(var_name+"enable");
+if (element.checked==true){element_enable.value="1";return true;}
+else{element_enable.value="0";return false;}}
+function isValidMacAddress(address) {
+var c = '';var num = 0;var i = 0, j = 0;var zeros = 0;
+addrParts = address.split(':');
+if ( addrParts.length != 6 ) return false;
+for (i = 0; i < 6; i++) {
+if ( addrParts[i] == '' )return false;
+for ( j = 0; j < addrParts[i].length; j++ ) {
+c = addrParts[i].toLowerCase().charAt(j);
+if ( (c >= '0' && c <= '9') ||(c >= 'a' && c <= 'f'))continue;
+else return false;}
+num = parseInt(addrParts[i], 16);
+if ( num == NaN || num < 0 || num > 255 )return false;
+if ( num == 0 )zeros++;}
+if (zeros == 6)return false;
+if ( parseInt(addrParts[0], 16) & 1 )return false;
+return true;}
+function samesubnet(ip, mask){
+var sip = ip.split(".");
+var smask = mask.split(".");
+if ((sip.length != 4) || (smask.length != 4)){return false;}
+if ((parseInt(sip[0]) != (parseInt(sip[0]) & parseInt(smask[0]))) || 
+(parseInt(sip[1]) != (parseInt(sip[1]) & parseInt(smask[1]))) || 
+(parseInt(sip[2]) != (parseInt(sip[2]) & parseInt(smask[2]))) || 
+(parseInt(sip[3]) != (parseInt(sip[3]) & parseInt(smask[3])))){return false;}
+else{return true;}}

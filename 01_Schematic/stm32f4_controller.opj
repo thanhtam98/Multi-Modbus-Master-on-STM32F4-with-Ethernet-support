@@ -307,8 +307,8 @@
       (Type "COrSchematicDoc")
       (Frame
         (Placement "44 0 1 -1 -1 -8 -31 52 1212 52 313")
-        (Scroll "-253 0")
-        (Zoom "30")
+        (Scroll "234 17")
+        (Zoom "168")
         (Occurrence "/"))
       (Path
          "E:\LVTN\ACCESSCONTROLLERBOARD\16_CONTROLLER\01_SCHEMATIC\STM32F4_CONTROLLER.DSN")
@@ -329,8 +329,8 @@
       (Type "COrSchematicDoc")
       (Frame
         (Placement "44 2 3 -1 -1 -8 -31 104 1408 104 435")
-        (Scroll "982 811")
-        (Zoom "148")
+        (Scroll "2099 8")
+        (Zoom "252")
         (Occurrence "/"))
       (Path
          "E:\LVTN\ACCESSCONTROLLERBOARD\16_CONTROLLER\01_SCHEMATIC\STM32F4_CONTROLLER.DSN")

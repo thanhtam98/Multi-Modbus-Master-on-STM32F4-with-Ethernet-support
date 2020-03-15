@@ -47,6 +47,8 @@ typedef struct
 	USHORT TimeOut;
 }TimerExpiredType;
 static USHORT usT35TimeOut50us;
+
+#ifdef SLAVE
 /* ----------------------- static functions ---------------------------------*/
 static void prvvTIMERExpiredISR(void);
 
@@ -66,7 +68,7 @@ xPortTimersInit( UCHAR port, USHORT usTim1Timerout50us )
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 		
 		NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 7;
+		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 6;
 		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 		NVIC_Init(&NVIC_InitStructure);
@@ -148,4 +150,6 @@ void TIM2_IRQHandler(void)
 	prvvTIMERExpiredISR();
   TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 }
+
+#endif
 

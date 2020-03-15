@@ -69,42 +69,52 @@ BOOL xMasterPortTimersInit(UCHAR ucPort, USHORT usTimeOut50us)
 	{
 		/* Enable TIM2 clock. */
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
+		
 		NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 6;
+		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 7;
 		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 		NVIC_Init(&NVIC_InitStructure);
-
+		
 		TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV4;
 		TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-		TIM_TimeBaseInitStructure.TIM_Period = usTimeOut50us;
-		TIM_TimeBaseInitStructure.TIM_Prescaler = 899;
+		TIM_TimeBaseInitStructure.TIM_Period = 100;
+		TIM_TimeBaseInitStructure.TIM_Prescaler = 40;
 		TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0x00;
 		TIM_TimeBaseInit(TIM2,&TIM_TimeBaseInitStructure);
+		TIM_UpdateRequestConfig(TIM2, TIM_UpdateSource_Global);
 		TIM_ARRPreloadConfig(TIM2,ENABLE);
-		TIM_SetCounter(TIM2,0);
+		TIM_SetCounter(TIM2,5);
 		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 		TIM_ITConfig(TIM2, TIM_IT_Update,ENABLE);	
+
 		bConfigStatus =1;
 	}
 	if(TimerExpired[ucPort] ==0)
 	{
-		TimerExpired[ucPort] = xQueueCreate( 1, sizeof(TimerExpiredType) );
+			TimerExpired[ucPort] = xQueueCreate( 1, sizeof(TimerExpiredType) );
+	}
+	if (ucPort == 3)
+	{
+		TIM_SetCounter(TIM2,0);
+		TIM_Cmd(TIM2,ENABLE);
 	}
 	return TRUE;
 }
 
 void vMasterPortTimersT35Enable(UCHAR ucPort)
 {
-	TimerExpiredType eEvent;
+		TimerExpiredType eEvent;
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	eEvent.Event = EVENT_TIMEEXPIRED_START;
-	eEvent.TimeOut = 35;
-	xQueueSend( TimerExpired[ucPort], &eEvent, -1);
+	eEvent.TimeOut = 100;
+	
+	xQueueOverwriteFromISR( TimerExpired[ucPort], &eEvent, &xHigherPriorityTaskWoken);
+	//xQueueSend( TimerExpired[ucPort], &eEvent, -1);
 	/* Set current timer mode, don't change it.*/
 	vMasterSetCurTimerMode(ucPort,RS485_TMODE_T35);
-	TIM_SetCounter(TIM2,0);
-	TIM_Cmd(TIM2,ENABLE);
+//	TIM_SetCounter(TIM2,0);
+//	TIM_Cmd(TIM2,ENABLE);
 }
 
 void vMasterPortTimersConvertDelayEnable(UCHAR ucPort)
@@ -116,9 +126,9 @@ void vMasterPortTimersConvertDelayEnable(UCHAR ucPort)
 	/* Set current timer mode, don't change it.*/
 	vMasterSetCurTimerMode(ucPort,RS485_TMODE_CONVERT_DELAY);
 
-	TIM_SetCounter(TIM2,0);
-	TIM_ITConfig(TIM2, TIM_DIER_UIE,ENABLE);
-	TIM_Cmd(TIM2,ENABLE); 
+//	TIM_SetCounter(TIM2,0);
+//	TIM_ITConfig(TIM2, TIM_DIER_UIE,ENABLE);
+//	TIM_Cmd(TIM2,ENABLE); 
 }
 
 void vMasterPortTimersRespondTimeoutEnable(UCHAR ucPort)
@@ -131,18 +141,26 @@ void vMasterPortTimersRespondTimeoutEnable(UCHAR ucPort)
 	vMasterSetCurTimerMode(ucPort,RS485_TMODE_RESPOND_TIMEOUT);
 
 	TIM_SetCounter(TIM2,0);
-	TIM_ITConfig(TIM2, TIM_DIER_UIE,ENABLE);
+
 	TIM_Cmd(TIM2,ENABLE); 
+	TIM_ITConfig(TIM2, TIM_DIER_UIE,ENABLE);
 }
 
 void vMasterPortTimersDisable(UCHAR ucPort)
 {
+//	TimerExpiredType eEvent;
+//	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+//	
+//	eEvent.Event = EVENT_TIMENONE;
+//	xQueuePeekFromISR(TimerExpired[ucPort],&eEvent);
+////	TIM_ITConfig(TIM2, TIM_DIER_UIE,DISABLE);
+////	TIM_Cmd(TIM2,DISABLE);
+	
 	TimerExpiredType eEvent;
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	xQueuePeekFromISR(TimerExpired[ucPort],&eEvent);
+	eEvent.TimeOut = 0;
 	eEvent.Event = EVENT_TIMENONE;
-	TIM_ITConfig(TIM2, TIM_DIER_UIE,DISABLE);
-	TIM_Cmd(TIM2,DISABLE);
+	xQueueOverwriteFromISR( TimerExpired[ucPort], &eEvent,&xHigherPriorityTaskWoken);
 }
 
 void prvvTIMERExpiredISR(void)
@@ -167,7 +185,10 @@ void prvvTIMERExpiredISR(void)
 
 void TIM2_IRQHandler(void)
 {
+	if (TimerExpired[3] != 0)
+	{
 	prvvTIMERExpiredISR();
 	TIM_ClearFlag(TIM2,TIM_FLAG_Update);
+	}
 }
 #endif
