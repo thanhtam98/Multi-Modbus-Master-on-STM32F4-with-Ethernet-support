@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "mb.h": "c",
+        "mbport.h": "c",
+        "ethernetif.h": "c"
+    }
+}

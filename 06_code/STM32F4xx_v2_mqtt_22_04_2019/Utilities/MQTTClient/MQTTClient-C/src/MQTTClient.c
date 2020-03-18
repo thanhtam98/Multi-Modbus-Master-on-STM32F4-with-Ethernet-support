@@ -54,28 +54,28 @@ static int sendPacket(MQTTClient* c, int length, Timer* timer)
 }
 
 
-void MQTTClientInit(MQTTClient* c, Network* network, unsigned int command_timeout_ms,
+void MQTTClientInit(MQTTClient* client, Network* network, unsigned int command_timeout_ms,
 		unsigned char* sendbuf, size_t sendbuf_size, unsigned char* readbuf, size_t readbuf_size)
 {
     int i;
-    c->ipstack = network;
+    client->ipstack = network;
 
     for (i = 0; i < MAX_MESSAGE_HANDLERS; ++i)
-        c->messageHandlers[i].topicFilter = 0;
-    c->command_timeout_ms = command_timeout_ms;
-    c->buf = sendbuf;
-    c->buf_size = sendbuf_size;
-    c->readbuf = readbuf;
-    c->readbuf_size = readbuf_size;
-    c->isconnected = 0;
-    c->cleansession = 0;
-    c->ping_outstanding = 0;
-    c->defaultMessageHandler = NULL;
-	  c->next_packetid = 1;
-    TimerInit(&c->last_sent);
-    TimerInit(&c->last_received);
+        client->messageHandlers[i].topicFilter = 0;
+    client->command_timeout_ms = command_timeout_ms;
+    client->buf = sendbuf;
+    client->buf_size = sendbuf_size;
+    client->readbuf = readbuf;
+    client->readbuf_size = readbuf_size;
+    client->isconnected = 0;
+    client->cleansession = 0;
+    client->ping_outstanding = 0;
+    client->defaultMessageHandler = NULL;
+	  client->next_packetid = 1;
+    TimerInit(&client->last_sent);
+    TimerInit(&client->last_received);
 #if defined(MQTT_TASK)
-	  MutexInit(&c->mutex);
+	  MutexInit(&client->mutex);
 #endif
 }
 

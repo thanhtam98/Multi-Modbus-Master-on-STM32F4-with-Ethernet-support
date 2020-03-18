@@ -210,6 +210,36 @@ extern BOOL( *pxMasterFrameCBTransmitterEmpty ) ( UCHAR ucPORT );
 extern BOOL( *pxMasterPortCBTimerExpired ) ( UCHAR ucPORT );
 
 
+/* ----------------------- Callback for the protocol stack ------------------*/
+
+/*!
+ * \brief Callback function for the porting layer when a new byte is
+ *   available.
+ *
+ * Depending upon the mode this callback function is used by the RTU or
+ * ASCII transmission layers. In any case a call to xMBPortSerialGetByte()
+ * must immediately return a new character.
+ *
+ * \return <code>TRUE</code> if a event was posted to the queue because
+ *   a new byte was received. The port implementation should wake up the
+ *   tasks which are currently blocked on the eventqueue.
+ */
+extern          BOOL( *pxMBFrameCBByteReceived ) ( void );
+
+extern          BOOL( *pxMBFrameCBTransmitterEmpty ) ( void );
+
+extern          BOOL( *pxMBPortCBTimerExpired ) ( void );
+
+/* ----------------------- TCP port functions -------------------------------*/
+BOOL            xMBTCPPortInit( USHORT usTCPPort );
+
+void            vMBTCPPortClose( void );
+
+void            vMBTCPPortDisable( void );
+
+BOOL            xMBTCPPortGetRequest( UCHAR **ppucMBTCPFrame, USHORT * usTCPLength );
+
+BOOL            xMBTCPPortSendResponse( const UCHAR *pucMBTCPFrame, USHORT usTCPLength );
 #ifdef __cplusplus
 PR_END_EXTERN_C
 #endif

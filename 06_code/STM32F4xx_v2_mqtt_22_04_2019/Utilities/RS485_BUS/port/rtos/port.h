@@ -84,5 +84,9 @@ typedef enum
 /* ----------------------- Prototypes ---------------------------------------*/
 void vRS485PortEnterCritical( void );
 void vRS485PortExitCritical( void );
-
+#ifdef MB_TCP_DEBUG
+void            vMBPortLog( eMBPortLogLevel eLevel, const CHAR * szModule,
+                            const CHAR * szFmt, ... );
+void            prvvMBTCPLogFrame( UCHAR * pucMsg, UCHAR * pucFrame, USHORT usFrameLen );
+#endif
 #endif

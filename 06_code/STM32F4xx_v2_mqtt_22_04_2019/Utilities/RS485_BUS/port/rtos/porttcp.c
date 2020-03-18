@@ -61,8 +61,8 @@ static void     prvvMBTCPPortError( void *pvArg, err_t xErr );
 
 /* ----------------------- Begin implementation -----------------------------*/
 BOOL
-{
 xMBTCPPortInit( USHORT usTCPPort )
+{
     struct tcp_pcb *pxPCBListenNew, *pxPCBListenOld;
     BOOL            bOkay = FALSE;
     USHORT          usPort;
