@@ -12,6 +12,9 @@
         "port.h": "c",
         "rs485_m.h": "c",
         "fsdata.h": "c",
-        "debug.h": "c"
+        "debug.h": "c",
+        "sockets.h": "c",
+        "ip.h": "c",
+        "tcp.h": "c"
     }
 }

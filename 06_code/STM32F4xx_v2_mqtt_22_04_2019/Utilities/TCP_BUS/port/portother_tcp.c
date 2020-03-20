@@ -24,8 +24,9 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include "user_debug.h"
+#include "port_tcp.h"
 #include "port.h"
+#include "user_debug.h"
 
 /* ----------------------- Defines ------------------------------------------*/
 #define MB_FRAME_LOG_BUFSIZE    512

@@ -131,8 +131,8 @@ Connect:
 	/* Read ip of the Server*/
 	Host_read_flash();
 	DBG("\r\n\tConnect to the Server %d.%d.%d.%d", host.IP.cdata[0], host.IP.cdata[1], host.IP.cdata[2], host.IP.cdata[3]);
-	while ((rc = NetworkConnect(&network, host.IP.idata, 1883)) != 0)
 	{
+	while ((rc = NetworkConnect(&network, host.IP.idata, 1883)) != 0)
 		DBG("\tConnect Fail\r\n\tConnect to the Server %d.%d.%d.%d", host.IP.cdata[0], host.IP.cdata[1], host.IP.cdata[2], host.IP.cdata[3]);
 		xqueuemessage.MqttMessage.value = MQTTNETWORK_CONNECT_ERROR;
 		xqueuemessage.MqttMessage.Message_type = TASK_ERROR;

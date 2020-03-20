@@ -146,6 +146,7 @@ typedef enum
 	SYS_FACTORY_RESET,
 	SYS_CONNECTSERVER,
 	SYS_RS485BUS_START,
+	SYS_TCPMBBUS_START,
 	SYS_IDE,
 }SYSTEMSTATE;
 /* Exported macro ------------------------------------------------------------*/

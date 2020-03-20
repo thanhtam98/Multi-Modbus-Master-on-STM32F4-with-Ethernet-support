@@ -22,27 +22,25 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 E:\LVTN\AccessControllerBoard\16_Controller\06_code\STM32F4xx_v2_mqtt_22_04_2019\Project\MDK-ARM\Project.uvprojx
-Project File Date:  03/14/2020
+Project File Date:  03/19/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Master'
-compiling user_rs485_app_m.c...
+compiling TCPMBbus_task.c...
 ..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(105): warning:  #1295-D: Deprecated declaration xPortEventInit - give arg types
   BOOL xPortEventInit();
 ..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(111): warning:  #1295-D: Deprecated declaration xMasterPortEventInit - give arg types
   BOOL xMasterPortEventInit();
 ..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h(53): warning:  #9-D: nested comment is not allowed
   /*!
-..\..\Utilities\RS485_BUS\port\user_rs485_app_m.c(147): warning:  #550-D: variable "iRegIndex"  was set but never used
-      USHORT          iRegIndex;
-..\..\Utilities\RS485_BUS\port\user_rs485_app_m.c(148): warning:  #550-D: variable "pusRegHoldingBuf"  was set but never used
-      USHORT *        pusRegHoldingBuf;
-..\..\Utilities\RS485_BUS\port\user_rs485_app_m.c: 5 warnings, 0 errors
+..\src\TCPMBbus_task.c(66): warning:  #550-D: variable "rc"  was set but never used
+  	int rc = 0;
+..\src\TCPMBbus_task.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=81970 RO-data=35754 RW-data=620 ZI-data=121788  
+Program Size: Code=84268 RO-data=35784 RW-data=684 ZI-data=122692  
 FromELF: creating hex file...
-".\Discover-More\Project.axf" - 0 Error(s), 5 Warning(s).
+".\Discover-More\Project.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -56,7 +54,7 @@ Package Vendor: Keil
   C:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

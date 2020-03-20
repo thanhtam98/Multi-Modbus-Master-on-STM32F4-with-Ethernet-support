@@ -14,6 +14,7 @@
 ".\discover-more\keyscan_task.o"
 ".\discover-more\rs485bus_task_m.o"
 ".\discover-more\rs485bus_task.o"
+".\discover-more\tcpmbbus_task.o"
 ".\discover-more\mqttclient.o"
 ".\discover-more\mqttfreertos.o"
 ".\discover-more\mqttconnectclient.o"
@@ -114,6 +115,11 @@
 ".\discover-more\stream_buffer.o"
 ".\discover-more\timers.o"
 ".\discover-more\startup_stm32f4xx.o"
+".\discover-more\tcp_mb.o"
+".\discover-more\mbtcp.o"
+".\discover-more\port_tcp.o"
+".\discover-more\portevent_tcp.o"
+".\discover-more\portother_tcp.o"
 --library_type=microlib --strict --scatter ".\Discover-More\Project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
