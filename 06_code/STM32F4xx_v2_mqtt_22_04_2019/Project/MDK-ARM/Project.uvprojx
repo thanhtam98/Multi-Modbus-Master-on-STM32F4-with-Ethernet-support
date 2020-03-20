@@ -457,6 +457,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\RS485bus_task.c</FilePath>
             </File>
+            <File>
+              <FileName>TCPMBbus_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\TCPMBbus_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1041,6 +1046,36 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TCP_BUS</GroupName>
+          <Files>
+            <File>
+              <FileName>tcp_mb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\tcp_mb.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbtcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\tcp\mbtcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>port_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\port_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>portevent_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\portevent_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>portother_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\portother_tcp.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1378,7 +1413,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F4XX, USE_STDPERIPH_DRIVER,__FPU_PRESENT,__FPU_USED,DHCP,USER_DEBUG,MASTER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\inc;..\src;..\..\Libraries\CMSIS\Include;..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\STM32F4x7_ETH_Driver\inc;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\Utilities\STM32F4-Discovery;..\..\Utilities\lwip_v1.3.2\port\STM32F4x7;..\..\Utilities\lwip_v1.3.2\src\include;..\..\Utilities\lwip_v1.3.2\src\include\ipv4;..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip;..\..\Utilities\lwip_v1.3.2\src\include\lwip;..\..\Utilities\lwip_v1.3.2\src\include\netif;..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS;..\..\Utilities\FreeRTOSv10.0.1\include;..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F;..\..\Utilities\MQTTClient\MQTTPacket\src;..\..\Utilities\MQTTClient\MQTTClient-C\src;..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS;..\libraries\inc;..\drivers\inc;..\..\Utilities\RS485_BUS\port\rtos;..\..\Utilities\RS485_BUS\Interface\include;..\..\Utilities\RS485_BUS\Interface\rtu;..\..\Utilities\RS485_BUS\Interface\ascii;..\..\Utilities\RS485_BUS\port</IncludePath>
+              <IncludePath>..\inc;..\src;..\..\Libraries\CMSIS\Include;..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\STM32F4x7_ETH_Driver\inc;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\Utilities\STM32F4-Discovery;..\..\Utilities\lwip_v1.3.2\port\STM32F4x7;..\..\Utilities\lwip_v1.3.2\src\include;..\..\Utilities\lwip_v1.3.2\src\include\ipv4;..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip;..\..\Utilities\lwip_v1.3.2\src\include\lwip;..\..\Utilities\lwip_v1.3.2\src\include\netif;..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS;..\..\Utilities\FreeRTOSv10.0.1\include;..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F;..\..\Utilities\MQTTClient\MQTTPacket\src;..\..\Utilities\MQTTClient\MQTTClient-C\src;..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS;..\libraries\inc;..\drivers\inc;..\..\Utilities\RS485_BUS\port\rtos;..\..\Utilities\RS485_BUS\Interface\include;..\..\Utilities\RS485_BUS\Interface\rtu;..\..\Utilities\RS485_BUS\Interface\ascii;..\..\Utilities\RS485_BUS\port;..\..\Utilities\TCP_BUS\Interface\Include;..\..\Utilities\TCP_BUS\Interface\tcp;..\..\Utilities\TCP_BUS\port;..\..\Utilities\TCP_BUS</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1496,6 +1531,11 @@
               <FileName>RS485bus_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\RS485bus_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>TCPMBbus_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\TCPMBbus_task.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2081,6 +2121,36 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TCP_BUS</GroupName>
+          <Files>
+            <File>
+              <FileName>tcp_mb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\tcp_mb.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbtcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\tcp\mbtcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>port_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\port_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>portevent_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\portevent_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>portother_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\portother_tcp.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2537,6 +2607,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\RS485bus_task.c</FilePath>
             </File>
+            <File>
+              <FileName>TCPMBbus_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\TCPMBbus_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3121,6 +3196,36 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TCP_BUS</GroupName>
+          <Files>
+            <File>
+              <FileName>tcp_mb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\tcp_mb.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbtcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\tcp\mbtcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>port_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\port_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>portevent_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\portevent_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>portother_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\port\portother_tcp.c</FilePath>
             </File>
           </Files>
         </Group>

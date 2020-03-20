@@ -46,8 +46,6 @@ PR_BEGIN_EXTERN_C
 /*! \addtogroup rs485bus_cfg
  *  @{
  */
-#define MB_TCP_ENABLED                          (  1 )
-/*! \brief The character timeout value for Modbus ASCII.
  #ifdef MASTER 
  
  /*! \brief If RS485 Master ASCII support is enabled. */

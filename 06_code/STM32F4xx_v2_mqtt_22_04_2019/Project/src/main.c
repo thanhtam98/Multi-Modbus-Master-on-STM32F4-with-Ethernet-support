@@ -61,7 +61,7 @@
 #include "hw_config.h"
 #include "stm32f4x7_eth_bsp.h"
 #include "MQTTClientTask.h"
-
+#include "TCPMBbus_task.h"
 #include "keyscan_task.h"
 #include "TaskMessage.h"
 #ifdef MASTER 
@@ -172,6 +172,8 @@ int main(void)
 
 		/* Initialize HTTP socket-server */
 		http_server_socket_init(HTTP_SERVER_TASK_PRIO);
+		
+	 vStartTCPMBTasks(configMINIMAL_STACK_SIZE,RS485_MASTER_TASK_PRIO);
 
 		/* Create RS485 Task*/
 		#ifdef MASTER 
@@ -184,6 +186,7 @@ int main(void)
 			xTaskCreate(ControlTask, "Control Task", configMINIMAL_STACK_SIZE * 2, NULL, CONTROL_TASK_PRIO, NULL);
 			xTaskCreate(modbus_test, "Test modbus Task", configMINIMAL_STACK_SIZE * 2 , NULL, CONTROL_TASK_PRIO,NULL);
 		/* Start scheduler */
+
 		vTaskStartScheduler();
 	}
 	/* We should never get here as control is now taken by the scheduler */

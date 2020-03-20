@@ -37,8 +37,8 @@
 PR_BEGIN_EXTERN_C
 #endif
 
-#include "rs485port.h"
-#include "rs485proto.h"
+#include "mbport.h"
+#include "mbproto.h"
 
 /*! \defgroup modbus Modbus
  * \code #include "mb.h" \endcode

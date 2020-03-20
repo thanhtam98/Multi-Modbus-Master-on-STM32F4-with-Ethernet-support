@@ -13,6 +13,7 @@
 #define ETH_CONFIG_TASK "ETH Task"
 #define RS485_SLAVE_TASK "RS485 SLAVE"
 #define KEYSCAN_TASK "KEY SCAN Task"
+#define TCPMB_SLAVE_TASK "TCP MB Task"
 typedef enum
 {
 	TASK_ERROR =0,
@@ -60,7 +61,13 @@ typedef struct _PORT_MESSAGE
 	MESSAGE_TYPE Message_type;
 	uint8_t value;
 }PORT_MESSAGE;
-
+typedef struct _TCPMB_MESSAGE
+	
+{
+	TaskHandle_t TaskHandle;
+	MESSAGE_TYPE Message_type;
+	uint8_t value;
+}TCPMB_MESSAGE;
 
 typedef struct _RS485_MESSAGE
 {
@@ -86,6 +93,7 @@ typedef union
 	RS485_MESSAGE RS485Message;
   KEYSCAN_MESSAGE KeyscanMessage;
   PORT_MESSAGE PortMessage;
+	TCPMB_MESSAGE TCPMbMessage;
 }xQueueMessage;
 
 typedef enum
@@ -156,6 +164,12 @@ typedef enum
 	RS485_ERROR,
 }RS485_EVENT;
 
+typedef enum
+{
+	TCPMB_NONE =0,
+	TCPMB_START_OK,
+	TCPMB_ERROR,
+}TCPMB_EVENT;
 typedef enum
 {
 	KEYSCAN_NONE =0,

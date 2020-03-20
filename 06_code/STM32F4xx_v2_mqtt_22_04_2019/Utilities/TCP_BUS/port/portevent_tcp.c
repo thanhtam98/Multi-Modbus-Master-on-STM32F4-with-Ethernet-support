@@ -29,11 +29,11 @@
  */
 
 /* ----------------------- Modbus includes ----------------------------------*/
-#include ""
+#include "tcp_mb.h"
 #include "mbport.h"
 
 /* ----------------------- Variables ----------------------------------------*/
-static eMBEventType eQueuedEvent;
+static eMBTCPEventType eQueuedEvent;
 static BOOL     xEventInQueue;
 
 /* ----------------------- Start implementation -----------------------------*/
@@ -45,7 +45,7 @@ xMBPortEventInit( void )
 }
 
 BOOL
-xMBPortEventPost( eMBEventType eEvent )
+xMBPortEventPost( eMBTCPEventType eEvent )
 {
     xEventInQueue = TRUE;
     eQueuedEvent = eEvent;
@@ -53,7 +53,7 @@ xMBPortEventPost( eMBEventType eEvent )
 }
 
 BOOL
-xMBPortEventGet( eMBEventType * eEvent )
+xMBPortEventGet( eMBTCPEventType * eEvent )
 {
     BOOL            xEventHappened = FALSE;
 
