@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Discover-More\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Discover-More\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Mar 20 12:16:36 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Mar 21 10:21:46 2020
 <BR><P>
 <H3>Maximum Stack Usage =       2080 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -264,7 +264,7 @@ Global Symbols
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ControlTask
 </UL>
 
-<P><STRONG><a name="[ad]"></a>ControlTask</STRONG> (Thumb, 1502 bytes, Stack size 24 bytes, main.o(.text))
+<P><STRONG><a name="[ad]"></a>ControlTask</STRONG> (Thumb, 1610 bytes, Stack size 24 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = ControlTask &rArr; vStartMQTTTasks &rArr; xTaskCreate &rArr; pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetHandle
@@ -5991,6 +5991,7 @@ Global Symbols
 <LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vMasterOsResInit
 <LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueCreateMutex
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MutexUnlock
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvTCPMBPublishTask
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvRS485MasterPublishTask
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvkeyscanSlavePublishTask
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvMQTTPublishTask
@@ -6119,6 +6120,7 @@ Global Symbols
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;serial_soft_trans_irq
 <LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMasterWaitRequestFinish
 <LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xMasterPortEventGet
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvTCPMBPublishTask
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvRS485MasterPublishTask
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvkeyscanSlavePublishTask
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvMQTTPublishTask
@@ -6395,6 +6397,7 @@ Global Symbols
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LwIP_DHCP_task
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ETH_ConfigTask
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ControlTask
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvTCPMBPublishTask
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvRS485MasterPublishTask
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvkeyscanSlavePublishTask
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvMQTTPublishTask
@@ -7586,10 +7589,13 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rs485bus_task_m.o(.text)
 </UL>
-<P><STRONG><a name="[67]"></a>prvTCPMBPublishTask</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, tcpmbbus_task.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = prvTCPMBPublishTask &rArr; eMBTCPInit &rArr; eMBTCPDoInit &rArr; xMBTCPPortInit &rArr; tcp_new &rArr; tcp_alloc &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_send_empty_ack &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
+<P><STRONG><a name="[67]"></a>prvTCPMBPublishTask</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, tcpmbbus_task.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 400<LI>Call Chain = prvTCPMBPublishTask &rArr; eMBTCPInit &rArr; eMBTCPDoInit &rArr; xMBTCPPortInit &rArr; tcp_new &rArr; tcp_alloc &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_send_empty_ack &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueuePeek
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetHandle
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBTCPInit
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMBPoll
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf

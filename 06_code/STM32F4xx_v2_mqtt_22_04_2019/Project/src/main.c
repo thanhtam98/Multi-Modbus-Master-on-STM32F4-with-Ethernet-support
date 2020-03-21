@@ -425,10 +425,27 @@ void ControlTask(void *pvParameters)
 			else
 			{
 				SysState = SYS_RS485BUS_START;
-				DBG("\r\nSystem start port");
+				DBG("\r\nSystem start TCP MB");
 				SysState_update = TRUE;
 			}
 			break;
+		case SYS_TCPMBBUS_START:
+			DBG(".");
+			if(xQueueReceive(xQueuemessage, &SysMessage,0) == pdPASS)
+			{
+				if(SysMessage.TCPMbMessage.TaskHandle == xTaskGetHandle(TCPMB_SLAVE_TASK))
+				{
+					if(SysMessage.TCPMbMessage.Message_type == TASK_EVENT)
+					{
+						if(SysMessage.TCPMbMessage.value == TCPMB_START_OK)
+						{
+							SysState = SYS_RS485BUS_START;
+							SysState_update = TRUE;
+							DBG("\r\n System start RS485 MB");
+						}
+					}
+				}
+			}
 		case SYS_RS485BUS_START:
 			DBG(".");
 			if (xQueueReceive(xQueuemessage, &SysMessage, 0) == pdPASS)

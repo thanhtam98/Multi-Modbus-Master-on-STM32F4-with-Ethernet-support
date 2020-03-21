@@ -34,7 +34,7 @@ extern xQueueHandle xQueuemessage;
 
 static void prvTCPMBPublishTask(void *pvParaneters)
 {
-	/*
+	
 	uint8_t SysState;
 	xQueueMessage xqueuemessage;
 	xqueuemessage.TCPMbMessage.TaskHandle = xTaskGetHandle(RS485_SLAVE_TASK);
@@ -43,15 +43,15 @@ static void prvTCPMBPublishTask(void *pvParaneters)
 		vTaskDelay(30);
 		xQueuePeek( xQueueState, &SysState, 0 );
 	}while(SysState != SYS_TCPMBBUS_START);
-*/
-	vTaskDelay(10000);
+
+	//vTaskDelay(1);
 	DBG("\r\n Starting to init TCPMB");
    eMBTCPInit(0);
-	/*
+	
   xqueuemessage.RS485Message.value = RS485_START_OK;
 	xqueuemessage.RS485Message.Message_type = TASK_EVENT;
 	xQueueSend(xQueuemessage,&xqueuemessage,0);
-	*/
+	
 	DBG("\r\n Polling");
 	while (1)
 	{
