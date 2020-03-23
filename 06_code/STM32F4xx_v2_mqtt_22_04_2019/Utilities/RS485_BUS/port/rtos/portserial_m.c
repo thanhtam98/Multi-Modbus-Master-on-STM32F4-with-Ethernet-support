@@ -254,7 +254,7 @@ void vMasterPortClose(UCHAR ucPort)
 	USART_Cmd(UartPortGet(ucPort), DISABLE);
 }
 
-BOOL xMasterPortSerialPutByte(UCHAR ucPort, CHAR ucByte)
+BOOL xMasterPortSerialPutByte(UCHAR ucPort, UCHAR ucByte)
 {
 	/* Put a byte in the UARTs transmit buffer. This function is called
 	* by the protocol stack if pxFrameCBTransmitterEmpty( ) has been
@@ -264,12 +264,12 @@ BOOL xMasterPortSerialPutByte(UCHAR ucPort, CHAR ucByte)
 	return TRUE;
 }
 
-BOOL xMasterPortSerialGetByte(UCHAR ucPort, CHAR * pucByte)
+BOOL xMasterPortSerialGetByte(UCHAR ucPort, UCHAR * pucByte)
 {
 	/* Return the byte in the UARTs receive buffer. This function is called
 	 * by the protocol stack after pxFrameCBByteReceived( ) has been called.
 	 */
-	*pucByte = (CHAR) USART_ReceiveData(UartPortGet(ucPort));
+	*pucByte = (UCHAR) USART_ReceiveData(UartPortGet(ucPort));
 	return TRUE;
 }
 

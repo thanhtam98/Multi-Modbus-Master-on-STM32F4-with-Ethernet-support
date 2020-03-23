@@ -260,7 +260,8 @@ eRS485MasterReqErrCode
 eRS485MasterReqNFCDetect( UCHAR ucPort, UCHAR * pucFrame, USHORT usLen, LONG lTimeOut );
 eRS485MasterReqErrCode
 eMBMasterReqWriteHoldingRegister( UCHAR ucPort, UCHAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut );
-
+eRS485MasterReqErrCode
+eMBMasterReqReadHoldingRegister( UCHAR ucPort, UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut );
 
 
 eRS485Exception

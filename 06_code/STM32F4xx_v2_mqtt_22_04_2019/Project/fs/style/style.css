@@ -1,34 +1,170 @@
-html, body, div, ul, li, span, p, a img, form, frameset, frame,table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;outline: 0;}
-table {border-collapse: collapse;border-spacing: 0;}
-body {font-family: arial, serif, fixedsys;}
-td {text-align: center;vertical-align: middle;}
-ol, ul {list-style: none;}
-div {text-align: left;vertical-align: middle;}
-#div_xcontent {width: 800px;}
-#div_xleft {	width: 40px;height: 100px;}
-#div_xright {width: 760px;}
-#div_xleft, #div_xright {float: left;}
-.x_form_line {width: 760px;height: 40px;line-height: 40px;}
-.x_form_line li {float: left;}
-.x_form_caption {width: 300px;font-size: 14px;text-align: left;vertical-align: middle;}
-.x_form_input {width: 460px;font-size: 14px;text-align: left;vertical-align: middle;}
-.x_form_l560 {width: 560px;font-size: 14px;text-align: left;vertical-align: middle;}
-.x_form_r200 {width: 200px;font-size: 14px;text-align: left;vertical-align: middle;}
-.x_form_text {width: 760px;font-size: 14px;text-align: left;vertical-align: middle;}
-.x_form_pad {width: 200px;}
-.x_form_left {width: 200px;font-size: 14px;text-align: left;vertical-align: middle;}
-.x_form_middle {width: 100px;font-size: 14px;text-align: right;vertical-align: middle;}
-.x_form_right {width: 260px;}
-.x_form_input input, .x_form_input select, .x_form_left input, .x_form_middle input {margin-top: 4px !important; margin-top: 8px;padding: 0;}
-.x_line {width: 760px;height: 45px;background-image: url(/images/hline.png)}
-.x_hide {display: none;}
-.x_bold {font-weight: bold;}
-.x_table {border-collapse: collapse;border: 1px solid #888888;font-size: 14px;}
-.x_table tr {height: 24px;vertical-align: middle;}
-.x_table th {border: 1px solid #888888;background-color: #cccccc;vertical-align: middle;}
-.x_table .x_td1 {border: 1px solid #aaaaaa;background-color: #efefef;vertical-align: middle;}
-.x_table .x_td2 {border: 1px solid #aaaaaa;background-color: #bdd7e7;vertical-align: middle;}
-.x_table th, .x_table td {text-align: center;}
-.x_sub_title {width: 790px;}
-.x_sub_title li {float: left;}
-.x_form_area {width: 530px;margin: 0px 33px 0px 0px;}
+html,
+body,
+div,
+ul,
+li,
+span,
+p,
+a img,
+form,
+frameset,
+frame,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  font-family: arial, serif, fixedsys;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+ol,
+ul {
+  list-style: none;
+}
+div {
+  text-align: left;
+  vertical-align: middle;
+}
+#div_xcontent {
+  width: 800px;
+}
+#div_xleft {
+  width: 40px;
+  height: 100px;
+}
+#div_xright {
+  width: 760px;
+}
+#div_xleft,
+#div_xright {
+  float: left;
+}
+.x_form_line {
+  width: 760px;
+  height: 40px;
+  line-height: 40px;
+}
+.x_form_line li {
+  float: left;
+}
+.x_form_caption {
+  width: 300px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+.x_form_input {
+  width: 460px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+.x_form_l560 {
+  width: 560px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+.x_form_r200 {
+  width: 200px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+.x_form_text {
+  width: 760px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+.x_form_pad {
+  width: 200px;
+}
+.x_form_left {
+  width: 200px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+.x_form_middle {
+  width: 100px;
+  font-size: 14px;
+  text-align: right;
+  vertical-align: middle;
+}
+.x_form_right {
+  width: 260px;
+}
+.x_form_input input,
+.x_form_input select,
+.x_form_left input,
+.x_form_middle input {
+  margin-top: 4px !important;
+  margin-top: 8px;
+  padding: 0;
+}
+.x_line {
+  width: 760px;
+  height: 45px;
+  background-image: url(/images/hline.png);
+}
+.x_hide {
+  display: none;
+}
+.x_bold {
+  font-weight: bold;
+}
+.x_table {
+  border-collapse: collapse;
+  border: 1px solid #888888;
+  font-size: 14px;
+}
+.x_table tr {
+  height: 24px;
+  vertical-align: middle;
+}
+.x_table th {
+  border: 1px solid #888888;
+  background-color: #cccccc;
+  vertical-align: middle;
+}
+.x_table .x_td1 {
+  border: 1px solid #aaaaaa;
+  background-color: #efefef;
+  vertical-align: middle;
+}
+.x_table .x_td2 {
+  border: 1px solid #aaaaaa;
+  background-color: #bdd7e7;
+  vertical-align: middle;
+}
+.x_table th,
+.x_table td {
+  text-align: center;
+}
+.x_sub_title {
+  width: 790px;
+}
+.x_sub_title li {
+  float: left;
+}
+.x_form_area {
+  width: 530px;
+  margin: 0px 33px 0px 0px;
+}

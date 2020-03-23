@@ -297,19 +297,23 @@ eRS485MasterPoll( void )
             if ( eStatus == RS485_ENOERR )
             {
                 ( void ) xMasterPortEventPost(eEvent.Port, EV_MASTER_EXECUTE );
+							 break;
             }
             else
             {
                 vMasterSetErrorType(eEvent.Port,EV_ERROR_RECEIVE_DATA);
                 ( void ) xMasterPortEventPost( eEvent.Port, EV_MASTER_ERROR_PROCESS );
+								eEvent.Event = EV_MASTER_ERROR_PROCESS;
+								break;
             }
-            break;
+           
 
         case EV_MASTER_EXECUTE:
+				{
             ucFunctionCode = ucRS485Frame[RS485_PDU_FUNC_OFF];
             eException = RS485_EX_ILLEGAL_FUNCTION;
             /* If receive frame has exception .The receive function code highest bit is 1.*/
-            if(ucFunctionCode >> 7) {
+            if(ucFunctionCode > 7) {
             	eException = (eRS485Exception)ucRS485Frame[RS485_PDU_DATA_OFF];
             }
             else
@@ -341,7 +345,7 @@ eRS485MasterPoll( void )
             	vMasterRunResRelease(eEvent.Port);
             }
             break;
-
+					}
         case EV_MASTER_FRAME_SENT:
             /* Master is busy now. */
             vRS485MasterGetPDUSndBuf( eEvent.Port,&ucRS485Frame );
@@ -352,7 +356,7 @@ eRS485MasterPoll( void )
             /* Execute specified error process callback function. */
             errorType = eMasterGetErrorType(eEvent.Port);
             vRS485MasterGetPDUSndBuf(eEvent.Port, &ucRS485Frame );
-						//DBG("\n\r RS485Bus_m.c Tao bug roi ne ");
+						DBG("\n\r RS485Bus_m.c Tao bug roi ne ");
             switch (errorType) {
               case EV_ERROR_RESPOND_TIMEOUT:
                 vMasterErrorCBRespondTimeout(eEvent.Port,

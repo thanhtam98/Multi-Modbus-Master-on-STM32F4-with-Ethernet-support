@@ -101,7 +101,7 @@ eMBMasterReqWriteHoldingRegister( UCHAR ucPort, UCHAR ucSndAddr, USHORT usRegAdd
 {
     UCHAR                 *ucMBFrame;
     eRS485MasterReqErrCode    eErrStatus = RS485_MRE_NO_ERR;
-     DBG("\r\n eMBMasterReqWriteHoldingRegister is called");
+    DBG("\r\n eMBMasterReqWriteHoldingRegister is called");
     if ( ucSndAddr > MB_MASTER_TOTAL_SLAVE_NUM ) eErrStatus = RS485_MRE_ILL_ARG;
     else if ( xMasterRunResTake(ucPort, lTimeOut ) == FALSE ) eErrStatus = RS485_MRE_MASTER_BUSY;
     else

@@ -27,36 +27,10 @@ Project File Date:  03/21/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Master'
-compiling TCPMBbus_task.c...
-..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(105): warning:  #1295-D: Deprecated declaration xPortEventInit - give arg types
-  BOOL xPortEventInit();
-..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(111): warning:  #1295-D: Deprecated declaration xMasterPortEventInit - give arg types
-  BOOL xMasterPortEventInit();
-..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h(53): warning:  #9-D: nested comment is not allowed
-  /*!
-..\src\TCPMBbus_task.c(71): warning:  #550-D: variable "rc"  was set but never used
-  	int rc = 0;
-..\src\TCPMBbus_task.c: 4 warnings, 0 errors
-compiling RS485bus_task_m.c...
-..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(105): warning:  #1295-D: Deprecated declaration xPortEventInit - give arg types
-  BOOL xPortEventInit();
-..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(111): warning:  #1295-D: Deprecated declaration xMasterPortEventInit - give arg types
-  BOOL xMasterPortEventInit();
-..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h(53): warning:  #9-D: nested comment is not allowed
-  /*!
-..\inc\RS485bus_task_m.h(30): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\src\RS485bus_task_m.c(30): warning:  #177-D: variable "port"  was declared but never referenced
-  	UCHAR port;
-..\src\RS485bus_task_m.c(63): warning:  #550-D: variable "rc"  was set but never used
-  	int rc = 0;
-..\src\RS485bus_task_m.c(71): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\src\RS485bus_task_m.c: 7 warnings, 0 errors
 compiling main.c...
-..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(105): warning:  #1295-D: Deprecated declaration xPortEventInit - give arg types
+..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(117): warning:  #1295-D: Deprecated declaration xPortEventInit - give arg types
   BOOL xPortEventInit();
-..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(111): warning:  #1295-D: Deprecated declaration xMasterPortEventInit - give arg types
+..\..\Utilities\RS485_BUS\Interface\include\rs485port.h(123): warning:  #1295-D: Deprecated declaration xMasterPortEventInit - give arg types
   BOOL xMasterPortEventInit();
 ..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h(53): warning:  #9-D: nested comment is not allowed
   /*!
@@ -69,7 +43,7 @@ compiling main.c...
 ..\src\main.c(118): warning:  #177-D: variable "j"  was declared but never referenced
   	unsigned int j;
 ..\src\main.c(203): warning:  #177-D: variable "eStatus"  was declared but never referenced
-  	eRS485ErrorCode    eStatus = RS485_ENOERR;
+  		eRS485ErrorCode    eStatus = RS485_ENOERR;
 ..\src\main.c(204): warning:  #177-D: variable "ucRS485Frame"  was declared but never referenced
   	 UCHAR *ucRS485Frame;
 ..\src\main.c(205): warning:  #177-D: variable "ucFunctionCode"  was declared but never referenced
@@ -78,19 +52,19 @@ compiling main.c...
   	 USHORT usLength;
 ..\src\main.c(207): warning:  #177-D: variable "eException"  was declared but never referenced
   	 eRS485Exception eException;
-..\src\main.c(338): warning:  #188-D: enumerated type mixed with another type
+..\src\main.c(340): warning:  #188-D: enumerated type mixed with another type
   					STM_EVAL_LEDOn(port - RS485_PORT_OFFSET);
-..\src\main.c(342): warning:  #188-D: enumerated type mixed with another type
+..\src\main.c(344): warning:  #188-D: enumerated type mixed with another type
   					STM_EVAL_LEDOff(port - RS485_PORT_OFFSET);
-..\src\main.c(304): warning:  #177-D: variable "doorstatus"  was declared but never referenced
+..\src\main.c(306): warning:  #177-D: variable "doorstatus"  was declared but never referenced
   	uint8_t doorstatus = 0;
-..\src\main.c(309): warning:  #177-D: variable "SysEvent"  was declared but never referenced
+..\src\main.c(311): warning:  #177-D: variable "SysEvent"  was declared but never referenced
   	uint8_t SysEvent;
 ..\src\main.c: 16 warnings, 0 errors
 linking...
-Program Size: Code=84864 RO-data=35784 RW-data=704 ZI-data=122728  
+Program Size: Code=84912 RO-data=35784 RW-data=704 ZI-data=122728  
 FromELF: creating hex file...
-".\Discover-More\Project.axf" - 0 Error(s), 27 Warning(s).
+".\Discover-More\Project.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -104,7 +78,7 @@ Package Vendor: Keil
   C:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

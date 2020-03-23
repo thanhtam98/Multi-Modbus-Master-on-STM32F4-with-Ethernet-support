@@ -667,6 +667,7 @@ static void http_server_socket_thread(void *arg)
     xQueueSend(xQueuemessage,&xqueuemessage,0);
     while (1) 
     {
+				vTaskDelay(10);
         setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &xTicksToWait, sizeof(xTicksToWait));
         newconn = accept(sock, (struct sockaddr *)&remotehost, (socklen_t *)&size);
         http_server_serve(newconn, (struct sockaddr_in *)&remotehost);

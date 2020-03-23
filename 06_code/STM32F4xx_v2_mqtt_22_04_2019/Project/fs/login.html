@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-Transitional.dtd" >
+<!DOCTYPE html
+    PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-Transitional.dtd">
 <html xmlns=" http://www.w3.org/1999/xhtml" xml:lang="utf-8" lang="utf-8" dir="ltr">
 
 <head>
@@ -103,9 +104,9 @@
         var XPasswdTip = '';
         var XHasLogin = '0';
         function WebLoadString() {
-        document.title = XOntName; $("XS0").innerHTML = WebString.PasswordTip;
+            document.title = XOntName; $("XS0").innerHTML = WebString.PasswordTip;
             if (XPasswdTip.length > 2)
-                XPasswdTip = WebString.password_default; 
+                XPasswdTip = WebString.password_default;
             $("tip").innerHTML = XPasswdTip;
             if (lang == 0)
                 $("XS1").innerHTML = XOntName + " " + WebString.Login;
@@ -117,7 +118,7 @@
             $S("reset", WebString.Reset);
         }
         function WebInit() {
-            
+
             if (window.self != window.top) { window.top.location.href = window.self.location.href; return; }
             $("l_tip").style.display = "none";
             if (XPasswdTip.length > 2) { $("l_tip").style.display = "block"; }
@@ -127,18 +128,18 @@
             $("username").focus();
         }
         function OnReset() {
-            
+
             $S("username", "");
             $S("password", "");
         }
         function OnLogin() {
             if ($("username").value.length == 0) {
-                
+
                 alert(WebString.username_alert);
                 $("username").focus; return;
             }
             if ($("password").value.length == 0) {
-                
+
                 alert(WebString.password_alert);
                 $("password").focus; return;
             }
@@ -151,7 +152,7 @@
             if (k == 13) { OnLogin(); }
         }
         function OnUserEnter(e) {
-            
+
             var k = 0;
             if (window.event) { k = e.keyCode; }
             else if (e.which) { k = e.which; }

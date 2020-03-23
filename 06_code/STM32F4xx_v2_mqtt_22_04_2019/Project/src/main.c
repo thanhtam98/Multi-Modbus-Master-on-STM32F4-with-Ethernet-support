@@ -177,14 +177,14 @@ int main(void)
 
 		/* Create RS485 Task*/
 		#ifdef MASTER 
-		vStartRS485busMasterTasks(configMINIMAL_STACK_SIZE * 2, RS485_MASTER_TASK_PRIO);
+		vStartRS485busMasterTasks(configMINIMAL_STACK_SIZE * 3, RS485_MASTER_TASK_PRIO);
 		#else 
 		vStartRS485busSlaveTasks(configMINIMAL_STACK_SIZE * 2, RS485_SLAVE_TASK_PRIO);
 		/* Create RGB LED Task */
 	
 		#endif 
 			xTaskCreate(ControlTask, "Control Task", configMINIMAL_STACK_SIZE * 2, NULL, CONTROL_TASK_PRIO, NULL);
-			xTaskCreate(modbus_test, "Test modbus Task", configMINIMAL_STACK_SIZE * 2 , NULL, CONTROL_TASK_PRIO,NULL);
+			xTaskCreate(modbus_test, "Test modbus Task", configMINIMAL_STACK_SIZE  , NULL, CONTROL_TASK_PRIO,NULL);
 		/* Start scheduler */
 
 		vTaskStartScheduler();
@@ -200,20 +200,22 @@ int main(void)
   */
 void modbus_test(void *pvParameters)
 {
-	eRS485ErrorCode    eStatus = RS485_ENOERR;
+		eRS485ErrorCode    eStatus = RS485_ENOERR;
 	 UCHAR *ucRS485Frame;
 	 UCHAR ucFunctionCode;
 	 USHORT usLength;
 	 eRS485Exception eException;
-	vTaskDelay(5000);
+		vTaskDelay(5000);
 	while (1)
 	{
-		eMBMasterReqWriteHoldingRegister(0x00,0x02,0x01,0xAF,1);
+		// eMBMasterReqWriteHoldingRegister(0x00,0x01,0x0100,6000,1);
+		//eStatus = eMBMasterReqReadHoldingRegister(0x00,0x01,0x2102,2,1);
 		//eRS485MasterReqPeriodicPing(0,1);
 //		CTport.Port[2].active = PORT_ENABLE;
 //		 CTport.Port[2].event |= PORT_TRANSMIT_DATA;
 	
-		DBG("Send data to Dest");
+		DBG("\r\n Send data to Dest with eStatus: ");
+		//DBG(eStatus);
 				vTaskDelay(500);
 	//	eStatus = peRS485FrameSendCur( 1, 0x00 ,ucRS485Frame, usLength);
 	}
@@ -545,6 +547,7 @@ void ControlTask(void *pvParameters)
 			//SysState = SYS_IDE;
 			break;
 		case SYS_IDE:
+			vTaskDelay(10);
 			if (xQueueReceive(xQueuemessage, &SysMessage, 0) == pdPASS)
 			{
 				if (SysMessage.TaskMessage.Message_type == TASK_ERROR)

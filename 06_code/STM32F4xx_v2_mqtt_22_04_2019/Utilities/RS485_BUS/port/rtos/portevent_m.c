@@ -69,7 +69,7 @@ xMasterPortEventGet( PortMasterEventType * eEvent )
 {
 	PortMasterEventType recvedEvent;
 	BaseType_t xMasterQueuePeek = pdFALSE;
-	if(xQueuePeek(xMasterOsEvent,&recvedEvent,-1) == pdPASS)
+	if(xQueuePeek(xMasterOsEvent,&recvedEvent,0) == pdPASS)
 	{
 		
 	eEvent->Port = recvedEvent.Port;
@@ -236,7 +236,7 @@ eRS485MasterReqErrCode eMasterWaitRequestFinish( UCHAR ucPort ) {
     /* waiting for OS event */
 loop:
 		
-	xQueuePeek(xMasterOsEvent,&recvedEvent,1);
+	xQueuePeek(xMasterOsEvent,&recvedEvent,0);
   if(recvedEvent.Port == ucPort)
   {
     switch (recvedEvent.Event)

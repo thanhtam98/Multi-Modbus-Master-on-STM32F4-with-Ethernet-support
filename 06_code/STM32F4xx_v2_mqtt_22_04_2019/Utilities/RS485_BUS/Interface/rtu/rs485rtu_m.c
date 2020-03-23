@@ -272,7 +272,7 @@ xRS485MasterRTUReceiveFSM( UCHAR ucPort )
     assert_param(( eSndState[ucPort] == STATE_M_TX_IDLE ) || ( eSndState[ucPort] == STATE_M_TX_XFWR ));
 
     /* Always read the character. */
-    ( void )xMasterPortSerialGetByte(ucPort, ( CHAR * ) & ucByte );
+    ( void )xMasterPortSerialGetByte(ucPort,  &ucByte );
 
     switch ( eRcvState[ucPort] )
     {
@@ -355,7 +355,7 @@ xRS485MasterRTUTransmitFSM( UCHAR ucPort )
             xMasterPortSerialPutByte( ucPort,( CHAR )*pucMasterSndBufferCur[ucPort] );
             pucMasterSndBufferCur[ucPort]++;  /* next byte in sendbuffer. */
             usMasterSndBufferCount[ucPort]--;
-					vTaskDelay(1);
+						vTaskDelay(1);
         }
         else
         {

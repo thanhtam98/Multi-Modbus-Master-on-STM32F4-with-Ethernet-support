@@ -55,17 +55,29 @@ typedef struct
 	eEventType Event;
 }PortEventType;
 
+//typedef enum
+//{
+//    EV_MASTER_READY                    = 1<<0,  /*!< Startup finished. */
+//    EV_MASTER_FRAME_RECEIVED           = 1<<1,  /*!< Frame received. */
+//    EV_MASTER_EXECUTE                  = 1<<2,  /*!< Execute function. */
+//    EV_MASTER_FRAME_SENT               = 1<<3,  /*!< Frame sent. */
+//    EV_MASTER_ERROR_PROCESS            = 1<<4,  /*!< Frame error process. */
+//    EV_MASTER_PROCESS_SUCESS           = 1<<5,  /*!< Request process success. */
+//    EV_MASTER_ERROR_RESPOND_TIMEOUT    = 1<<6,  /*!< Request respond timeout. */
+//    EV_MASTER_ERROR_RECEIVE_DATA       = 1<<7,  /*!< Request receive data error. */
+//    EV_MASTER_ERROR_EXECUTE_FUNCTION   = 1<<8,  /*!< Request execute function error. */
+//} eMasterEventType;
 typedef enum
 {
-    EV_MASTER_READY                    = 1<<0,  /*!< Startup finished. */
-    EV_MASTER_FRAME_RECEIVED           = 1<<1,  /*!< Frame received. */
-    EV_MASTER_EXECUTE                  = 1<<2,  /*!< Execute function. */
-    EV_MASTER_FRAME_SENT               = 1<<3,  /*!< Frame sent. */
-    EV_MASTER_ERROR_PROCESS            = 1<<4,  /*!< Frame error process. */
-    EV_MASTER_PROCESS_SUCESS           = 1<<5,  /*!< Request process success. */
-    EV_MASTER_ERROR_RESPOND_TIMEOUT    = 1<<6,  /*!< Request respond timeout. */
-    EV_MASTER_ERROR_RECEIVE_DATA       = 1<<7,  /*!< Request receive data error. */
-    EV_MASTER_ERROR_EXECUTE_FUNCTION   = 1<<8,  /*!< Request execute function error. */
+    EV_MASTER_READY                   =0 ,  /*!< Startup finished. */
+    EV_MASTER_FRAME_RECEIVED           ,  /*!< Frame received. */
+    EV_MASTER_EXECUTE                  ,  /*!< Execute function. */
+    EV_MASTER_FRAME_SENT               ,  /*!< Frame sent. */
+    EV_MASTER_ERROR_PROCESS            ,  /*!< Frame error process. */
+    EV_MASTER_PROCESS_SUCESS           ,  /*!< Request process success. */
+    EV_MASTER_ERROR_RESPOND_TIMEOUT    ,  /*!< Request respond timeout. */
+    EV_MASTER_ERROR_RECEIVE_DATA       ,  /*!< Request receive data error. */
+    EV_MASTER_ERROR_EXECUTE_FUNCTION   ,  /*!< Request execute function error. */
 } eMasterEventType;
 
 typedef struct
@@ -145,9 +157,9 @@ void xMasterPortSerialClose( UCHAR ucPort );
 
 void vMasterPortSerialEnable( UCHAR ucPort, BOOL xRxEnable, BOOL xTxEnable );
 
-BOOL xMasterPortSerialGetByte( UCHAR ucPort, CHAR * pucByte );
+BOOL xMasterPortSerialGetByte( UCHAR ucPort, UCHAR * pucByte );
 
-BOOL xMasterPortSerialPutByte( UCHAR ucPort, CHAR ucByte );
+BOOL xMasterPortSerialPutByte( UCHAR ucPort, UCHAR ucByte );
 
 /* ----------------------- Timers functions ---------------------------------*/
 BOOL xPortTimersInit( UCHAR port,USHORT usTimeOut50us );
