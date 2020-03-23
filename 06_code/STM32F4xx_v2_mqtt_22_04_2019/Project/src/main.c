@@ -424,7 +424,7 @@ void ControlTask(void *pvParameters)
 			}
 			else
 			{
-				SysState = SYS_RS485BUS_START;
+				SysState = SYS_TCPMBBUS_START;
 				DBG("\r\nSystem start TCP MB");
 				SysState_update = TRUE;
 			}

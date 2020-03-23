@@ -54,7 +54,7 @@ static void prvRS485MasterPublishTask(void *pvParameters)
 	while (1)
 	{
 		eRS485MasterPoll();
-
+		vTaskDelay(25);
 	}
 }
 

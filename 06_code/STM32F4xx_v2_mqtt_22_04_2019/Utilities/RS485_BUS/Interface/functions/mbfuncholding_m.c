@@ -80,7 +80,7 @@
 #define MB_PDU_FUNC_READWRITE_SIZE_MIN          ( 1 )
 
 /* ----------------------- Static functions ---------------------------------*/
-eRS485Exception    prveMBError2Exception( eRS485ErrorCode eErrorCode );
+eRS485Exception    prveRS485Error2Exception( eRS485ErrorCode eErrorCode );
 
 /* ----------------------- Start implementation -----------------------------*/
 #if RS485_MASTER_RTU_ENABLED > 0 || RS485_MASTER_ASCII_ENABLED > 0
@@ -280,14 +280,14 @@ eMBMasterReqWriteMultipleHoldingRegister( UCHAR ucSndAddr,
  */
 
 // typedef eRS485Exception( *pxRS485MasterFunctionHandler ) ( UCHAR ucPort, UCHAR ucRcvAddress, UCHAR * pucFrame, USHORT * pusLength );
-eMBMasterReqErrCode
+eRS485MasterReqErrCode
 eMBMasterReqReadHoldingRegister( UCHAR ucPort, UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut )
 {
     UCHAR                 *ucMBFrame;
-    eRS485MasterReqErrCode    eErrStatus = MB_MRE_NO_ERR;
+    eRS485MasterReqErrCode    eErrStatus = RS485_MRE_NO_ERR;
 
-    if ( ucSndAddr > MB_MASTER_TOTAL_SLAVE_NUM ) eErrStatus = MB_MRE_ILL_ARG;
-    else if ( xMasterRunResTake( ucPort, lTimeOut ) == FALSE ) eErrStatus = MB_MRE_MASTER_BUSY;
+    if ( ucSndAddr > MB_MASTER_TOTAL_SLAVE_NUM ) eErrStatus = RS485_MRE_ILL_ARG;
+    else if ( xMasterRunResTake( ucPort, lTimeOut ) == FALSE ) eErrStatus = RS485_MRE_MASTER_BUSY;
     else
     {
 		vRS485MasterGetPDUSndBuf(ucPort, &ucMBFrame);
@@ -318,22 +318,22 @@ eMBMasterReqReadHoldingRegister( UCHAR ucPort, UCHAR ucSndAddr, USHORT usRegAddr
 // typedef eRS485Exception( *pxRS485MasterFunctionHandler ) ( UCHAR ucPort, UCHAR ucRcvAddress, UCHAR * pucFrame, USHORT * pusLength );
 // eMBException
 // eMBMasterFuncWriteHoldingRegister( UCHAR ucPort, UCHAR ucRcvAddress, UCHAR * pucFrame, USHORT * usLen )
-eMBException
+eRS485Exception
 eMBMasterFuncReadHoldingRegister( UCHAR ucPort, UCHAR ucRcvAddress,  UCHAR * pucFrame, USHORT * usLen )
 {
     UCHAR          *ucMBFrame;
     USHORT          usRegAddress;
     USHORT          usRegCount;
 
-    eMBException    eStatus = RS485_EX_NONE;
-    eMBErrorCode    eRegStatus;
+    eRS485Exception    eStatus = RS485_EX_NONE;
+    eRS485ErrorCode    eRegStatus;
     DBG("eMBMasterFuncReadHoldingRegister is called");
     /* If this request is broadcast, and it's read mode. This request don't need execute. */
     // if ( xMBMasterRequestIsBroadcast() )
     // {
     // 	eStatus = MB_EX_NONE;
     // }
-    else if( *usLen >= RS485_PDU_SIZE_MIN + RS485_PDU_FUNC_READ_SIZE_MIN )
+    if( *usLen >= RS485_PDU_SIZE_MIN + MB_PDU_FUNC_READ_SIZE_MIN )
     {
 		vRS485MasterGetPDUSndBuf(ucPort, &ucMBFrame);
         usRegAddress = ( USHORT )( ucMBFrame[MB_PDU_REQ_READ_ADDR_OFF] << 8 );
@@ -349,8 +349,8 @@ eMBMasterFuncReadHoldingRegister( UCHAR ucPort, UCHAR ucRcvAddress,  UCHAR * puc
         if( ( usRegCount >= 1 ) && ( 2 * usRegCount == pucFrame[MB_PDU_FUNC_READ_BYTECNT_OFF] ) )
         {
             /* Make callback to fill the buffer. */
-            eRegStatus = eMBMasterRegHoldingCB(ucPort, &pucFrame[MB_PDU_FUNC_READ_VALUES_OFF], usRegAddress, usRegCount, MB_REG_READ );
-            /* If an error occured convert it into a Modbus exception. */
+            eRegStatus = eRS485MasterRegHoldingCB(ucPort,usRegAddress ,&pucFrame[MB_PDU_FUNC_READ_VALUES_OFF], 1, RS485_REG_READ );
+/* If an error occured convert it into a Modbus exception. */
             if( eRegStatus != RS485_ENOERR )
             {
                 eStatus = prveMBError2Exception( eRegStatus );
@@ -485,8 +485,8 @@ eMBMasterFuncReadHoldingRegister( UCHAR ucPort, UCHAR ucRcvAddress,  UCHAR * puc
 // }
 
 #endif
-eRS485Exception    prveMBError2Exception( eRS485ErrorCode eErrorCode )
-{
-    DBG(eErrorCode);
-}
+//eRS485Exception    prveRS485Error2Exception( eRS485ErrorCode eErrorCode )
+//{
+//    DBG(eErrorCode);
+//}
 #endif

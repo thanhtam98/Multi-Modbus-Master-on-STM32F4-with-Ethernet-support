@@ -150,9 +150,6 @@ eRS485ErrorCode eRS485MasterRegHoldingCB(UCHAR ucPort, USHORT usAddress, UCHAR *
     USHORT          REG_HOLDING_NREGS;
     USHORT          usRegHoldStart;
 
-    
-	
-	
 	pusRegHoldingBuf = usMRegHoldBuf[ucPort][ucRS485MasterGetDestAddress(ucPort) - 1];
     REG_HOLDING_START = M_REG_HOLDING_START;
     REG_HOLDING_NREGS = M_REG_HOLDING_NREGS;
