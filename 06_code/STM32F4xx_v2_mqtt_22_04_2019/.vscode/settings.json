@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "api_server.h": "c",
+        "user_rs485_app.h": "c",
+        "rs485proto.h": "c",
+        "rs485utils.h": "c",
+        "rs485frame.h": "c",
+        "rs485.h": "c",
+        "rs485config.h": "c",
+        "main.h": "c",
+        "rs485bus_task.h": "c",
+        "port.h": "c",
+        "rs485_m.h": "c",
+        "fsdata.h": "c",
+        "debug.h": "c",
+        "sockets.h": "c",
+        "ip.h": "c",
+        "tcp.h": "c"
+    }
+}

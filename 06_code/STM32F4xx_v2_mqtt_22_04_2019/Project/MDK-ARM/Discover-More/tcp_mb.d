@@ -1,0 +1,14 @@
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\tcp_mb.c
+.\discover-more\tcp_mb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\discover-more\tcp_mb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\RS485_BUS\port\rtos\port.h
+.\discover-more\tcp_mb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+.\discover-more\tcp_mb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\discover-more\tcp_mb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\Include\tcp_mb.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\Include\mbport.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\Include\mbproto.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\Include\mbconfig.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\Include\mbframe.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\Include\mbfunc.h
+.\discover-more\tcp_mb.o: ..\..\Utilities\TCP_BUS\Interface\tcp\mbtcp.h
