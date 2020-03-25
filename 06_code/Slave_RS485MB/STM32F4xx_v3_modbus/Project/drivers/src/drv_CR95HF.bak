@@ -1,0 +1,379 @@
+/**
+  ******************************************************************************
+  * @file    drv_CR95HF.c 
+  * @author  MMY Application Team
+  * @version V1.1
+  * @date    18/07/2011
+  * @brief   This file provides set of firmaware functions to manage communication between MCU and CR95HF 
+  ******************************************************************************
+  * @copy
+  *
+  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  *
+  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  */ 
+
+/* Includes ------------------------------------------------------------------------------ */
+#include "lib_CR95HF.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
+#include "stm32f4xx_spi.h"
+#include "hw_config.h"
+#include "string.h"
+#include "drv_spi.h"
+#include "drv_uart.h"
+#include "stm32f4xx_usart.h"
+#include "drv_LED.h"
+#include "miscellaneous.h"
+
+/** @addtogroup Drivers
+ * 	@{
+ */
+
+/** @addtogroup CR95HF
+ * 	@{
+ */
+
+
+
+/** @defgroup drvCR95HF_Private_Variables
+ * @{
+ */
+
+/** 
+ * @brief Allows you to know when data are available in the CR95HF buffer
+ */ 
+__IO bool								CR95HF_DataReady;
+/** 
+ * @brief Avoids to stuck the program
+ */
+__IO bool								CR95HF_TimeOut;
+/** 
+ * @brief Contains the CR95HF interface (SPI or UART)
+ */
+__IO CR95HF_INTERFACE	CR95HF_Interface;
+										 
+extern ReaderConfigStruct			ReaderConfig;
+
+/**
+ * @}
+ */
+
+/** @defgroup drvCR95HF_Private_Functions
+ *  @{
+ */
+static void CR95HF_RCC_Config_SPI			(void);
+static void CR95HF_GPIO_Config_SPI			(void);
+static void CR95HF_Structure_Config_SPI		(void);
+static void CR95HF_RCC_Config_UART			(void);
+static void CR95HF_GPIO_Config_UART			(void);
+static void CR95HF_Send_SPI_ResetByte		(void);
+
+/** @defgroup drvCR95HF_Functions
+ *  @{
+ */
+
+
+
+/**
+ *	@brief  Initializes clock
+ *  @param  void
+ *  @retval void 
+ */
+static void CR95HF_RCC_Config_SPI(void)
+{	
+	// Enable GPIO clock 
+  RCC_AHB1PeriphClockCmd( 	CR95HF_SPI_SCK_GPIO_CLK  | 
+							CR95HF_SPI_MISO_GPIO_CLK | 
+							CR95HF_SPI_MOSI_GPIO_CLK , 
+							ENABLE);
+	
+  // Enable SPI clock  
+  RCC_APB2PeriphClockCmd(CR95HF_SPI_CLK, ENABLE);
+}
+
+/**
+ *	@brief  Initializes GPIO for SPI communication
+ *  @param  None
+ *  @retval None 
+ */
+static void CR95HF_GPIO_Config_SPI(void)
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+	
+	/* Configure SPI pins: SCK, MISO and MOSI */
+	GPIO_InitStructure.GPIO_Pin 			= CR95HF_SPI_SCK_PIN;
+	GPIO_InitStructure.GPIO_Speed 			= GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode 			= GPIO_Mode_AF;
+	GPIO_Init(CR95HF_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin 			= CR95HF_SPI_MOSI_PIN;
+	GPIO_Init(CR95HF_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);
+
+
+//	GPIO_InitStructure.GPIO_Mode 			= GPIO_Mode_AF_PP;
+	GPIO_InitStructure.GPIO_Mode 			= GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Pin 			= CR95HF_SPI_MISO_PIN;
+	GPIO_Init(CR95HF_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
+	
+	/* Configure I/O for Chip select */		
+	GPIO_InitStructure.GPIO_Pin   			= CR95HF_NCS_PIN;
+	GPIO_InitStructure.GPIO_Mode  			= GPIO_Mode_OUT; 
+	GPIO_Init(CR95HF_NCS_GPIO_PORT, &GPIO_InitStructure);
+	
+	/* NSS  = High Level  */ 
+	GPIO_SetBits(CR95HF_NCS_GPIO_PORT, CR95HF_NCS_PIN);  
+}
+
+/**
+ *	@brief  SET SPI protocol
+ *  @param  None
+ *  @retval None 
+ */ 
+static void CR95HF_Structure_Config_SPI( void )
+{
+SPI_InitTypeDef  SPI_InitStructure;
+
+	/* Initialize the SPI with default values */
+	SPI_StructInit(&SPI_InitStructure);
+
+	/* SPI Config master with NSS manages by software using the SSI bit*/
+	SPI_InitStructure.SPI_Mode 				= SPI_Mode_Master;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_64;
+	SPI_InitStructure.SPI_NSS  				= SPI_NSS_Soft;
+	SPI_InitStructure.SPI_CPOL 				= SPI_CPOL_Low;
+	SPI_InitStructure.SPI_CPHA 				= SPI_CPHA_1Edge;
+
+	/* Init the SPI BRIDGE */
+	SPI_Init(CR95HF_SPI, &SPI_InitStructure);
+
+ 	/* Enable SPI */
+	SPI_Cmd(CR95HF_SPI, ENABLE);
+}
+
+/**
+ *	@brief  Initializes the SPI in order to communicate with the CR95HF
+ *  @param  void
+ *  @retval void 
+ */
+void SPI_Initialization(void)
+{
+	SPI_I2S_DeInit(CR95HF_SPI);
+	//enables SPI and GPIO clocks
+	CR95HF_RCC_Config_SPI( );
+   // configures GPIO A PA4-7 as SPI bus  (NSS = HL)
+	CR95HF_GPIO_Config_SPI( );	
+	CR95HF_Structure_Config_SPI( );
+}
+
+/**
+ *	@brief  Initializes clock for UART
+ *  @param  None
+ *  @retval None 
+ */
+static void CR95HF_RCC_Config_UART(void)
+{	
+	//Enable GPIO clock
+	RCC_AHB1PeriphClockCmd(CR95HF_UART_TX_GPIO_CLK | CR95HF_UART_RX_GPIO_CLK,ENABLE);
+	//enable USART 2 clock
+	RCC_APB2PeriphClockCmd(CR95HF_UART_CLK , ENABLE);
+							   
+}
+
+/**
+ *	@brief  Initializes GPIO for UART configuration
+ *  @param  None
+ *  @retval None 
+ */
+static void CR95HF_GPIO_Config_UART(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	uint8_t GPIO_PinSource;
+	uint16_t pin_temp;
+	GPIO_InitStructure.GPIO_Pin 	= CR95HF_IRQin_PIN;
+	GPIO_InitStructure.GPIO_Speed 	= GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode 	= GPIO_Mode_OUT;
+	GPIO_Init(CR95HF_IRQin_GPIO_PORT, &GPIO_InitStructure);
+	
+	CR95HF_IRQIN_LOW();
+	delay_ms(2);
+	CR95HF_IRQIN_HIGH();
+	
+	/* Configure USART Tx as ouput alternate function push pull*/
+	GPIO_InitStructure.GPIO_Pin 	= CR95HF_UART_RX_PIN;
+	GPIO_InitStructure.GPIO_Speed 	= GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode 	= GPIO_Mode_AF;
+	GPIO_Init(CR95HF_UART_RX_GPIO_PORT, &GPIO_InitStructure);
+	pin_temp = CR95HF_UART_RX_PIN;
+	for(GPIO_PinSource=0;GPIO_PinSource<16;GPIO_PinSource++)
+	{
+		pin_temp >>=1;
+		if(pin_temp==0)
+		{
+			break;
+		}
+	}
+	GPIO_PinAFConfig(CR95HF_UART_RX_GPIO_PORT, GPIO_PinSource, GPIO_AF_USART1);
+	
+	
+	/* Configure USART Rx as input floating */
+	GPIO_InitStructure.GPIO_Pin = CR95HF_UART_TX_PIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_Init(CR95HF_UART_TX_GPIO_PORT, &GPIO_InitStructure); 
+	pin_temp = CR95HF_UART_TX_PIN;
+	for(GPIO_PinSource=0;GPIO_PinSource<16;GPIO_PinSource++)
+	{
+		pin_temp >>=1;
+		if(pin_temp==0)
+		{
+			break;
+		}
+	}
+	GPIO_PinAFConfig(CR95HF_UART_TX_GPIO_PORT, GPIO_PinSource, GPIO_AF_USART1);
+}
+
+/**
+ *	@brief  set protocol 
+ *  @param  BaudRate : baud rate of UART 
+ *  @retval None 
+ */ 
+void CR95HF_Structure_Config_UART(const uint32_t BaudRate)
+{
+	USART_InitTypeDef USART_InitStructure;
+
+  USART_InitStructure.USART_BaudRate 						= BaudRate;
+  USART_InitStructure.USART_WordLength 					= USART_WordLength_8b;
+  USART_InitStructure.USART_StopBits 						= USART_StopBits_1;
+  USART_InitStructure.USART_Parity 							= USART_Parity_No;
+  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+  USART_InitStructure.USART_Mode 								= USART_Mode_Rx | USART_Mode_Tx;
+
+  /* Configure USART */
+  USART_Init(CR95HF_UART, &USART_InitStructure);
+  
+  /* Enable the USART */
+  USART_Cmd(CR95HF_UART, ENABLE);
+}
+
+/**
+ *	@brief  Initializes UART in order to communicate with CR95HF
+ *  @param  BaudRate : baud rate of UART 
+ *  @retval None 
+ */
+void UART_Initialization(const uint32_t BaudRate)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	
+	USART_DeInit(CR95HF_UART);
+	// enables clock
+	CR95HF_RCC_Config_UART( );
+	// configures RX and TX 
+	// TX : alternate function push pull
+	// RX : floating input 
+	CR95HF_GPIO_Config_UART( );
+	// set protcol 
+	CR95HF_Structure_Config_UART(BaudRate );
+		/* Configure I/O for Chip select */		
+	GPIO_InitStructure.GPIO_Pin   			= GPIO_Pin_13;
+	GPIO_InitStructure.GPIO_Mode  			= GPIO_Mode_OUT; 
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+	
+	/* NSS  = High Level  */ 
+	GPIO_SetBits(GPIOC, GPIO_Pin_13);
+}
+
+/**  
+* @brief  	initilize the CR95HF config structure
+* @param  	ReaderConfig : pointer on reader configuration structure
+* @retval 	CR95HF_SUCCESS_CODE 	: Ok
+*/
+int8_t InitCR95HFConfigStructure (ReaderConfigStruct *ReaderConfig)
+{
+	ReaderConfig->Interface = CR95HF_INTERFACE_UART;
+	ReaderConfig->SpiMode = SPI_POLLING;
+  	return CR95HF_SUCCESS_CODE;
+}
+
+/**
+ *	@brief  Send a negative pulse on IRQin pin
+ *  @param  none
+ *  @return None
+ */
+void CR95HF_Send_IRQIN_NegativePulse(void)
+{
+	if (ReaderConfig.Interface == CR95HF_INTERFACE_SPI)
+	{
+		CR95HF_IRQIN_HIGH() ;
+		//delay_ms(1);
+		delayHighPriority_ms(1);
+		CR95HF_IRQIN_LOW() ;
+		//delay_ms(1);
+		delayHighPriority_ms(1);
+		CR95HF_IRQIN_HIGH() ;
+	}
+	else if (ReaderConfig.Interface == CR95HF_INTERFACE_UART)
+	{
+	 	UART_SendByte(CR95HF_UART, 0x00);
+	}
+}
+
+
+/**
+ *	@brief  Send a reset command over SPI bus
+ *  @param  none
+ *  @return None
+ */
+static void CR95HF_Send_SPI_ResetByte(void)
+{
+	// Send reset control byte
+	SPI_SendReceiveByte(CR95HF_SPI, CR95HF_COMMAND_RESET);
+}
+
+
+/**
+ *	@brief  Send a reset sequence over SPI bus (Reset command + wait 5µs + negative pulse on IRQin.
+ *  @param  none
+ *  @return None
+ */
+void CR95HF_Send_SPI_ResetSequence(void)
+{
+	if (ReaderConfig.Interface == CR95HF_INTERFACE_SPI)
+	{
+		// Select CR95HF over SPI 
+		CR95HF_NSS_LOW();
+		// Send reset control byte
+		CR95HF_Send_SPI_ResetByte();
+		// Deselect CR95HF over SPI 
+		CR95HF_NSS_HIGH();
+		delayHighPriority_ms(10);
+		// send a pulse on IRQ_in
+		CR95HF_Send_IRQIN_NegativePulse();
+	}
+}
+
+
+/**
+ *	@brief  returns the value of interface pin. 
+ *	@brief  Low level means UART bus was choose.
+ *	@brief  High level means SPI bus was choose.
+ *  @return Bit_RESET 	: 0
+ *  @return Bit_SET 	: 1
+ */
+int8_t CR95HF_GetInterfacePinState (void)
+{
+	
+	return CR95HF_GET_INTERFACE();
+	
+}
+
+/**
+ * @}
+ */
+
+/******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+

@@ -88,7 +88,13 @@ PR_BEGIN_EXTERN_C
     MB_ASCII,                   /*!< ASCII transmission mode. */
     MB_TCP                      /*!< TCP mode. */
 } eMBMode;
-
+typedef enum
+{
+PORT_PAR_NONE,
+PORT_PAR_ODD,
+PORT_PAR_EVEN
+}
+eMBParity;
 /*! \ingroup modbus
  * \brief If register should be written or read.
  *
