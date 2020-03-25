@@ -18,6 +18,7 @@
 .\discover-more\porttimer.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\porttimer.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\porttimer.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\porttimer.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\porttimer.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\discover-more\porttimer.o: ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\porttimer.o: ..\..\Libraries\CMSIS\Include\core_cm4.h

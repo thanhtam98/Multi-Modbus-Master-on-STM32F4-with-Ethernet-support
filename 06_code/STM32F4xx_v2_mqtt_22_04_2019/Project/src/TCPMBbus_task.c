@@ -5,7 +5,7 @@ Author: NTT BK
 Brief: Modbus tcp handle task
 */
 
-
+#define MB_TCP_PSEUDO_ADDRESS   1
 
 /* Standard includes. */
 #include <stdint.h>
@@ -29,34 +29,39 @@ Brief: Modbus tcp handle task
 #include "user_debug.h"
 #include "stm32f4_discovery.h"
 
+static UCHAR Vendor[14] = "WVC 0.2 - dB14";
+
 extern xQueueHandle xQueueState;
 extern xQueueHandle xQueuemessage;
 
 static void prvTCPMBPublishTask(void *pvParaneters)
 {
-	/*
+	
 	uint8_t SysState;
 	xQueueMessage xqueuemessage;
-	xqueuemessage.TCPMbMessage.TaskHandle = xTaskGetHandle(RS485_SLAVE_TASK);
+	xqueuemessage.TCPMbMessage.TaskHandle = xTaskGetHandle(TCPMB_SLAVE_TASK);
 	do
 	{
 		vTaskDelay(30);
 		xQueuePeek( xQueueState, &SysState, 0 );
 	}while(SysState != SYS_TCPMBBUS_START);
-*/
-	vTaskDelay(10000);
+
+	//vTaskDelay(1);
 	DBG("\r\n Starting to init TCPMB");
+	eMBSetSlaveID( MB_TCP_PSEUDO_ADDRESS, TRUE, Vendor, sizeof(Vendor) );
    eMBTCPInit(0);
-	/*
-  xqueuemessage.RS485Message.value = RS485_START_OK;
-	xqueuemessage.RS485Message.Message_type = TASK_EVENT;
+	
+	
+  xqueuemessage.TCPMbMessage.value = TCPMB_START_OK;
+	xqueuemessage.TCPMbMessage.Message_type = TASK_EVENT;
 	xQueueSend(xQueuemessage,&xqueuemessage,0);
-	*/
+	
 	DBG("\r\n Polling");
+	
 	while (1)
 	{
-			eMBPoll();
-    vTaskDelay(25	);
+		eMBPoll();
+    vTaskDelay(25);
 	}
 	
 }

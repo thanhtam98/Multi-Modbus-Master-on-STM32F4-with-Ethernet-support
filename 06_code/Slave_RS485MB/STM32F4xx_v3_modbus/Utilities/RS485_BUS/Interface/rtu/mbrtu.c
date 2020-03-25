@@ -66,19 +66,19 @@ typedef enum
 } eMBSndState;
 
 /* ----------------------- Static variables ---------------------------------*/
-static volatile eMBSndState eSndState[RS485_PORT_NUMBER];
-static volatile eMBRcvState eRcvState[RS485_PORT_NUMBER];
+static volatile eMBSndState eSndState;
+static volatile eMBRcvState eRcvState;
 
-volatile UCHAR   ucRTUBuf[RS485_PORT_NUMBER][MB_SER_PDU_SIZE_MAX];
+volatile UCHAR   ucRTUBuf[MB_SER_PDU_SIZE_MAX];
 
-static volatile UCHAR *pucSndBufferCur[RS485_PORT_NUMBER];
-static volatile USHORT usSndBufferCount[RS485_PORT_NUMBER];
+static volatile UCHAR *pucSndBufferCur;
+static volatile USHORT usSndBufferCount;
 
-static volatile USHORT usRcvBufferPos[RS485_PORT_NUMBER];
+static volatile USHORT usRcvBufferPos;
 
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode
-eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )
+eMBRTUInit( UCHAR ucSlaveAddress,ULONG ulBaudRate, eMBParity eParity )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
     ULONG           usTimerT35_50us;
@@ -87,7 +87,7 @@ eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity ePar
     ENTER_CRITICAL_SECTION(  );
 
     /* Modbus RTU uses 8 Databits. */
-    if( xMBPortSerialInit( ucPort, ulBaudRate, 8, eParity ) != TRUE )
+    if( xMBPortSerialInit( ulBaudRate, 8, eParity ) != TRUE )
     {
         eStatus = MB_EPORTERR;
     }
@@ -123,7 +123,7 @@ eMBRTUInit( UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity ePar
 }
 
 void
-eMBRTUStart( UCHAR ucPort )
+eMBRTUStart( void )
 {
     ENTER_CRITICAL_SECTION(  );
     /* Initially the receiver is in the state STATE_RX_INIT. we start
@@ -131,9 +131,9 @@ eMBRTUStart( UCHAR ucPort )
      * to STATE_RX_IDLE. This makes sure that we delay startup of the
      * modbus protocol stack until the bus is free.
      */
-    eRcvState[ucPort] = STATE_RX_INIT;
+    eRcvState = STATE_RX_INIT;
     vMBPortSerialEnable( TRUE, FALSE );
-    vMBPortTimersEnable(  );
+    vMBPortTimersEnable();
 
     EXIT_CRITICAL_SECTION(  );
 }

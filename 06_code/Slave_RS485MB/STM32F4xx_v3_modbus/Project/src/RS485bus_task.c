@@ -36,8 +36,7 @@ static void prvRS485SlavePublishTask(void *pvParameters)
 		xQueuePeek( xQueueState, &SysState, 0 );
 	}while(SysState != SYS_RS485BUS_START);
     
-	eMBInit(MB_RTU, PORT1, ucIvtDeltaAdr, 9600 ,MB_PAR_NONE);
-	eMBInit(MB_RTU, PORT2, ucIvtDeltaAdr, 9600 ,MB_PAR_NONE);
+	eMBInit(MB_RTU, ucIvtDeltaAdr, 9600 ,MB_PAR_NONE);
 	eMBEnable();
     
   	xqueuemessage.RS485Message.value = RS485_START_OK;

@@ -54,10 +54,10 @@ void serial_rx_ind(void);
 #define EVENT_SERIAL_TRANS_START    (1<<0)
 #define SERIAL_THREAD_PRIO          (configMAX_PRIORITIES - 2)
 /* ----------------------- static functions ---------------------------------*/
-USART_TypeDef * UartPortGet(UCHAR ucPORT);
+USART_TypeDef * UartPortGet();
 IRQn_Type IRQPortGet(UCHAR ucPORT);
-static void prvvPORTTxReadyISR(UCHAR ucPort);
-static void prvvPORTRxISR(UCHAR ucPort);
+static void prvvPORTTxReadyISR();
+static void prvvPORTRxISR();
 static void serial_soft_trans_irq(void* parameter);
 
 

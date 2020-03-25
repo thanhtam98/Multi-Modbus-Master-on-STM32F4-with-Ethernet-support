@@ -40,3 +40,4 @@
 .\discover-more\portother.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 .\discover-more\portother.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\portother.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\portother.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h

@@ -8,6 +8,7 @@
 .\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\rtu\mbrtu.h
 .\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\include\mbframe.h
 .\discover-more\mbrtu.o: ..\..\Utilities\RS485_BUS\Interface\rtu\mbcrc.h

@@ -61,6 +61,7 @@
 .\discover-more\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 .\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\mbconfig.h
 .\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\mbframe.h
 .\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\mbutils.h

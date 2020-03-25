@@ -13,7 +13,7 @@
  *   documentation and/or other materials provided with the distribution.
  * 3. The name of the author may not be used to endorse or promote products
  *   derived from this software without specific prior written permission.
- * 
+ * eMBInit
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * IF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
@@ -103,5 +103,5 @@ vMBPortClose( void )
     extern void vPortSerialClose( );
     extern void vPortTimersDisable( );
     vPortSerialClose(  );
-    vPortTimersDisable(  );
+    vMBPortTimersDisable(  );
 }

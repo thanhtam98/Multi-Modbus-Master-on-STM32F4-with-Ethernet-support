@@ -49,12 +49,9 @@
 #include "stm32f4_discovery.h"
 #include "stm32f4xx_uartstdio.h"
 #include "stm32f4xx_flash.h"
-
 #include "user_debug.h"
 #include "hw_config.h"
-
 #include "RS485bus_task.h"
-
 #include "TaskMessage.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -134,7 +131,7 @@ int main(void)
 
 		/* Create RS485 Task*/
 		vStartRS485busSlaveTasks(configMINIMAL_STACK_SIZE * 2, RS485_SLAVE_TASK_PRIO);
-		/* Create RGB LED Task */
+		/* Create Main system control Task */
 		xTaskCreate(ControlTask, "Control Task", configMINIMAL_STACK_SIZE * 2, NULL, CONTROL_TASK_PRIO, NULL);
 
 		/* Start scheduler */
@@ -262,7 +259,7 @@ void ControlTask(void *pvParameters)
 			DBG("\r\nSystem start");
 			SysState = SYS_RS485BUS_START;
 			SysState_update = TRUE;
-			DBG("\r\nSystem connect Ethernet");
+			DBG("\r\nSystem start RS485Bus");
 			break;
 		
 		case SYS_RS485BUS_START:

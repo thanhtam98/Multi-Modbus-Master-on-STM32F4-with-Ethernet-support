@@ -120,6 +120,13 @@
 ".\discover-more\port_tcp.o"
 ".\discover-more\portevent_tcp.o"
 ".\discover-more\portother_tcp.o"
+".\discover-more\mbfunccoils.o"
+".\discover-more\mbfuncdiag.o"
+".\discover-more\mbfuncdisc.o"
+".\discover-more\mbfuncholding.o"
+".\discover-more\mbfuncinput.o"
+".\discover-more\mbfuncother.o"
+".\discover-more\mbutils.o"
 --library_type=microlib --strict --scatter ".\Discover-More\Project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -1,0 +1,315 @@
+<!-- 
+"/portconfig.html"
+"0"
+"HTTP/1.0 200 OKrn"
+"Server: lwIP/1.3.1 (http://savannah.nongnu.org/projects/lwip)rn"
+"Content-type: text/htmlrnrn"
+"<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-Transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="utf-8" lang="utf-8" dir="ltr">" -->
+
+<head>
+    <title>Port Config</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="script/dataport.js"></script>
+    <style type="text/css">
+        html,
+        body,
+        div,
+        ul,
+        li,
+        span,
+        p,
+        a img,
+        form,
+        frameset,
+        frame,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        body {
+            font-family: arial, serif, fixedsys;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        div {
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        input {
+            margin-top: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 120px;
+        }
+
+        div {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #l_tip {
+            width: 800px;
+            height: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        #tip {
+            color: #ff0000;
+        }
+
+        #l_content {
+            width: 450px;
+            height: 240px;
+            border: 2px solid #ffffff;
+            font-size: 14px;
+        }
+
+        #l_content li {
+            float: left;
+        }
+
+        .l_title {
+            width: 450px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ffffff;
+        }
+
+        .l_pad {
+            width: 450px;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .l_user,
+        .l_pass {
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .l_foot1 {
+            width: 135px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #ffffff;
+        }
+
+        .l_foot2 {
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #ffffff;
+        }
+
+        .l_foot3 {
+            width: 40px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #ffffff;
+        }
+    </style>
+    <script type="text/javascript">
+        function $(id) { return document.getElementById(id); }
+        function $G(id) { return $(id).value; }
+        function $S(id, value) { $(id).value = value; }
+        function $W(obj) { document.write(obj); }
+        function WebLoadString() {
+            try {
+                document.getElementById("port0_type").selectedIndex = eval("DataString.port0_type");
+                document.getElementById("port0_active").selectedIndex = eval("DataString.port0_active");
+                document.getElementById("port1_type").selectedIndex = eval("DataString.port1_type");
+                document.getElementById("port1_active").selectedIndex = eval("DataString.port1_active");
+                document.getElementById("port2_type").selectedIndex = eval("DataString.port2_type");
+                document.getElementById("port2_active").selectedIndex = eval("DataString.port2_active");
+                document.getElementById("port3_type").selectedIndex = eval("DataString.port3_type");
+                document.getElementById("port3_active").selectedIndex = eval("DataString.port3_active");
+                document.getElementById("port4_type").selectedIndex = eval("DataString.port4_type");
+                document.getElementById("port4_active").selectedIndex = eval("DataString.port4_active");
+                document.getElementById("port5_type").selectedIndex = eval("DataString.port5_type");
+                document.getElementById("port5_active").selectedIndex = eval("DataString.port5_active");
+            } catch (error) { }
+        }
+        function XWebInit() {
+            $("XForm").action = "/portconfig";
+            WebLoadString();
+        }
+        function XDoSubmit() {
+            $("XForm").action = "/portconfig";
+            $("XForm").submit();
+        }
+        function XDoClear() {
+            WebLoadString();
+            return true;
+        }</script>
+</head>
+
+<body id="x_root_body" onload="XWebInit();">
+    <div style="height: 10px"></div>
+    <div id="l_content">
+        <form id="XForm" name="XForm" method="post" action="">
+            <input type="hidden" id="XWebPageName" name="PortConfig" value="Save">
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port Name</span></li>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port Type</span></li>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Active</span></li>
+            </ul>
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port 0:</span></li>
+                <li class="l_pass"><select disabled id="port0_type" name="port0_type">
+                        <option value="0">None</option>
+                        <option value="1">Exit Button</option>
+                        <option value="2">Entry Reader</option>
+                        <option value="3">Exit Reader</option>
+                        <option value="4">Entry Keypad</option>
+                        <option value="5">Exit Keypad</option>
+                        <option value="6">Door Detect</option>
+                        <select>
+                </li>
+                <li>
+                <li class="l_pass"><select id="port0_active" name="port0_active">
+                        <option value="0">Disable</option>
+                        <option value="1">Enable</option>
+                        <select>
+                </li>
+            </ul>
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port 1:</span></li>
+                <li class="l_pass"><select disabled id="port1_type" name="port1_type">
+                        <option value="0">None</option>
+                        <option value="1">Exit Button</option>
+                        <option value="2">Entry Reader</option>
+                        <option value="3">Exit Reader</option>
+                        <option value="4">Entry Keypad</option>
+                        <option value="5">Exit Keypad</option>
+                        <option value="6">Door Detect</option>
+                        <select>
+                </li>
+                <li>
+                <li class="l_pass"><select id="port1_active" name="port1_active">
+                        <option value="0">Disable</option>
+                        <option value="1">Enable</option>
+                        <select>
+                </li>
+            </ul>
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port 2:</span></li>
+                <li class="l_pass"><select id="port2_type" name="port2_type">
+                        <option value="0">None</option>
+                        <option value="1">Exit Button</option>
+                        <option value="2">Entry Reader</option>
+                        <option value="3">Exit Reader</option>
+                        <option value="4">Entry Keypad</option>
+                        <option value="5">Exit Keypad</option>
+                        <option value="6">Door Detect</option>
+                        <select>
+                </li>
+                <li>
+                <li class="l_pass"><select id="port2_active" name="port2_active">
+                        <option value="0">Disable</option>
+                        <option value="1">Enable</option>
+                        <select>
+                </li>
+            </ul>
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port 3:</span></li>
+                <li class="l_pass"><select id="port3_type" name="port3_type">
+                        <option value="0">None</option>
+                        <option value="1">Exit Button</option>
+                        <option value="2">Entry Reader</option>
+                        <option value="3">Exit Reader</option>
+                        <option value="4">Entry Keypad</option>
+                        <option value="5">Exit Keypad</option>
+                        <option value="6">Door Detect</option>
+                        <select>
+                </li>
+                <li>
+                <li class="l_pass"><select id="port3_active" name="port3_active">
+                        <option value="0">Disable</option>
+                        <option value="1">Enable</option>
+                        <select>
+                </li>
+            </ul>
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port 4:</span></li>
+                <li class="l_pass"><select id="port4_type" name="port4_type">
+                        <option value="0">None</option>
+                        <option value="1">Exit Button</option>
+                        <option value="2">Entry Reader</option>
+                        <option value="3">Exit Reader</option>
+                        <option value="4">Entry Keypad</option>
+                        <option value="5">Exit Keypad</option>
+                        <option value="6">Door Detect</option>
+                        <select>
+                </li>
+                <li>
+                <li class="l_pass"><select id="port4_active" name="port4_active">
+                        <option value="0">Disable</option>
+                        <option value="1">Enable</option>
+                        <select>
+                </li>
+            </ul>
+            <ul>
+                <li class="l_pass"><span style="width: 150px;" id="XS2">Port 5:</span></li>
+                <li class="l_pass"><select id="port5_type" name="port5_type">
+                        <option value="0">None</option>
+                        <option value="1">Exit Button</option>
+                        <option value="2">Entry Reader</option>
+                        <option value="3">Exit Reader</option>
+                        <option value="4">Entry Keypad</option>
+                        <option value="5">Exit Keypad</option>
+                        <option value="6">Door Detect</option>
+                        <select>
+                </li>
+                <li>
+                <li class="l_pass"><select id="port5_active" name="port5_active">
+                        <option value="0">Disable</option>
+                        <option value="1">Enable</option>
+                        <select>
+                </li>
+            </ul>
+            <ul>
+                <li class="l_pad"></li>
+            </ul>
+            <ul>
+                <li class="l_foot1"></li>
+                <li class="l_foot2"><input id="Save" name="Save" type="button" value="Save" onclick="XDoSubmit();"></li>
+                <li class="l_foot3"></li>
+                <li class="l_foot2"><input id="clear" name="Clear" type="button" value="Clear" onclick="XDoClear();">
+                </li>
+                <li class="l_foot1"></li>
+            </ul>
+        </form>
+    </div>
+</body>
+
+</html>

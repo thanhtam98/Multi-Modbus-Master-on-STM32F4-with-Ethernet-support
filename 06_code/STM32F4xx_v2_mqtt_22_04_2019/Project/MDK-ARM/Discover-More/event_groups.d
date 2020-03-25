@@ -1,0 +1,15 @@
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\event_groups.c
+.\discover-more\event_groups.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h
+.\discover-more\event_groups.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\event_groups.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\event_groups.o: ..\inc\FreeRTOSConfig.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\portable.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F\portmacro.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\mpu_wrappers.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\task.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\list.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\timers.h
+.\discover-more\event_groups.o: ..\..\Utilities\FreeRTOSv10.0.1\include\event_groups.h

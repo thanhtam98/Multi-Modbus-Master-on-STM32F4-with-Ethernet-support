@@ -92,8 +92,7 @@ eMBFuncReadDiscreteInputs( UCHAR * pucFrame, USHORT * usLen )
             *pucFrameCur++ = ucNBytes;
             *usLen += 1;
 
-            eRegStatus =
-                eMBRegDiscreteCB( pucFrameCur, usRegAddress, usDiscreteCnt );
+         //   eRegStatus =           eMBRegDiscreteCB( pucFrameCur, usRegAddress, usDiscreteCnt );
 
             /* If an error occured convert it into a Modbus exception. */
             if( eRegStatus != MB_ENOERR )

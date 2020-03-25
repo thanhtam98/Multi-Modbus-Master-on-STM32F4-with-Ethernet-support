@@ -1077,6 +1077,41 @@
               <FileType>1</FileType>
               <FilePath>..\..\Utilities\TCP_BUS\port\portother_tcp.c</FilePath>
             </File>
+            <File>
+              <FileName>mbfunccoils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfunccoils.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdiag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncdiag.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncdisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncholding.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncholding.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncinput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncinput.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncother.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncother.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbutils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbutils.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2152,6 +2187,41 @@
               <FileType>1</FileType>
               <FilePath>..\..\Utilities\TCP_BUS\port\portother_tcp.c</FilePath>
             </File>
+            <File>
+              <FileName>mbfunccoils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfunccoils.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdiag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncdiag.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncdisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncholding.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncholding.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncinput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncinput.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncother.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncother.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbutils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbutils.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -3226,6 +3296,41 @@
               <FileName>portother_tcp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Utilities\TCP_BUS\port\portother_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfunccoils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfunccoils.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdiag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncdiag.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncdisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncholding.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncholding.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncinput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncinput.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncother.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbfuncother.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbutils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Utilities\TCP_BUS\Interface\function\mbutils.c</FilePath>
             </File>
           </Files>
         </Group>

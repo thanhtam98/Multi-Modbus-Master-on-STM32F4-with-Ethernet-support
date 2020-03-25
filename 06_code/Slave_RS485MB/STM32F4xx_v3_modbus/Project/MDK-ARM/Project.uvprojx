@@ -467,6 +467,36 @@
               <FileType>1</FileType>
               <FilePath>..\..\Utilities\RS485_BUS\Interface\functions\mbutils.c</FilePath>
             </File>
+            <File>
+              <FileName>mbfunccoils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\STM32F4xx_v3_modbus\Utilities\RS485_BUS\Interface\functions\mbfunccoils.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdiag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\STM32F4xx_v3_modbus\Utilities\RS485_BUS\Interface\functions\mbfuncdiag.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\STM32F4xx_v3_modbus\Utilities\RS485_BUS\Interface\functions\mbfuncdisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncholding.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\STM32F4xx_v3_modbus\Utilities\RS485_BUS\Interface\functions\mbfuncholding.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncinput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\STM32F4xx_v3_modbus\Utilities\RS485_BUS\Interface\functions\mbfuncinput.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncother.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\STM32F4xx_v3_modbus\Utilities\RS485_BUS\Interface\functions\mbfuncother.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

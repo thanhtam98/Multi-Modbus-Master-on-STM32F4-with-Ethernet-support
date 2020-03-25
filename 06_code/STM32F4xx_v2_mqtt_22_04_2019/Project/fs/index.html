@@ -1,0 +1,94 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-Transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="utf-8" lang="utf-8" dir="ltr">
+
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="style/style.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="script/common.js"></script>
+	<style type="text/css">
+	</style>
+
+	<script type="text/javascript">
+//<![CDATA[
+//]]>
+	</script>
+
+	<script type="text/javascript">
+		function XLogout() {
+			top.window.location.href = "/login.html";
+		}
+		function XWebInit() {
+			setTimeout("XLogout();", 120 * 1000);
+		}
+
+		function XDoSubmit() {
+			top.window.location.href = "/login.html";
+		}
+	</script>
+</head>
+
+<body id="x_root_body" onload="XWebInit();">
+	<form id="XForm" name="XForm" method="post" action="">
+		<input id="XWebPageName" name="XWebPageName" type="hidden" value="" />
+		<div id="div_xcontent">
+			<div id="div_xleft"></div>
+			<div id="div_xright">
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS0"></li>
+					<li class="x_form_input" id="dev_name"></li>
+				</ul>
+				<div id="div_vendor" style="display:none">
+					<ul class="x_form_line">
+						<li class="x_form_caption" id="XS5"></li>
+						<li class="x_form_input" id="vendor"></li>
+					</ul>
+				</div>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS1"></li>
+					<li class="x_form_input" id="dev_sn"></li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS2"></li>
+					<li class="x_form_input" id="dev_hw"></li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS3"></li>
+					<li class="x_form_input" id="dev_sw"></li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS6"></li>
+					<li class="x_form_input" id="tx_opt_power"></li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS7"></li>
+					<li class="x_form_input" id="rx_opt_power"></li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS8"></li>
+					<li class="x_form_input" id="tx_tem"></li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_caption" id="XS4"></li>
+					<li class="x_form_input" id="uptime"></li>
+				</ul>
+				<ul style="height: 20px; line-height: 20px;">
+					<li>&nbsp;</li>
+				</ul>
+				<ul class="x_form_line">
+					<li class="x_form_pad">&nbsp;</li>
+					<li class="x_form_left">
+						<input type="button" style="width: 80px;" id="save" value="save" onclick="XDoSubmit();" />
+					</li>
+					<li class="x_form_middle">
+						<input type="button" style="width: 80px;" id="cancel" value="refresh" onclick="XDoCancel();" />
+					</li>
+					<li class="x_form_right">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>

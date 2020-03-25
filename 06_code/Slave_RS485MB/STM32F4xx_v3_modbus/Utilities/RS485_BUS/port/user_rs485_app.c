@@ -39,44 +39,45 @@ extern CTPORT_TypeDef CTport;
  *
  * @return result
  */
-eRS485ErrorCode eResponseChecksCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
-{
-  eRS485ErrorCode    eStatus = RS485_ENOERR;
-	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
-	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
-	if(pucBuffer[0] == CHECK_STATUS)
-  {
-    if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
-    {
-      pucBuffer[1] = 0x00;
-    }
-    else
-    {
-      pucBuffer[1] = 0x01;
-    }
-  }
-  else if((pucBuffer[0] == CHECK_UID_AUTHENTICATION)|(pucBuffer[0] == CHECK_KEY_AUTHENTICATION))
-  {
-    if(CTport.Port[ucPort + RS485_PORT_OFFSET].event & PORT_TRANSMIT_DATA)
-    {
-      if((CTport.Port[ucPort + RS485_PORT_OFFSET].event & 0x0F) == PORT_AUTH_PASS)
-      {
-        pucBuffer[1] = 0x00;
-      }
-      else
-      {
-        pucBuffer[1] = 0x01;
-      }
-      CTport.Port[ucPort + RS485_PORT_OFFSET].event = PORT_EVENT_NONE;
-    }
-    else
-    {
-       pucBuffer[1] = 0x02;
-    }
-  }
-	*ucLen = 2;
-  return eStatus;
-}
+// 
+//eRS485ErrorCode eResponseChecksCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+//{
+//  eRS485ErrorCode    eStatus = RS485_ENOERR;
+//	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
+//	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
+//	if(pucBuffer[0] == CHECK_STATUS)
+//  {
+//    if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
+//    {
+//      pucBuffer[1] = 0x00;
+//    }
+//    else
+//    {
+//      pucBuffer[1] = 0x01;
+//    }
+//  }
+//  else if((pucBuffer[0] == CHECK_UID_AUTHENTICATION)|(pucBuffer[0] == CHECK_KEY_AUTHENTICATION))
+//  {
+//    if(CTport.Port[ucPort + RS485_PORT_OFFSET].event & PORT_TRANSMIT_DATA)
+//    {
+//      if((CTport.Port[ucPort + RS485_PORT_OFFSET].event & 0x0F) == PORT_AUTH_PASS)
+//      {
+//        pucBuffer[1] = 0x00;
+//      }
+//      else
+//      {
+//        pucBuffer[1] = 0x01;
+//      }
+//      CTport.Port[ucPort + RS485_PORT_OFFSET].event = PORT_EVENT_NONE;
+//    }
+//    else
+//    {
+//       pucBuffer[1] = 0x02;
+//    }
+//  }
+//	*ucLen = 2;
+//  return eStatus;
+//}
 
 /**
  * RS485bus slave Periodic Ping callback function.
@@ -87,22 +88,22 @@ eRS485ErrorCode eResponseChecksCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen
  *
  * @return result
  */
-eRS485ErrorCode ePeriodicPingCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
-{
-  eRS485ErrorCode    eStatus = RS485_ENOERR;
-	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
-	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
-  if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
-  {
-    pucBuffer[0] = RS485_EX_ACK;
-  }
-  else
-  {
-    pucBuffer[0] = RS485_EX_NAK;
-  }
-	*ucLen = 1;
-  return eStatus;
-}
+//eRS485ErrorCode ePeriodicPingCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+//{
+//  eRS485ErrorCode    eStatus = RS485_ENOERR;
+//	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
+//	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
+//  if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
+//  {
+//    pucBuffer[0] = RS485_EX_ACK;
+//  }
+//  else
+//  {
+//    pucBuffer[0] = RS485_EX_NAK;
+//  }
+//	*ucLen = 1;
+//  return eStatus;
+//}
 
 
 /**
@@ -113,44 +114,44 @@ eRS485ErrorCode ePeriodicPingCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
  * @param usLen Length
  *
  * @return result
- */
-eRS485ErrorCode eFuncNFCDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
-{
-  eRS485ErrorCode    eStatus = RS485_ENOERR;
-	UCHAR i;
-	
-	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
-	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
-	if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
-	{
-    if((CTport.Port[ucPort + RS485_PORT_OFFSET].event & PORT_RECEIVE_DATA) ==0 )
-    {
-      if(pucBuffer[0]< PORT_BUFFER_NUMBER)
-      {
-        for(i=0;i<=pucBuffer[0];i++)
-        {
-          CTport.Port[ucPort + RS485_PORT_OFFSET].Buffer[i] = pucBuffer[i];
-        }
-        CTport.Port[ucPort + RS485_PORT_OFFSET].event = PORT_RECEIVE_DATA;
-        pucBuffer[0] = RS485_EX_ACK;
-      }
-      else
-      {
-        eStatus = RS485_ENORES;
-      }
-    }
-    else
-    {
-      eStatus = RS485_ENORES;
-    }
-	}
-	else
-	{
-		pucBuffer[0] = RS485_EX_NAK;
-	}
-	*ucLen = 1;
-  return eStatus;
-}
+//*/
+//eRS485ErrorCode eFuncNFCDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+//{
+//eRS485ErrorCode    eStatus = RS485_ENOERR;
+//UCHAR i;
+
+//CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
+//CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
+//if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
+//{
+//	if((CTport.Port[ucPort + RS485_PORT_OFFSET].event & PORT_RECEIVE_DATA) ==0 )
+//	{
+//		if(pucBuffer[0]< PORT_BUFFER_NUMBER)
+//		{
+//			for(i=0;i<=pucBuffer[0];i++)
+//			{
+//				CTport.Port[ucPort + RS485_PORT_OFFSET].Buffer[i] = pucBuffer[i];
+//			}
+//			CTport.Port[ucPort + RS485_PORT_OFFSET].event = PORT_RECEIVE_DATA;
+//			pucBuffer[0] = RS485_EX_ACK;
+//		}
+//		else
+//		{
+//			eStatus = RS485_ENORES;
+//		}
+//	}
+//	else
+//	{
+//		eStatus = RS485_ENORES;
+//	}
+//}
+//else
+//{
+//	pucBuffer[0] = RS485_EX_NAK;
+//}
+//*ucLen = 1;
+//return eStatus;
+//}
 
 /**
  * RS485bus slave function key enter callback function.
@@ -161,42 +162,42 @@ eRS485ErrorCode eFuncNFCDetectCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
  *
  * @return result
  */
-eRS485ErrorCode eFuncKeyEnterCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
-{
-  eRS485ErrorCode    eStatus = RS485_ENOERR;
-	UCHAR i;
-	
-	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
-	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
-	if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
-	{
-    if((CTport.Port[ucPort + RS485_PORT_OFFSET].event & PORT_RECEIVE_DATA) ==0 )
-    {
-      if(pucBuffer[0]< PORT_BUFFER_NUMBER)
-      {
-        for(i=0;i<=pucBuffer[0];i++)
-        {
-          CTport.Port[ucPort + RS485_PORT_OFFSET].Buffer[i] = pucBuffer[i];
-        }
-        CTport.Port[ucPort + RS485_PORT_OFFSET].event = PORT_RECEIVE_DATA;
-        pucBuffer[0] = RS485_EX_ACK;
-      }
-      else
-      {
-        eStatus = RS485_ENORES;
-      }
-    }
-    else
-    {
-      eStatus = RS485_ENORES;
-    }
-	}
-	else
-	{
-		pucBuffer[0] = RS485_EX_NAK;
-	}
-	*ucLen = 1;
-  return eStatus;
-}
+//eRS485ErrorCode eFuncKeyEnterCB( UCHAR ucPort,UCHAR * pucBuffer, UCHAR * ucLen)
+//{
+//  eRS485ErrorCode    eStatus = RS485_ENOERR;
+//	UCHAR i;
+//	
+//	CTport.Port[ucPort + RS485_PORT_OFFSET].timeout = PORT_TIMEOUT;
+//	CTport.Port[ucPort + RS485_PORT_OFFSET].status = PORT_OK;
+//	if(CTport.Port[ucPort + RS485_PORT_OFFSET].active == PORT_ENABLE)
+//	{
+//    if((CTport.Port[ucPort + RS485_PORT_OFFSET].event & PORT_RECEIVE_DATA) ==0 )
+//    {
+//      if(pucBuffer[0]< PORT_BUFFER_NUMBER)
+//      {
+//        for(i=0;i<=pucBuffer[0];i++)
+//        {
+//          CTport.Port[ucPort + RS485_PORT_OFFSET].Buffer[i] = pucBuffer[i];
+//        }
+//        CTport.Port[ucPort + RS485_PORT_OFFSET].event = PORT_RECEIVE_DATA;
+//        pucBuffer[0] = RS485_EX_ACK;
+//      }
+//      else
+//      {
+//        eStatus = RS485_ENORES;
+//      }
+//    }
+//    else
+//    {
+//      eStatus = RS485_ENORES;
+//    }
+//	}
+//	else
+//	{
+//		pucBuffer[0] = RS485_EX_NAK;
+//	}
+//	*ucLen = 1;
+//  return eStatus;
+//}
 
 

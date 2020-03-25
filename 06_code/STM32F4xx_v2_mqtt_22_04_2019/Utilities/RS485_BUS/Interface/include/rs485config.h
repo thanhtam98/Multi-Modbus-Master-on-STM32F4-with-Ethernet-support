@@ -88,7 +88,7 @@ PR_BEGIN_EXTERN_C
 
 /*! \brief If the <em>Modbus write holding </em> function should be enabled. */
 #define MB_FUNC_WRITE_HOLDING_ENABLED          ( 1)
-
+#define MB_FUNC_READ_HOLDING_ENABLED          ( 1)
 /*! @} */
 #ifdef __cplusplus
     PR_END_EXTERN_C

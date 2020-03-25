@@ -30,12 +30,12 @@
 
 #ifndef _MB_RTU_H
 #define _MB_RTU_H
-
+#include "mb.h"
 #ifdef __cplusplus
 PR_BEGIN_EXTERN_C
 #endif
-    eMBErrorCode eMBRTUInit( UCHAR slaveAddress, UCHAR ucPort, ULONG ulBaudRate,
-                             eMBParity eParity );
+
+ eMBErrorCode eMBRTUInit(  UCHAR slaveAddress,  ULONG ulBaudRate, eMBParity eParity );
 void            eMBRTUStart( void );
 void            eMBRTUStop( void );
 eMBErrorCode    eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength );

@@ -55,6 +55,7 @@
 .\discover-more\rs485bus_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 .\discover-more\rs485bus_task.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\rs485bus_task.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\rs485bus_task.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\rs485bus_task.o: ..\inc\TaskMessage.h
 .\discover-more\rs485bus_task.o: ..\inc\RS485bus_task.h
 .\discover-more\rs485bus_task.o: ..\..\Utilities\RS485_BUS\port\user_rs485_app.h

@@ -58,8 +58,8 @@ void RS485_RDE_GPIO_Configuration(UCHAR ucPort);
 void RS485_RDE_DIR(UCHAR ucPort, ACTION action);
 USART_TypeDef * UartPortGet(UCHAR ucPORT);
 IRQn_Type IRQPortGet(UCHAR ucPORT);
-static void prvvPORTTxReadyISR(UCHAR ucPORT);
-static void prvvPORTRxISR(UCHAR Port);
+static void prvvPORTTxReadyISR();
+static void prvvPORTRxISR();
 static void serial_soft_trans_irq(void* parameter);
 
 static xQueueHandle event_serial = 0;
@@ -77,7 +77,7 @@ vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable )
 		USART_ITConfig(UartPortGet(0),USART_IT_RXNE,ENABLE);
 		// Disable interrupt USART TXE if you used USART TX interrupt.
 		//USART_ITConfig(ucPORT,USART_IT_TXE,DISABLE);
-   		 RS485_RDE_DIR(0,RS485_IN);
+		RS485_RDE_DIR(0,RS485_IN);
 		xQueueReceive(event_serial,&eEvent,0);
 	}
 	else
@@ -96,7 +96,7 @@ vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable )
 /* Called with databits = 8 for RTU */
 
 BOOL
-xMBPortSerialInit( ULONG ulBaudRate, UCHAR ucDataBits, eParity eParity )
+xMBPortSerialInit( ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )
 {
 	NVIC_InitTypeDef   NVIC_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
@@ -119,14 +119,14 @@ xMBPortSerialInit( ULONG ulBaudRate, UCHAR ucDataBits, eParity eParity )
 	/* Setup UART parameters. */
 	USART_InitStructure.USART_BaudRate = ulBaudRate;
 	switch ( eParity )
-	{
-	case PORT_PAR_NONE:
+	{    
+	case MB_PAR_NONE :
 			USART_InitStructure.USART_Parity = USART_Parity_No;
 			break;
-	case PORT_PAR_ODD:
+	case MB_PAR_ODD:
 			USART_InitStructure.USART_Parity = USART_Parity_Odd;
 			break;
-	case PORT_PAR_EVEN:
+	case MB_PAR_EVEN:
 			USART_InitStructure.USART_Parity = USART_Parity_Even;
 			break;
 	default:
@@ -135,13 +135,13 @@ xMBPortSerialInit( ULONG ulBaudRate, UCHAR ucDataBits, eParity eParity )
 	switch ( ucDataBits )
   {
     case 8:
-			if (eParity == PORT_PAR_NONE)
+			if (eParity == MB_PAR_NONE)
 				USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 			else
 				USART_InitStructure.USART_WordLength = USART_WordLength_9b;
 			break;
     case 7:
-			if (eParity == PORT_PAR_NONE)
+			if (eParity == MB_PAR_NONE)
 				return FALSE;
 			else
 				USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -188,7 +188,7 @@ xMBPortSerialPutByte(CHAR ucByte )
 
 /* ----------------------- Get character ----------------------------------*/
 BOOL
-xPortSerialGetByte( CHAR * pucByte )
+xMBPortSerialGetByte( CHAR * pucByte )
 {
 	/* Return the byte in the UARTs receive buffer. This function is called
 	 * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
@@ -219,7 +219,7 @@ vPortSerialClose( void )
  */
 static void prvvPORTTxReadyISR(void)
 {
-    pxFrameCBTransmitterEmpty();
+    pxMBFrameCBTransmitterEmpty();
 }
 
 
@@ -229,9 +229,9 @@ static void prvvPORTTxReadyISR(void)
  * protocol stack will then call xPortSerialGetByte( ) to retrieve the
  * character.
  */
-static void prvvPORTRxISR(void )
+static void prvvPORTRxISR(void)
 {
-    pxFrameCBByteReceived();
+    pxMBFrameCBByteReceived();
 }
 
 /**
@@ -261,10 +261,10 @@ static void serial_soft_trans_irq(void* parameter) {
 void USART2_IRQHandler(void)
 {
 	/* Check if we were called because of RXNE. */
-	if (USART_GetITStatus(USART2,USART_IT_RXNE))
-	{
-	    prvvPORTRxISR(PORT4);
-	}
+//	if (USART_GetITStatus(USART2,USART_IT_RXNE))
+//	{
+//	    prvvPORTRxISR(PORT4);
+//	}
 }
 
 void USART3_IRQHandler(void)
@@ -272,7 +272,7 @@ void USART3_IRQHandler(void)
 	/* Check if we were called because of RXNE. */
 	if (USART_GetITStatus(USART3,USART_IT_RXNE))
 	{
-	    prvvPORTRxISR(PORT1);
+	    prvvPORTRxISR();
 	}
 }
 
@@ -281,7 +281,7 @@ void UART4_IRQHandler(void)
 	/* Check if we were called because of RXNE. */
 	if (USART_GetITStatus(UART4,USART_IT_RXNE))
 	{
-	    prvvPORTRxISR(PORT3);
+	  
 	}
 }
 
@@ -290,7 +290,7 @@ void USART6_IRQHandler(void)
 	/* Check if we were called because of RXNE. */
 	if (USART_GetITStatus(USART6,USART_IT_RXNE))
 	{
-	    prvvPORTRxISR(PORT2);
+
 	}
 }
 

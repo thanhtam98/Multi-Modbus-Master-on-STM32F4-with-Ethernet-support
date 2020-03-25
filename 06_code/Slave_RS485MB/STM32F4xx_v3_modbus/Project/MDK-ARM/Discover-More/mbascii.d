@@ -8,6 +8,7 @@
 .\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\include\mbconfig.h
 .\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\ascii\mbascii.h
 .\discover-more\mbascii.o: ..\..\Utilities\RS485_BUS\Interface\include\mbframe.h

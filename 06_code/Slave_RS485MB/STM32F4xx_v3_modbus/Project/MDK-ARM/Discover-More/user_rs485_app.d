@@ -17,6 +17,7 @@
 .\discover-more\user_rs485_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 .\discover-more\user_rs485_app.o: ..\..\Utilities\RS485_BUS\Interface\include\mbport.h
 .\discover-more\user_rs485_app.o: ..\..\Utilities\RS485_BUS\Interface\include\mbproto.h
+.\discover-more\user_rs485_app.o: ..\..\Utilities\RS485_BUS\Interface\include\mb.h
 .\discover-more\user_rs485_app.o: ..\..\Utilities\RS485_BUS\Interface\include\mbconfig.h
 .\discover-more\user_rs485_app.o: ..\..\Utilities\RS485_BUS\Interface\include\mbframe.h
 .\discover-more\user_rs485_app.o: ..\..\Utilities\RS485_BUS\Interface\include\mbutils.h
