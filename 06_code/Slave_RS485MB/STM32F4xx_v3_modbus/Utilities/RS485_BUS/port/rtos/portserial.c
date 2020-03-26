@@ -159,7 +159,7 @@ xMBPortSerialInit( ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )
 	USART_Cmd(UartPortGet(0), ENABLE);
 	if(event_serial==0)
 	{
-		event_serial = xQueueCreate( 4, sizeof(EventSerialType) );
+		event_serial = xQueueCreate( 1, sizeof(EventSerialType) );
 		xTaskCreate(serial_soft_trans_irq,	/* The function that implements the task. */
 		"serial poll",	/* Just a text name for the task to aid debugging. */
 		configMINIMAL_STACK_SIZE,	/* The stack size is defined in FreeRTOSIPConfig.h. */

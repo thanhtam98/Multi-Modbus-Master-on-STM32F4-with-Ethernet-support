@@ -130,7 +130,7 @@ int main(void)
 	{
 
 		/* Create RS485 Task*/
-		vStartRS485busSlaveTasks(configMINIMAL_STACK_SIZE * 2, RS485_SLAVE_TASK_PRIO);
+		vStartRS485busSlaveTasks(configMINIMAL_STACK_SIZE * 4, RS485_SLAVE_TASK_PRIO);
 		/* Create Main system control Task */
 		xTaskCreate(ControlTask, "Control Task", configMINIMAL_STACK_SIZE * 2, NULL, CONTROL_TASK_PRIO, NULL);
 
@@ -231,7 +231,8 @@ void ControlTask(void *pvParameters)
 	uint8_t MqttError = MQTTCLIENT_NONE;
 	uint8_t SysEvent;
 	xQueueMessage SysMessage;
-
+	while(1)
+	{
 	for (;;)
 	{
 		if (SysState != SYS_IDE)
@@ -286,7 +287,7 @@ void ControlTask(void *pvParameters)
 			//SysState = SYS_IDE;
 			break;
 		case SYS_IDE:
-			
+			vTaskDelay(10);
 			break;
 		default:
 			break;
@@ -301,6 +302,7 @@ void ControlTask(void *pvParameters)
 		STM_Output_LOW();
 		STM_Buzzer_OFF();
 	}
+}
 }
 
 int Bt_debounce(void)

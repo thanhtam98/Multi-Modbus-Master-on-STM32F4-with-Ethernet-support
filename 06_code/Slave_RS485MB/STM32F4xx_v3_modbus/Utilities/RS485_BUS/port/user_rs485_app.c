@@ -24,10 +24,98 @@
 #include "user_rs485_app.h"
 
 /* ----------------------- Slave mode Defines ----------------------------------*/
+#define S_REG_HOLDING_START           0
+#define S_REG_HOLDING_NREGS           100
+
+//Slave mode:HoldingRegister variables
+USHORT   usSRegHoldStart                              = S_REG_HOLDING_START;
+USHORT   usSRegHoldBuf[S_REG_HOLDING_NREGS]           ;
 
 
 /*------------------------Slave mode use these variables------------------------*/
 extern CTPORT_TypeDef CTport;
+
+
+
+/**
+ * RS485bus slave Modbus Read Reg callback function.
+ *
+ * @param ucPort Port check
+ * @param pucBuffer Check buffer
+ * @param usLen Length
+ *
+ * @return result
+ */
+
+
+eMBErrorCode eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegisterMode eMode )
+{
+	 eMBErrorCode    eStatus = MB_ENOERR;
+    USHORT          iRegIndex;
+    USHORT *        pusRegHoldingBuf;
+    USHORT          REG_HOLDING_START;
+    USHORT          REG_HOLDING_NREGS;
+    USHORT          usRegHoldStart;
+
+    pusRegHoldingBuf = usSRegHoldBuf;
+    REG_HOLDING_START = S_REG_HOLDING_START;
+    REG_HOLDING_NREGS = S_REG_HOLDING_NREGS;
+    usRegHoldStart = usSRegHoldStart;
+
+    /* it already plus one in modbus function method. */
+    usAddress--;
+
+    if ((usAddress >= REG_HOLDING_START)
+            && (usAddress + usNRegs <= REG_HOLDING_START + REG_HOLDING_NREGS))
+    {
+        iRegIndex = usAddress - usRegHoldStart;
+        switch (eMode)
+        {
+        /* read current register values from the protocol stack. */
+        case MB_REG_READ:
+            while (usNRegs > 0)
+            {
+                *pucRegBuffer++ = (UCHAR) (pusRegHoldingBuf[iRegIndex] >> 8);
+                *pucRegBuffer++ = (UCHAR) (pusRegHoldingBuf[iRegIndex] & 0xFF);
+                iRegIndex++;
+                usNRegs--;
+            }
+            break;
+
+        /* write current register values with new values from the protocol stack. */
+        case MB_REG_WRITE:
+            while (usNRegs > 0)
+            {
+                pusRegHoldingBuf[iRegIndex] = *pucRegBuffer++ << 8;
+                pusRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
+                iRegIndex++;
+                usNRegs--;
+            }
+            break;
+        }
+    }
+    else
+    {
+        eStatus = MB_ENOREG;
+    }
+    return eStatus;
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**

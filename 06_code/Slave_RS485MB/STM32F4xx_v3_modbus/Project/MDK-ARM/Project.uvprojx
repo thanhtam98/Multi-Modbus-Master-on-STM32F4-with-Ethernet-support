@@ -412,6 +412,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\RS485bus_task.c</FilePath>
             </File>
+            <File>
+              <FileName>env_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\env_data.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -329,6 +329,7 @@ eMBDisable( void )
 }
 
 eMBErrorCode
+
 eMBPoll( void )
 {
     static UCHAR   *ucMBFrame;

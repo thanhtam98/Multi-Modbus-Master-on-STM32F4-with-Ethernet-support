@@ -176,25 +176,25 @@ void SysTick_Handler(void)
   */
 void ETH_IRQHandler(void)
 {
-  portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
+//  portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
 
-  /* Frame received */
-  if ( ETH_GetDMAFlagStatus(ETH_DMA_FLAG_R) == SET) 
-  {
-    /* Give the semaphore to wakeup LwIP task */
-    xSemaphoreGiveFromISR( s_xSemaphore, &xHigherPriorityTaskWoken );   
-  }
-	
-  /* Clear the interrupt flags. */
-  /* Clear the Eth DMA Rx IT pending bits */
-  ETH_DMAClearITPendingBit(ETH_DMA_IT_R);
-  ETH_DMAClearITPendingBit(ETH_DMA_IT_NIS);
-	
-  /* Switch tasks if necessary. */	
-  if( xHigherPriorityTaskWoken != pdFALSE )
-  {
-    portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
-  }
+//  /* Frame received */
+//  if ( ETH_GetDMAFlagStatus(ETH_DMA_FLAG_R) == SET) 
+//  {
+//    /* Give the semaphore to wakeup LwIP task */
+//    xSemaphoreGiveFromISR( s_xSemaphore, &xHigherPriorityTaskWoken );   
+//  }
+//	
+//  /* Clear the interrupt flags. */
+//  /* Clear the Eth DMA Rx IT pending bits */
+//  ETH_DMAClearITPendingBit(ETH_DMA_IT_R);
+//  ETH_DMAClearITPendingBit(ETH_DMA_IT_NIS);
+//	
+//  /* Switch tasks if necessary. */	
+//  if( xHigherPriorityTaskWoken != pdFALSE )
+//  {
+//    portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
+//  }
 }
 
 /******************************************************************************/

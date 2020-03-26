@@ -44,9 +44,6 @@ static void prvRS485MasterPublishTask(void *pvParameters)
 	eRS485MasterEnable(3);
 	
 			
-					
-
-	
   vTaskDelay(100);
   xqueuemessage.RS485Message.value = RS485_START_OK;
 	xqueuemessage.RS485Message.Message_type = TASK_EVENT;

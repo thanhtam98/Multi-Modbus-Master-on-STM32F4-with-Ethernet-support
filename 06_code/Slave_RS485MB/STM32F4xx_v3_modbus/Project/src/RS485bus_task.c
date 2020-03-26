@@ -20,7 +20,7 @@
 #include "debug.h"
 #include "stm32f4_discovery.h"
 
-#define ucIvtDeltaAdr 0x01
+#define ucIvtDeltaAdr 0x08
 extern xQueueHandle xQueueState;
 extern xQueueHandle xQueuemessage;
 
@@ -39,13 +39,14 @@ static void prvRS485SlavePublishTask(void *pvParameters)
 	eMBInit(MB_RTU, ucIvtDeltaAdr, 9600 ,MB_PAR_NONE);
 	eMBEnable();
     
-  	xqueuemessage.RS485Message.value = RS485_START_OK;
+  xqueuemessage.RS485Message.value = RS485_START_OK;
 	xqueuemessage.RS485Message.Message_type = TASK_EVENT;
 	xQueueSend(xQueuemessage,&xqueuemessage,0);
+	vTaskDelay(100);
 	while (1)
 	{
-		eMBPoll();
-//    vTaskDelay(250);
+	eMBPoll();
+  vTaskDelay(250);
 	}
 }
 

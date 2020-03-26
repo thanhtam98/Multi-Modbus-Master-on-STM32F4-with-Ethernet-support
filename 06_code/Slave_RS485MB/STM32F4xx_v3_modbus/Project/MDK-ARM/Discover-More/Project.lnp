@@ -5,6 +5,7 @@
 ".\discover-more\miscellaneous.o"
 ".\discover-more\hw_config.o"
 ".\discover-more\rs485bus_task.o"
+".\discover-more\env_data.o"
 ".\discover-more\portevent.o"
 ".\discover-more\portother.o"
 ".\discover-more\portserial.o"

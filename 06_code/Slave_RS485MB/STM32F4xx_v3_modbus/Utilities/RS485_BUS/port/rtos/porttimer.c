@@ -56,13 +56,14 @@ xMBPortTimersInit( USHORT usTim1Timerout50us )
 {
 	NVIC_InitTypeDef   NVIC_InitStructure;
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseInitStructure;
-  TimerExpiredType eEvent;
+	
+  
 	static BOOL bConfigStatus =0;
 	usT35TimeOut50us = usTim1Timerout50us;
 	
 	if(bConfigStatus==0)
 	{
-		/* Enable TIM2 clock. */
+/* Enable TIM2 clock. */
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 		
 		NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
@@ -74,23 +75,25 @@ xMBPortTimersInit( USHORT usTim1Timerout50us )
 		TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV4;
 		TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
 		TIM_TimeBaseInitStructure.TIM_Period = 100;
-		TIM_TimeBaseInitStructure.TIM_Prescaler = 20;
+		TIM_TimeBaseInitStructure.TIM_Prescaler = 40;
 		TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0x00;
 		TIM_TimeBaseInit(TIM2,&TIM_TimeBaseInitStructure);
-		//TIM_UpdateRequestConfig(TIM2, TIM_UpdateSource_Global);
+		TIM_UpdateRequestConfig(TIM2, TIM_UpdateSource_Global);
 		TIM_ARRPreloadConfig(TIM2,ENABLE);
 		TIM_SetCounter(TIM2,5);
 		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 		TIM_ITConfig(TIM2, TIM_IT_Update,ENABLE);	
-		bConfigStatus =1;
+
 	}
 	if(TimerExpired ==0)
 	{
-		TimerExpired= xQueueCreate( 1, sizeof(TimerExpiredType) );
-    eEvent.Event = EVENT_TIMENONE;
-    eEvent.TimeOut = 0;
-    xQueueSend(TimerExpired,&eEvent,-1);
+		TimerExpired= xQueueCreate( 4, sizeof(TimerExpiredType) );
+//    eEvent.Event = EVENT_TIMENONE;
+//    eEvent.TimeOut = 0;
+//    xQueueSend(TimerExpired,&eEvent,-1);
 	}
+		TIM_SetCounter(TIM2,0);
+		TIM_Cmd(TIM2,ENABLE);
   return TRUE;
 }
 
@@ -100,11 +103,12 @@ void vMBPortTimersEnable(void)
   BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	TimerExpiredType eEvent;
 	eEvent.Event = EVENT_TIMEEXPIRED_START;
-	eEvent.TimeOut = usT35TimeOut50us;
+	eEvent.TimeOut = 100;
   /* Restart the timer with the period value set in xPortTimersInit( ) */
 	xQueueOverwriteFromISR( TimerExpired, &eEvent, &xHigherPriorityTaskWoken);
-	TIM_SetCounter(TIM2,0);
-	TIM_Cmd(TIM2,ENABLE);
+	
+//	TIM_SetCounter(TIM2,0);
+//	TIM_Cmd(TIM2,ENABLE);
 }
 
 /* ----------------------- Disable timer -----------------------------*/
@@ -121,7 +125,6 @@ static void prvvTIMERExpiredISR(void)
 {
 	TimerExpiredType eEvent;
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	UCHAR port;
 
 		xQueuePeekFromISR(TimerExpired,&eEvent);
 		if(eEvent.Event == EVENT_TIMEEXPIRED_START)

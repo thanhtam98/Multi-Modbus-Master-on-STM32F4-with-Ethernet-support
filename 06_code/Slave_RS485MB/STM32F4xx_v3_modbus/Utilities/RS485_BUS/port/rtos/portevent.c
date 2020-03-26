@@ -59,7 +59,7 @@ BOOL xMBPortEventPost( eMBEventType event)
 BOOL xMBPortEventGet(PortEventType *eEvent)
 {
 	PortEventType recvedEvent;
-	xQueuePeek(xSlaveOsEvent, &recvedEvent, -1);
+	xQueuePeek(xSlaveOsEvent, &recvedEvent, 0);
 	*eEvent = recvedEvent;
 	/* the enum type couldn't convert to int type */
 	switch (recvedEvent)

@@ -200,7 +200,7 @@ eMBFuncReadHoldingRegister( UCHAR * pucFrame, USHORT * usLen )
             *usLen += 1;
 
             /* Make callback to fill the buffer. */
-            //eRegStatus = eMBRegHoldingCB( pucFrameCur, usRegAddress, usRegCount, MB_REG_READ );
+            eRegStatus = eMBRegHoldingCB( pucFrameCur, usRegAddress, usRegCount, MB_REG_READ );
             /* If an error occured convert it into a Modbus exception. */
             if( eRegStatus != MB_ENOERR )
             {

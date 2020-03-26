@@ -407,7 +407,7 @@ CRYP_IRQHandler
 HASH_RNG_IRQHandler
 FPU_IRQHandler                                                 
 
-                B       .
+                B       .	
 
                 ENDP
 
