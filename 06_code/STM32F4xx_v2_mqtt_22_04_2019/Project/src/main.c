@@ -200,7 +200,7 @@ int main(void)
   */
 void modbus_test(void *pvParameters)
 {
-		eRS485ErrorCode    eStatus = RS485_ENOERR;
+	eRS485ErrorCode    eStatus = RS485_ENOERR;
 	 UCHAR *ucRS485Frame;
 	 UCHAR ucFunctionCode;
 	 USHORT usLength;
@@ -209,7 +209,7 @@ void modbus_test(void *pvParameters)
 	while (1)
 	{
 		// eMBMasterReqWriteHoldingRegister(0x00,0x01,0x0100,6000,1);
-		//eStatus = eMBMasterReqReadHoldingRegister(0x00,0x01,0x2102,2,1);
+		eMBMasterReqReadHoldingRegister(0x00,0x01,0x2102,2,1);
 		//eRS485MasterReqPeriodicPing(0,1);
 //		CTport.Port[2].active = PORT_ENABLE;
 //		 CTport.Port[2].event |= PORT_TRANSMIT_DATA;
@@ -750,6 +750,14 @@ void vApplicationMallocFailedHook(void)
 }
 
 void vApplicationStackOverflowHook(void)
+{
+	taskDISABLE_INTERRUPTS();
+	DBG("\r\nStack Overflow Hook");
+	for (;;)
+		;
+}
+
+void vApplicationTickHook( void )
 {
 	taskDISABLE_INTERRUPTS();
 	DBG("\r\nStack Overflow Hook");

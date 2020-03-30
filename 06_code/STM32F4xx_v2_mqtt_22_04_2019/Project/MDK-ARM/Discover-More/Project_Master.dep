@@ -1,5 +1,5 @@
 Dependencies for Project 'Project', Target 'Master': (DO NOT MODIFY !)
-F (..\src\main.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
+F (..\src\main.c)(0x5E7DB676)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5E7B2983)
 I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5E7B2983)
@@ -41,7 +41,7 @@ I (..\inc\netconf.h)(0x5E7B2984)
 I (..\inc\main.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -135,7 +135,7 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5E7B2983)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5E7B2983)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5E7B2983)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5E7B2983)
-F (..\src\stm32f4xx_it.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\stm32f4xx_it.o --omf_browse .\discover-more\stm32f4xx_it.crf --depend .\discover-more\stm32f4xx_it.d)
+F (..\src\stm32f4xx_it.c)(0x5E7CBC15)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\stm32f4xx_it.o --omf_browse .\discover-more\stm32f4xx_it.crf --depend .\discover-more\stm32f4xx_it.d)
 I (..\inc\stm32f4xx_it.h)(0x5E7B2984)
 I (..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5E7B2983)
 I (..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5E7B2983)
@@ -177,7 +177,7 @@ I (..\inc\stm32f4x7_eth_conf.h)(0x5E7B2984)
 I (..\inc\hw_config.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -228,7 +228,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5E7B2984)
 I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -288,7 +288,7 @@ I (..\..\Utilities\STM32F4-Discovery\fonts.h)(0x5E7B2984)
 I (..\inc\main.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -346,7 +346,7 @@ I (..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h)(0x5E7B2984)
 I (..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5E7B2984)
 I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -450,7 +450,7 @@ I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5E7B2983)
 I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5E7B2983)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -520,7 +520,7 @@ I (..\inc\rtc.h)(0x5E7B2984)
 I (..\inc\hw_config.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -535,7 +535,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -625,7 +625,7 @@ F (..\src\keyscan_task.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -674,14 +674,14 @@ I (..\inc\keyscan_task.h)(0x5E7B2984)
 I (..\inc\key_scan.h)(0x5E7B2984)
 I (..\inc\user_debug.h)(0x5E7B2984)
 I (..\..\Utilities\STM32F4-Discovery\stm32f4_discovery.h)(0x5E7B2984)
-F (..\src\RS485bus_task_m.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\rs485bus_task_m.o --omf_browse .\discover-more\rs485bus_task_m.crf --depend .\discover-more\rs485bus_task_m.d)
+F (..\src\RS485bus_task_m.c)(0x5E7CBC14)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\rs485bus_task_m.o --omf_browse .\discover-more\rs485bus_task_m.crf --depend .\discover-more\rs485bus_task_m.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -749,7 +749,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -816,7 +816,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -890,7 +890,7 @@ I (..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS\MQTTFreeRTOS.h)(0x5E7B29
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -920,7 +920,7 @@ I (..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS\MQTTFreeRTOS.h)(0x5E7B29
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1093,7 +1093,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485.h)(0x5E7B2984)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485port.h)(0x5E7B2984)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485proto.h)(0x5E7B2984)
-F (..\..\Utilities\RS485_BUS\Interface\RS485Bus_m.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\rs485bus_m.o --omf_browse .\discover-more\rs485bus_m.crf --depend .\discover-more\rs485bus_m.d)
+F (..\..\Utilities\RS485_BUS\Interface\RS485Bus_m.c)(0x5E7DB6C8)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\rs485bus_m.o --omf_browse .\discover-more\rs485bus_m.crf --depend .\discover-more\rs485bus_m.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\RS485_BUS\port\rtos\port.h)(0x5E7B2984)
@@ -1109,7 +1109,7 @@ I (..\..\Utilities\RS485_BUS\Interface\include\rs485config.h)(0x5E7B2984)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h)(0x5E7B2984)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485func.h)(0x5E7B2984)
 I (..\..\Utilities\RS485_BUS\Interface\rtu\rs485rtu.h)(0x5E7B2984)
-F (..\..\Utilities\RS485_BUS\Interface\rtu\rs485rtu_m.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\rs485rtu_m.o --omf_browse .\discover-more\rs485rtu_m.crf --depend .\discover-more\rs485rtu_m.d)
+F (..\..\Utilities\RS485_BUS\Interface\rtu\rs485rtu_m.c)(0x5E7D8B97)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\rs485rtu_m.o --omf_browse .\discover-more\rs485rtu_m.crf --depend .\discover-more\rs485rtu_m.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\inc\stm32f4xx_conf.h)(0x5E7B2984)
@@ -1239,7 +1239,7 @@ I (..\..\Utilities\RS485_BUS\port\rtos\port.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5CEB87E6)
 I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485proto.h)(0x5E7B2984)
-F (..\..\Utilities\RS485_BUS\port\rtos\portserial_m.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\portserial_m.o --omf_browse .\discover-more\portserial_m.crf --depend .\discover-more\portserial_m.d)
+F (..\..\Utilities\RS485_BUS\port\rtos\portserial_m.c)(0x5E7DC506)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\inc -I ..\src -I ..\..\Libraries\CMSIS\Include -I ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\Utilities\STM32F4-Discovery -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\Utilities\FreeRTOSv10.0.1\include -I ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F -I ..\..\Utilities\MQTTClient\MQTTPacket\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src -I ..\..\Utilities\MQTTClient\MQTTClient-C\src\FreeRTOS -I ..\libraries\inc -I ..\drivers\inc -I ..\..\Utilities\RS485_BUS\port\rtos -I ..\..\Utilities\RS485_BUS\Interface\include -I ..\..\Utilities\RS485_BUS\Interface\rtu -I ..\..\Utilities\RS485_BUS\Interface\ascii -I ..\..\Utilities\RS485_BUS\port -I ..\..\Utilities\TCP_BUS\Interface\Include -I ..\..\Utilities\TCP_BUS\Interface\tcp -I ..\..\Utilities\TCP_BUS\port -I ..\..\Utilities\TCP_BUS-I.\RTE\_Master-IC:\Users\NguyenThanhTam\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -D__FPU_USED -DDHCP -DUSER_DEBUG -DMASTER-o .\discover-more\portserial_m.o --omf_browse .\discover-more\portserial_m.crf --depend .\discover-more\portserial_m.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (..\..\Utilities\RS485_BUS\port\rtos\port.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5CEB87E6)
@@ -1247,7 +1247,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1301,7 +1301,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1374,7 +1374,7 @@ I (..\..\Utilities\RS485_BUS\Interface\include\rs485_m.h)(0x5E7B2984)
 I (..\..\Utilities\RS485_BUS\Interface\include\rs485config.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1403,7 +1403,7 @@ F (..\..\Utilities\RS485_BUS\port\user_rs485_app.c)(0x5E7B2984)(-c --cpu Cortex-
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1471,7 +1471,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1527,7 +1527,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1644,7 +1644,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x5CEB87F0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1699,7 +1699,7 @@ I (..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5E7B2984)
 I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1741,7 +1741,7 @@ I (..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5E7B2984)
 I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1831,7 +1831,7 @@ I (..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5E7B2984)
 I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1868,7 +1868,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1928,7 +1928,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -1970,7 +1970,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2014,7 +2014,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2053,7 +2053,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2095,7 +2095,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2134,7 +2134,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2192,7 +2192,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2241,7 +2241,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2269,7 +2269,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2309,7 +2309,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2464,7 +2464,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2583,7 +2583,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -2651,7 +2651,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3418,7 +3418,7 @@ F (..\..\Utilities\FreeRTOSv10.0.1\croutine.c)(0x5E7B2984)(-c --cpu Cortex-M4.fp
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3432,7 +3432,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3445,7 +3445,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3460,7 +3460,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3474,7 +3474,7 @@ F (..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F\port.c)(0x5E7B2984)(-c
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3487,7 +3487,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3500,7 +3500,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3515,7 +3515,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3529,7 +3529,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3583,7 +3583,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)
@@ -3633,7 +3633,7 @@ I (..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h)(0x5E7B2984)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB87F2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB87F2)
-I (..\inc\FreeRTOSConfig.h)(0x5E7B2984)
+I (..\inc\FreeRTOSConfig.h)(0x5E7DB48C)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\portable.h)(0x5E7B2984)
 I (..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h)(0x5E7B2984)

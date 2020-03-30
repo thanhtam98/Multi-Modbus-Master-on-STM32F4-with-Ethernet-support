@@ -1,0 +1,14 @@
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\stream_buffer.c
+.\discover-more\stream_buffer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\stream_buffer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\FreeRTOS.h
+.\discover-more\stream_buffer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\stream_buffer.o: ..\inc\FreeRTOSConfig.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\projdefs.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\portable.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\deprecated_definitions.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\portable\RVDS\ARM_CM4F\portmacro.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\mpu_wrappers.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\task.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\list.h
+.\discover-more\stream_buffer.o: ..\..\Utilities\FreeRTOSv10.0.1\include\stream_buffer.h

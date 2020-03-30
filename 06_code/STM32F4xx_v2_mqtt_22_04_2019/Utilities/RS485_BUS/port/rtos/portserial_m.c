@@ -358,13 +358,14 @@ void RS485_RDE_DIR(UCHAR ucPort, ACTION action)
         GPIO_ResetBits(GPIOD,GPIO_Pin_10);
         break;
       case PORT2:
-        GPIO_ResetBits(GPIOC,GPIO_Pin_8);
+				GPIO_ResetBits(GPIOD,GPIO_Pin_4);
+        
         break;
       case PORT3:
         GPIO_ResetBits(GPIOC,GPIO_Pin_12);
         break;
       case PORT4:
-        GPIO_ResetBits(GPIOD,GPIO_Pin_4);
+        GPIO_ResetBits(GPIOC,GPIO_Pin_8);
         break;
       default:
         break;
@@ -378,13 +379,14 @@ void RS485_RDE_DIR(UCHAR ucPort, ACTION action)
         GPIO_SetBits(GPIOD,GPIO_Pin_10);
         break;
       case PORT2:
-        GPIO_SetBits(GPIOC,GPIO_Pin_8);
+				GPIO_SetBits(GPIOD,GPIO_Pin_4);
+       
         break;
       case PORT3:
         GPIO_SetBits(GPIOC,GPIO_Pin_12);
         break;
       case PORT4:
-        GPIO_SetBits(GPIOD,GPIO_Pin_4);
+         GPIO_SetBits(GPIOC,GPIO_Pin_8);
         break;
       default:
         break;
