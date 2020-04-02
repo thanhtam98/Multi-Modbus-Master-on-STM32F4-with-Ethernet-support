@@ -24,6 +24,7 @@ stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h
 stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 stm32f4_modbus_rtu\porttimer_m.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
