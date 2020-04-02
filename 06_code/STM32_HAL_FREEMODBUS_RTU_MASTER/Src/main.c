@@ -27,7 +27,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-#include "mb.h"
+//#include "..\Middlewares\Third_Party\modbus\include\mb_m.h"
+#include "mb_m.h"
 #include "mbport.h"
 
 /* USER CODE END Includes */
@@ -158,16 +159,16 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 2*128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of appMdTask */
-  osThreadDef(appMdTask, StartMdTask, osPriorityNormal, 0, 128);
+  osThreadDef(appMdTask, StartMdTask, osPriorityNormal, 0, 2*128);
   appMdTaskHandle = osThreadCreate(osThread(appMdTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-		osTimerStart(myTimer01Handle,1);
+
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -522,7 +523,7 @@ void StartDefaultTask(void const * argument)
     
 
   /* USER CODE BEGIN 5 */
-	osThreadDef(ModbusRTUTask, ModbusRTUTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+	osThreadDef(ModbusRTUTask, ModbusRTUTask, osPriorityNormal, 0,4*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(ModbusRTUTask), NULL); 
 	
   /* Infinite loop */
@@ -543,7 +544,7 @@ void StartDefaultTask(void const * argument)
 void StartMdTask(void const * argument)
 {
   /* USER CODE BEGIN StartMdTask */
-		osThreadDef(ModbusTestTask, ModbusTestTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+		osThreadDef(ModbusTestTask, ModbusTestTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
 		osThreadCreate(osThread(ModbusTestTask), NULL); 
   /* Infinite loop */
   for(;;)

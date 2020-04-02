@@ -47,8 +47,9 @@ stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/se
 stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 stm32f4_modbus_rtu\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32f4_modbus_rtu\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/modbus/include/mb.h
+stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/modbus/include/mb_m.h
 stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/modbus/port/port.h
 stm32f4_modbus_rtu\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
 stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/modbus/include/mbport.h
 stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/modbus/include/mbproto.h
+stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/modbus/include/mb.h

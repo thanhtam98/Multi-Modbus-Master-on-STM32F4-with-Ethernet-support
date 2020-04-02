@@ -31,7 +31,7 @@
 /* ----------------------- System includes ----------------------------------*/
 #include "stdlib.h"
 #include "string.h"
-
+#include "stdio.h"
 /* ----------------------- Platform includes --------------------------------*/
 #include "port.h"
 
@@ -299,6 +299,7 @@ eMBMasterPoll(void)
 
             case EV_MASTER_FRAME_RECEIVED:
 						{
+								//printf("\r\n ucPort: %d",ucPort);
                 eStatus[ucPort] = peMBMasterFrameReceiveCur(ucPort, &ucRcvAddress[ucPort], &ucMBFrame[ucPort], &usLength[ucPort]);
                 /* Check if the frame is for us. If not ,send an error process event. */
                 if ((eStatus[ucPort] == MB_ENOERR) && (ucRcvAddress[ucPort] == ucMBMasterGetDestAddress(ucPort)))
@@ -337,6 +338,9 @@ eMBMasterPoll(void)
 						 * the master need execute function for all slave.
 						 */
                             //TODO: after test protocol stack
+													 eException[ucPort] = xMasterFuncHandlers[i].pxHandler(ucPort,ucMBFrame[ucPort], &usLength[ucPort]);
+  													vMBMasterSetCBRunInMasterMode(ucPort, FALSE);
+														break;
                             if (xMBMasterRequestIsBroadcast(ucPort))
                             {
                                 // usLength[ucPort] = usMBMasterGetPDUSndLength(ucPort);
@@ -347,10 +351,10 @@ eMBMasterPoll(void)
                         }
                         else
                         {
-                            eException[ucPort] = xMasterFuncHandlers[i].pxHandler(ucPort,ucMBFrame[ucPort], &usLength[ucPort]);
+                           
                         }
-                        vMBMasterSetCBRunInMasterMode(ucPort, FALSE);
-                        break;
+                     //   vMBMasterSetCBRunInMasterMode(ucPort, FALSE);
+                      //  break;
                     }
                 }
             
@@ -380,16 +384,17 @@ eMBMasterPoll(void)
             switch (errorType[ucPort])
             {
             case EV_ERROR_RESPOND_TIMEOUT:
-//                vMBMasterErrorCBRespondTimeout(ucPort, ucMBMasterGetDestAddress(ucPort),
-//                                               ucMBFrame[ucPort], usMBMasterGetPDUSndLength(ucPort));
+                vMBMasterErrorCBRespondTimeout(ucPort, ucMBMasterGetDestAddress(ucPort),
+																						ucMBFrame[ucPort], usMBMasterGetPDUSndLength(ucPort));
                 break;
             case EV_ERROR_RECEIVE_DATA:
-//                vMBMasterErrorCBReceiveData(ucMBMasterGetDestAddress(ucPort),
-//                                            ucMBFrame[ucPort], usMBMasterGetPDUSndLength(ucPort));
+
+                vMBMasterErrorCBReceiveData(ucPort,ucMBMasterGetDestAddress(ucPort),
+                                            ucMBFrame[ucPort], usMBMasterGetPDUSndLength(ucPort));
                 break;
             case EV_ERROR_EXECUTE_FUNCTION:
-//                vMBMasterErrorCBExecuteFunction(ucMBMasterGetDestAddress(ucPort),
-//                                                ucMBFrame[ucPort], usMBMasterGetPDUSndLength(ucPort));
+                vMBMasterErrorCBExecuteFunction(ucPort,ucMBMasterGetDestAddress(ucPort),
+                                                ucMBFrame[ucPort], usMBMasterGetPDUSndLength(ucPort));
                 break;
             }
             vMBMasterRunResRelease(ucPort);

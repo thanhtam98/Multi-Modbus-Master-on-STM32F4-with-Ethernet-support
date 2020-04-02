@@ -152,41 +152,63 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>368</LineNumber>
+          <LineNumber>90</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134231014</Address>
+          <Address>134230746</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Middlewares\Third_Party\modbus\rtu\mbrtu_m.c</Filename>
+          <Filename>..\Middlewares\Third_Party\modbus\port\portevent_m.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32F4_MODBUS_RTU\../Middlewares/Third_Party/modbus/rtu/mbrtu_m.c\368</Expression>
+          <Expression>\\STM32F4_MODBUS_RTU\../Middlewares/Third_Party/modbus/port/portevent_m.c\90</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>350</LineNumber>
+          <LineNumber>249</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134225460</Address>
+          <Address>134226274</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Middlewares\Third_Party\modbus\mb_m.c</Filename>
+          <Filename>..\Middlewares\Third_Party\modbus\port\portevent_m.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32F4_MODBUS_RTU\../Middlewares/Third_Party/modbus/mb_m.c\350</Expression>
+          <Expression>\\STM32F4_MODBUS_RTU\../Middlewares/Third_Party/modbus/port/portevent_m.c\249</Expression>
         </Bp>
       </Breakpoint>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>MB_TMODE_NONE</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>*usLen</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ucMBFrame</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>i</ItemText>
+        </Ww>
+      </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>&amp;phuart</ItemText>
+          <ItemText>0x20004C4D</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>

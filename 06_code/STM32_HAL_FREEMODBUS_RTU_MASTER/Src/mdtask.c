@@ -9,7 +9,7 @@
 #include "mbport.h"
 
 extern TIM_HandleTypeDef htim7;
-
+extern osTimerId myTimer01Handle;
 #define REG_INPUT_START 1000
 #define REG_INPUT_NREGS 8
 
@@ -33,7 +33,7 @@ void ModbusRTUTask(void const *argument)
     eStatus = eMBMasterEnable(PORT2);
     eStatus = eMBMasterEnable(PORT3);
     eStatus = eMBMasterEnable(PORT4);
-
+				osTimerStart(myTimer01Handle,1);
 		 // HAL_TIM_Base_Start_IT(&htim7);
     while (1)
     {
@@ -45,15 +45,17 @@ void ModbusRTUTask(void const *argument)
 void ModbusTestTask(void const *argument)
 {
 	vTaskDelay(500);
-	printf("ModbusTestTask: Starting");
+	printf("\r\n ModbusTestTask: Starting");
 	eMBErrorCode   eStatus = MB_ENOERR;
-		
+	uint8_t count = 0 ;	
 	while (1)
 	{
+		vTaskDelay(1000);
 			//eMBMasterReqReadHoldingRegister(0x00,0x01,0x00,2,1);
-			eMBMasterReqWriteHoldingRegister(0x00, 0x01,0x01,0xFA,0x01);
-			vTaskDelay(1000);
-			printf("\r\n ModbusTestTask: Sent data to dest");
+			eMBMasterReqWriteHoldingRegister(0x00, 0x01,0x01,count++,0x01);
+			if (count == 250 ) count = 0;
+			
+			printf("\r\nModbusTestTask: Sent data to dest");
 	}
 }
 

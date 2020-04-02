@@ -47,15 +47,15 @@ typedef enum
 
 typedef enum
 {
-    EV_MASTER_READY                    = 1<<0,  /*!< Startup finished. */
-    EV_MASTER_FRAME_RECEIVED           = 1<<1,  /*!< Frame received. */
-    EV_MASTER_EXECUTE                  = 1<<2,  /*!< Execute function. */
-    EV_MASTER_FRAME_SENT               = 1<<3,  /*!< Frame sent. */
-    EV_MASTER_ERROR_PROCESS            = 1<<4,  /*!< Frame error process. */
-    EV_MASTER_PROCESS_SUCESS           = 1<<5,  /*!< Request process success. */
-    EV_MASTER_ERROR_RESPOND_TIMEOUT    = 1<<6,  /*!< Request respond timeout. */
-    EV_MASTER_ERROR_RECEIVE_DATA       = 1<<7,  /*!< Request receive data error. */
-    EV_MASTER_ERROR_EXECUTE_FUNCTION   = 1<<8,  /*!< Request execute function error. */
+    EV_MASTER_READY                    = 1<<0,  /*!< Startup finished. 1*/
+    EV_MASTER_FRAME_RECEIVED           = 1<<1,  /*!< Frame received.   2 */
+    EV_MASTER_EXECUTE                  = 1<<2,  /*!< Execute function. 4*/
+    EV_MASTER_FRAME_SENT               = 1<<3,  /*!< Frame sent.       8*/
+    EV_MASTER_ERROR_PROCESS            = 1<<4,  /*!< Frame error process.      16*/
+    EV_MASTER_PROCESS_SUCESS           = 1<<5,  /*!< Request process success.   32*/
+    EV_MASTER_ERROR_RESPOND_TIMEOUT    = 1<<6,  /*!< Request respond timeout.   64 */
+    EV_MASTER_ERROR_RECEIVE_DATA       = 1<<7,  /*!< Request receive data error. 128 */
+    EV_MASTER_ERROR_EXECUTE_FUNCTION   = 1<<8,  /*!< Request execute function error. 256 */
 } eMBMasterEventType;
 
 typedef enum
@@ -100,6 +100,12 @@ BOOL xMBMasterRunResTake( UCHAR ucPort, LONG lTimeOut );
 
 void vMBMasterRunResRelease( UCHAR ucPort );
 void vMBMasterCBRequestScuuess( UCHAR ucPort ) ;
+void vMBMasterErrorCBRespondTimeout(UCHAR ucPort, UCHAR ucDestAddress, const UCHAR *pucPDUData,
+                                    USHORT ucPDULength);
+void vMBMasterErrorCBReceiveData(UCHAR ucPort, UCHAR ucDestAddress, const UCHAR *pucPDUData,
+                                 USHORT ucPDULength);
+void vMBMasterErrorCBExecuteFunction(UCHAR ucPort, UCHAR ucDestAddress, const UCHAR *pucPDUData,
+                                     USHORT ucPDULength);
 
 /* ----------------------- Serial port functions ----------------------------*/
 

@@ -83,7 +83,7 @@ static volatile USHORT usMasterRcvBufferPos[MB_RS485_MAX_PORT];
 static volatile BOOL   xFrameIsBroadcast[MB_RS485_MAX_PORT] = {FALSE,FALSE,FALSE,FALSE};
 
 
-static volatile eMBMasterTimerMode eMasterCurTimerMode[MB_RS485_MAX_PORT];
+static volatile eMBMasterTimerMode eMasterCurTimerMode[MB_RS485_MAX_PORT]={MB_TMODE_NONE,MB_TMODE_NONE,MB_TMODE_NONE,MB_TMODE_NONE};
 
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode
@@ -360,6 +360,7 @@ xMBMasterRTUTimerExpired(UCHAR ucPort)
 		/* Timer t35 expired. Startup phase is finished. */
 	case STATE_M_RX_INIT:
 		xNeedPoll = xMBMasterPortEventPost(ucPort, EV_MASTER_READY);
+		
 		break;
 
 		/* A frame was received and t35 expired. Notify the listener that
@@ -401,8 +402,8 @@ xMBMasterRTUTimerExpired(UCHAR ucPort)
 		break;
 	}
 	eMasterSndState[ucPort] = STATE_M_TX_IDLE;
-
-	vMBMasterPortTimersDisable( ucPort);
+ 
+	vMBMasterPortTimersDisable(ucPort);
 	/* If timer mode is convert delay, the master event then turns EV_MASTER_EXECUTE status. */
 	if (eMasterCurTimerMode[ucPort] == MB_TMODE_CONVERT_DELAY) {
 		xNeedPoll = xMBMasterPortEventPost( ucPort,EV_MASTER_EXECUTE );

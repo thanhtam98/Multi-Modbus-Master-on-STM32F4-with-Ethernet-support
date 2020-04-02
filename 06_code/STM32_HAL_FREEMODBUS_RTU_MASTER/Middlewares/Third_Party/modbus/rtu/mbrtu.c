@@ -304,7 +304,7 @@ BOOL xMBRTUTransmitFSM(UCHAR ucPort)
         /* check if we are finished. */
         if (usMasterSndBufferCount[ucPort] != 0)
         {
-            xMBPortSerialPutByte(ucPort,(CHAR)*pucMasterSndBufferCur[[ucPort]]);
+            xMBPortSerialPutByte(ucPort,(CHAR)*pucMasterSndBufferCur[ucPort]);
             pucMasterSndBufferCur[ucPort]++; /* next byte in sendbuffer. */
             usMasterSndBufferCount[ucPort]--;
         }

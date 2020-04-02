@@ -338,7 +338,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;            ../Drivers/STM32F4xx_HAL_Driver/Inc;            ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;            ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;            ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;            ../Middlewares/Third_Party/FreeRTOS/Source/include;            ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;            ../Drivers/CMSIS/Include;            ../Middlewares/Third_Party/modbus/include;            ../Middlewares/Third_Party/modbus/port;            ../Middlewares/Third_Party/modbus/rtu</IncludePath>
+              <IncludePath>../Inc;             ../Drivers/STM32F4xx_HAL_Driver/Inc;             ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;             ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;             ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;             ../Middlewares/Third_Party/FreeRTOS/Source/include;             ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;             ../Drivers/CMSIS/Include;             ../Middlewares/Third_Party/modbus/include;             ../Middlewares/Third_Party/modbus/port;             ../Middlewares/Third_Party/modbus/rtu</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

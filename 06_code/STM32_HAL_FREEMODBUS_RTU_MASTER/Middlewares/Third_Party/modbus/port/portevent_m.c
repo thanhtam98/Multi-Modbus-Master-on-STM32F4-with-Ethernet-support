@@ -1,3 +1,5 @@
+
+  
 /*
  * FreeModbus Libary: RT-Thread Port
  * Copyright (C) 2013 Armink <armink.ztl@gmail.com>
@@ -67,7 +69,29 @@ BOOL xMBMasterPortEventGet(UCHAR ucPort, eMBMasterEventType *eEvent)
 
     if (xMasterEventInQueue[ucPort])
     {
-        *eEvent = eMasterQueuedEvent[ucPort];
+			switch (eMasterQueuedEvent[ucPort])
+         {
+         case EV_MASTER_READY:
+             *eEvent = EV_MASTER_READY;
+             break;
+         case EV_MASTER_FRAME_RECEIVED:
+             *eEvent = EV_MASTER_FRAME_RECEIVED;
+             break;
+         case EV_MASTER_EXECUTE:
+             *eEvent = EV_MASTER_EXECUTE;
+             break;
+         case EV_MASTER_FRAME_SENT:
+             *eEvent = EV_MASTER_FRAME_SENT;
+             break;
+         case EV_MASTER_ERROR_PROCESS:
+             *eEvent = EV_MASTER_ERROR_PROCESS;
+             break;
+         default:
+             vTaskDelay(30); //??
+             return FALSE;
+             break;
+         }
+//        *eEvent = eMasterQueuedEvent[ucPort];
         xMasterEventInQueue[ucPort] = FALSE;
         xEventHappened = TRUE;
     }
@@ -137,6 +161,7 @@ void vMBMasterErrorCBRespondTimeout(UCHAR ucPort, UCHAR ucDestAddress, const UCH
      * @note This code is use OS's event mechanism for modbus master protocol stack.
      * If you don't use OS, you can change it.
      */
+	printf("\r\n vMBMasterErrorCBRespondTimeout: sent data to queue");
     xMBMasterPortEventPost(ucPort, EV_MASTER_ERROR_RESPOND_TIMEOUT);
     //rt_event_send(&xMasterOsEvent, EV_MASTER_ERROR_RESPOND_TIMEOUT);
 
@@ -221,10 +246,10 @@ eMBMasterReqErrCode eMBMasterWaitRequestFinish(UCHAR ucPort)
 		eMBMasterEventType  eEvent;
     // rt_uint32_t recvedEvent;
 waiting_point:
-		if(xMBMasterPortEventGet( ucPort,&eEvent) == TRUE)
-    //if (xMasterEventInQueue[ucPort] == TRUE)
+		//if(xMBMasterPortEventGet( ucPort,&eEvent) == TRUE)
+    if (xMasterEventInQueue[ucPort] == TRUE)
     {
-        switch (eEvent)
+        switch (eMasterQueuedEvent[ucPort])
         {
         case EV_MASTER_PROCESS_SUCESS:
             break;
@@ -244,10 +269,11 @@ waiting_point:
             break;
         }
 				default:
-					xMBMasterPortEventPost( ucPort,eEvent);
+					//xMBMasterPortEventPost( ucPort,eEvent);
 					vTaskDelay(20);
 					goto waiting_point;
         }
+				xMasterEventInQueue[ucPort] == FALSE;
         return eErrStatus;
     }
     else {

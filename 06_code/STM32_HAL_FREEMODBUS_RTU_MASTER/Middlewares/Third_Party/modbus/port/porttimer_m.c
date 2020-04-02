@@ -37,7 +37,7 @@ uint16_t timeout = 0;
 TimerExpiredType TimerExpired[MB_RS485_MAX_PORT] = {MB_TMODE_NONE,MB_TMODE_NONE,MB_TMODE_NONE,MB_TMODE_NONE};
 // uint16_t downcounter = 
 /* ----------------------- static functions ---------------------------------*/
-static void prvvTIMERExpiredISR(void);
+//static void prvvTIMERExpiredISR(void);
 
 /* ----------------------- Start implementation -----------------------------*/
 BOOL xMBMasterPortTimersInit(USHORT usTimeOut50us)
@@ -69,8 +69,7 @@ BOOL xMBMasterPortTimersInit(USHORT usTimeOut50us)
 
 void vMBMasterPortTimersT35Enable(UCHAR ucPort)
 {
-	  vMBMasterSetCurTimerMode(ucPort,MB_TMODE_CONVERT_DELAY);
-
+	  vMBMasterSetCurTimerMode(ucPort,MB_TMODE_T35);
     TimerExpired[ucPort].TimeOut = timeout;
 		TimerExpired[ucPort].Event = MB_TMODE_T35;
 }
@@ -86,7 +85,7 @@ void vMBMasterPortTimersConvertDelayEnable(UCHAR ucPort)
 void vMBMasterPortTimersRespondTimeoutEnable(UCHAR ucPort)
 {
 		vMBMasterSetCurTimerMode(ucPort,MB_TMODE_RESPOND_TIMEOUT);
-		TimerExpired[ucPort].TimeOut = timeout*5;
+		TimerExpired[ucPort].TimeOut = timeout*10;
 		TimerExpired[ucPort].Event = MB_TMODE_RESPOND_TIMEOUT;
 
 }
@@ -106,12 +105,15 @@ void prvvMasterTIMERExpiredISR(void)
   UCHAR ucPort = 0;
   for (ucPort = 0; ucPort < MB_RS485_MAX_PORT; ucPort++)
   {
-    if ((TimerExpired[ucPort].Event !=MB_TMODE_NONE ))
+    if ((TimerExpired[ucPort].Event != MB_TMODE_NONE ))
     {
       if ((--TimerExpired[ucPort].TimeOut) == 0)
         {
           TimerExpired[ucPort].Event = MB_TMODE_NONE;
+					if (pxMBMasterPortCBTimerExpired != NULL)
+					{
           (void) pxMBMasterPortCBTimerExpired(ucPort);
+					}
         }
     }
   }
