@@ -55,7 +55,7 @@ void ModbusTestTask(void const *argument)
 			eMBMasterReqWriteHoldingRegister(0x00, 0x01,0x01,count++,0x01);
 			if (count == 250 ) count = 0;
 			
-			printf("\r\nModbusTestTask: Sent data to dest");
+			//printf("\r\nModbusTestTask: Sent data to dest");
 	}
 }
 

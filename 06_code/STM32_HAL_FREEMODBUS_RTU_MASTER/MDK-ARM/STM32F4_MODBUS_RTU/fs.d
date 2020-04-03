@@ -49,4 +49,3 @@ stm32f4_modbus_rtu\fs.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/f
 stm32f4_modbus_rtu\fs.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h
 stm32f4_modbus_rtu\fs.o: ../Middlewares/Third_Party/LwIP/src/apps/httpd/fsdata.h
 stm32f4_modbus_rtu\fs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-stm32f4_modbus_rtu\fs.o: ../Middlewares/Third_Party/LwIP/src/apps/httpd/fsdata_custom.c

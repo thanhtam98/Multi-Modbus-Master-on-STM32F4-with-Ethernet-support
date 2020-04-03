@@ -98,4 +98,5 @@
 .\discover-more\main.o: ..\inc\keyscan_task.h
 .\discover-more\main.o: ..\inc\key_scan.h
 .\discover-more\main.o: ..\inc\TaskMessage.h
-.\discover-more\main.o: ..\inc\RS485bus_task.h
+.\discover-more\main.o: ..\inc\RS485bus_task_m.h
+.\discover-more\main.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485_m.h

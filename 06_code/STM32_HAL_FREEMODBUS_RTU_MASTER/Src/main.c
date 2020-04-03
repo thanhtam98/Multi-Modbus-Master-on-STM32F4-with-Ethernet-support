@@ -60,6 +60,7 @@ UART_HandleTypeDef huart6;
 
 osThreadId defaultTaskHandle;
 osThreadId appMdTaskHandle;
+osThreadId appNetworkTaskHandle;
 osTimerId myTimer01Handle;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -77,13 +78,14 @@ static void MX_UART4_Init(void);
 static void MX_USART6_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartMdTask(void const * argument);
+void StartTask03(void const * argument);
 void Callback01(void const * argument);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 extern void ModbusRTUTask(void const * argument);
 extern void ModbusTestTask(void const * argument);
-
+extern	void http_server_netconn_init();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -166,6 +168,10 @@ int main(void)
   /* definition and creation of appMdTask */
   osThreadDef(appMdTask, StartMdTask, osPriorityNormal, 0, 128);
   appMdTaskHandle = osThreadCreate(osThread(appMdTask), NULL);
+
+  /* definition and creation of appNetworkTask */
+  osThreadDef(appNetworkTask, StartTask03, osPriorityIdle, 0, 128);
+  appNetworkTaskHandle = osThreadCreate(osThread(appNetworkTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -553,6 +559,24 @@ void StartMdTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartMdTask */
+}
+
+/* USER CODE BEGIN Header_StartTask03 */
+/**
+* @brief Function implementing the appNetworkTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask03 */
+void StartTask03(void const * argument)
+{
+  /* USER CODE BEGIN StartTask03 */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartTask03 */
 }
 
 /* Callback01 function */

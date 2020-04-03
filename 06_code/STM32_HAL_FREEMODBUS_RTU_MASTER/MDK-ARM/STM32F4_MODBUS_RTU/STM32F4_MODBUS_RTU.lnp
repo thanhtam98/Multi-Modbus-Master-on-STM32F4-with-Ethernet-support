@@ -1,5 +1,6 @@
 --cpu=Cortex-M4.fp
 "stm32f4_modbus_rtu\mdtask.o"
+"stm32f4_modbus_rtu\networktask.o"
 "stm32f4_modbus_rtu\main.o"
 "stm32f4_modbus_rtu\freertos.o"
 "stm32f4_modbus_rtu\lwip.o"
@@ -78,8 +79,6 @@
 "stm32f4_modbus_rtu\slipif.o"
 "stm32f4_modbus_rtu\lowpan6.o"
 "stm32f4_modbus_rtu\ecp.o"
-"stm32f4_modbus_rtu\httpd.o"
-"stm32f4_modbus_rtu\fs.o"
 "stm32f4_modbus_rtu\api_lib.o"
 "stm32f4_modbus_rtu\api_msg.o"
 "stm32f4_modbus_rtu\err.o"

@@ -83,12 +83,6 @@
 #define DEFAULT_ACCEPTMBOX_SIZE 6
 /*----- Value in opt.h for RECV_BUFSIZE_DEFAULT: INT_MAX -----*/
 #define RECV_BUFSIZE_DEFAULT 2000000000
-/*----- Default Value for LWIP_HTTPD: 0 ---*/
-#define LWIP_HTTPD 1
-/*----- Default Value for LWIP_HTTPD_MAX_TAG_NAME_LEN: 8 ---*/
-#define LWIP_HTTPD_MAX_TAG_NAME_LEN 16
-/*----- Value in opt.h for HTTPD_USE_CUSTOM_FSDATA: 0 -----*/
-#define HTTPD_USE_CUSTOM_FSDATA 1
 /*----- Value in opt.h for LWIP_STATS: 1 -----*/
 #define LWIP_STATS 0
 /*----- Value in opt.h for CHECKSUM_GEN_IP: 1 -----*/

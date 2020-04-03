@@ -13,3 +13,4 @@
 .\discover-more\rs485bus_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485config.h
 .\discover-more\rs485bus_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485frame.h
 .\discover-more\rs485bus_m.o: ..\..\Utilities\RS485_BUS\Interface\include\rs485func.h
+.\discover-more\rs485bus_m.o: ..\..\Utilities\RS485_BUS\Interface\rtu\rs485rtu.h
