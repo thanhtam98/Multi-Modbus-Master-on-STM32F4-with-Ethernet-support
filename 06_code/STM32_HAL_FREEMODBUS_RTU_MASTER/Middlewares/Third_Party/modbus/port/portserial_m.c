@@ -45,6 +45,7 @@ UART_HandleTypeDef UARTHandleGet(UCHAR ucPORT);
 void RS485SetDir(UCHAR ucPort, ACTION action);
 UART_HandleTypeDef*  pUARTHandleGet(UCHAR ucPORT);
 void UARTHandleSwitch(UCHAR ucPort);
+void RS485LedInd(UCHAR ucPort, BOOL bState);
 /* -----------------------    variables     ---------------------------------*/
 extern UART_HandleTypeDef huart3	;
 extern UART_HandleTypeDef huart2 	;
@@ -71,14 +72,18 @@ void vMBMasterPortSerialEnable(UCHAR ucPort, BOOL xRxEnable, BOOL xTxEnable)
   */
 	UARTHandleSwitch(ucPort);
   if (xRxEnable) {
-			HAL_GPIO_WritePin(USART3_RDE_GPIO_Port, USART3_RDE_Pin, 0);
+			RS485SetDir( ucPort,  MB_RS485_IN);
+			RS485LedInd( ucPort,  FALSE);
+			//HAL_GPIO_WritePin(USART3_RDE_GPIO_Port, USART3_RDE_Pin, 0);
     __HAL_UART_ENABLE_IT(phuart, UART_IT_RXNE);
   } else {    
     __HAL_UART_DISABLE_IT(phuart, UART_IT_RXNE);
   }
   
-  if (xTxEnable) {    
-		HAL_GPIO_WritePin(USART3_RDE_GPIO_Port, USART3_RDE_Pin, 1);
+  if (xTxEnable) {   
+			RS485SetDir( ucPort,  MB_RS485_OUT);	
+			RS485LedInd( ucPort,  TRUE);
+		//HAL_GPIO_WritePin(USART3_RDE_GPIO_Port, USART3_RDE_Pin, 1);
     __HAL_UART_ENABLE_IT(phuart, UART_IT_TXE);
   } else {
     __HAL_UART_DISABLE_IT(phuart, UART_IT_TXE);
@@ -166,8 +171,28 @@ BOOL xMBMasterPortSerialGetByte(UCHAR ucPort,CHAR * pucByte)
 
 
 /*HW Function Porting -------------------------------------------*/
-
-
+/*
+Brief: Led indicate when TX actived
+Todo: 
+*/
+void RS485LedInd(UCHAR ucPort, BOOL bState)
+{
+	switch(ucPort)
+	{
+		case PORT1:
+			HAL_GPIO_WritePin(USART3_LED_GPIO_Port,USART3_LED_Pin, bState);
+			break;
+		case PORT2:
+			HAL_GPIO_WritePin(USART2_LED_GPIO_Port,USART2_LED_Pin, bState);
+			break;
+		case PORT3:
+			HAL_GPIO_WritePin(USART4_LED_GPIO_Port,USART4_LED_Pin, bState);
+			break;
+		case PORT4:
+			HAL_GPIO_WritePin(USART6_LED_GPIO_Port,USART6_LED_Pin, bState);
+			break;
+	}
+}
 /*
 Brief: Change Direction of MAX485 port
 Todo: Add HAL control GPIO HW

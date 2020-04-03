@@ -291,7 +291,15 @@
       (DeviceIndex "0")))
   (GlobalState
     (FileView
-      (Path "Design Resources"))
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "E:\LVTN\AccessControllerBoard\16_Controller\01_Schematic\stm32f4_controller.dsn")
+      (Path "Design Resources"
+         "E:\LVTN\AccessControllerBoard\16_Controller\01_Schematic\stm32f4_controller.dsn"
+         "SCHEMATIC1")
+      (Select "Design Resources"
+         "E:\LVTN\AccessControllerBoard\16_Controller\01_Schematic\stm32f4_controller.dsn"
+         "SCHEMATIC1" "01_MCU"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
@@ -319,7 +327,18 @@
       (Path
          "E:\LVTN\ACCESSCONTROLLERBOARD\16_CONTROLLER\01_SCHEMATIC\STM32F4_CONTROLLER.DSN")
       (Schematic "SCHEMATIC1")
-      (Page "03_IO")))
+      (Page "03_IO"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -31 0 1160 0 261")
+        (Scroll "0 200")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path
+         "E:\LVTN\ACCESSCONTROLLERBOARD\16_CONTROLLER\01_SCHEMATIC\STM32F4_CONTROLLER.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "01_MCU")))
   (MPSSessionName "NguyenThanhTam")
   (ISPCBBASICLICENSE "false")
   (LastUsedLibraryBrowseDirectory "E:\01_working_allegro\Library"))

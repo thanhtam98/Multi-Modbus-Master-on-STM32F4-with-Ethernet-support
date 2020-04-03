@@ -68,6 +68,8 @@ void Error_Handler(void);
 #define PH1_OSC_OUT_GPIO_Port GPIOH
 #define USART3_RDE_Pin GPIO_PIN_10
 #define USART3_RDE_GPIO_Port GPIOD
+#define USART3_LED_Pin GPIO_PIN_11
+#define USART3_LED_GPIO_Port GPIOD
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14

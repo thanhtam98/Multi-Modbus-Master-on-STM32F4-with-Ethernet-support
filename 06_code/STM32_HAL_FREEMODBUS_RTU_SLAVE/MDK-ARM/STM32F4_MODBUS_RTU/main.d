@@ -31,7 +31,6 @@ stm32f4_modbus_rtu\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 stm32f4_modbus_rtu\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 stm32f4_modbus_rtu\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 stm32f4_modbus_rtu\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-stm32f4_modbus_rtu\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
 stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 stm32f4_modbus_rtu\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 stm32f4_modbus_rtu\main.o: ../Inc/FreeRTOSConfig.h

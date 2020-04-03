@@ -24,6 +24,9 @@
 #include <stdio.h>
 #include <string.h>
 
+/*------------------------ Platform includes ------------------------*/
+#include "main.h"
+
 /*------------------------FreeRTOS Platform includes ------------------------*/
 #include "FreeRTOS.h"
 #include "task.h"
@@ -161,7 +164,11 @@ void vMBMasterErrorCBRespondTimeout(UCHAR ucPort, UCHAR ucDestAddress, const UCH
      * @note This code is use OS's event mechanism for modbus master protocol stack.
      * If you don't use OS, you can change it.
      */
-	printf("\r\n vMBMasterErrorCBRespondTimeout: sent data to queue");
+	HAL_GPIO_WritePin(GPIO_SPEAKER_GPIO_Port,GPIO_SPEAKER_Pin,TRUE);
+	
+	HAL_Delay(10);
+		HAL_GPIO_TogglePin(GPIO_SPEAKER_GPIO_Port,GPIO_SPEAKER_Pin);
+		printf("\r\n vMBMasterErrorCBRespondTimeout: sent data to queue");
     xMBMasterPortEventPost(ucPort, EV_MASTER_ERROR_RESPOND_TIMEOUT);
     //rt_event_send(&xMasterOsEvent, EV_MASTER_ERROR_RESPOND_TIMEOUT);
 

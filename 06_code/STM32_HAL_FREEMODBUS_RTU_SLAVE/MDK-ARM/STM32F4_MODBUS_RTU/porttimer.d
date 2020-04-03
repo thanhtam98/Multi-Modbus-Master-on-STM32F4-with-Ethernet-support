@@ -32,7 +32,6 @@ stm32f4_modbus_rtu\porttimer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 stm32f4_modbus_rtu\porttimer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 stm32f4_modbus_rtu\porttimer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 stm32f4_modbus_rtu\porttimer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-stm32f4_modbus_rtu\porttimer.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
 stm32f4_modbus_rtu\porttimer.o: ../Middlewares/Third_Party/modbus/include/mb.h
 stm32f4_modbus_rtu\porttimer.o: ../Middlewares/Third_Party/modbus/include/mbport.h
 stm32f4_modbus_rtu\porttimer.o: ../Middlewares/Third_Party/modbus/include/mbproto.h

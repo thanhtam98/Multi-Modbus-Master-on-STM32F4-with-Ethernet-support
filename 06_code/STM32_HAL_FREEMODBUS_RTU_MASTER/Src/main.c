@@ -157,7 +157,7 @@ int main(void)
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
- 
+
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
@@ -452,37 +452,30 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, USART3_RDE_Pin|USART2_RDE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, USART3_RDE_Pin|USART3_LED_Pin|USART6_LED_Pin|USART2_LED_Pin 
+                          |USART2_RDE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USART6_RDE_GPIO_Port, USART6_RDE_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(UART4_RDE_GPIO_Port, UART4_RDE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, USART6_RDE_Pin|USART4_LED_Pin|UART4_RDE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIO_SPEAKER_GPIO_Port, GPIO_SPEAKER_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : USART3_RDE_Pin USART2_RDE_Pin */
-  GPIO_InitStruct.Pin = USART3_RDE_Pin|USART2_RDE_Pin;
+  /*Configure GPIO pins : USART3_RDE_Pin USART3_LED_Pin USART6_LED_Pin USART2_LED_Pin 
+                           USART2_RDE_Pin */
+  GPIO_InitStruct.Pin = USART3_RDE_Pin|USART3_LED_Pin|USART6_LED_Pin|USART2_LED_Pin 
+                          |USART2_RDE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : USART6_RDE_Pin */
-  GPIO_InitStruct.Pin = USART6_RDE_Pin;
+  /*Configure GPIO pins : USART6_RDE_Pin USART4_LED_Pin UART4_RDE_Pin */
+  GPIO_InitStruct.Pin = USART6_RDE_Pin|USART4_LED_Pin|UART4_RDE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(USART6_RDE_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : UART4_RDE_Pin */
-  GPIO_InitStruct.Pin = UART4_RDE_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(UART4_RDE_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : GPIO_SPEAKER_Pin */
   GPIO_InitStruct.Pin = GPIO_SPEAKER_Pin;

@@ -18,7 +18,7 @@
  *
  * File: $Id: portserial.c,v 1.1 2006/08/22 21:35:13 wolti Exp $
  */
-
+/* ----------------------- Platform includes ----------------------------------*/
 #include "port.h"
 #include "main.h"
 /* ----------------------- Modbus includes ----------------------------------*/
@@ -42,12 +42,14 @@ vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
   
   if (xRxEnable) {
 			HAL_GPIO_WritePin(USART3_RDE_GPIO_Port, USART3_RDE_Pin, 0);
+			HAL_GPIO_WritePin(USART3_LED_GPIO_Port, USART3_LED_Pin, 0);
     __HAL_UART_ENABLE_IT(&huart3, UART_IT_RXNE);
   } else {    
     __HAL_UART_DISABLE_IT(&huart3, UART_IT_RXNE);
   }
   
   if (xTxEnable) {    
+		HAL_GPIO_WritePin(USART3_LED_GPIO_Port, USART3_LED_Pin, 1);
 		HAL_GPIO_WritePin(USART3_RDE_GPIO_Port, USART3_RDE_Pin, 1);
     __HAL_UART_ENABLE_IT(&huart3, UART_IT_TXE);
   } else {
@@ -80,7 +82,9 @@ xMBPortSerialGetByte( CHAR * pucByte )
   /* Return the byte in the UARTs receive buffer. This function is called
   * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
   */
+	HAL_GPIO_WritePin(USART3_LED_GPIO_Port, USART3_LED_Pin, 1);
   *pucByte = (uint8_t)(huart3.Instance->DR & (uint8_t)0x00FF);  
+	HAL_GPIO_WritePin(USART3_LED_GPIO_Port, USART3_LED_Pin, 0);
   return TRUE;
 }
  
